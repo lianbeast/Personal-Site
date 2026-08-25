@@ -22,7 +22,7 @@ Full-screen Three.js canvas (`react-three-fiber`), dark space background:
 
 - **Core (center):** Glowing 3D name text + tagline, enveloped by a slowly rotating wireframe globe with cyan edge glow.
 - **Orbiting holographic cards** (fixed orbital slots, gentle sinusoidal bobbing):
-  - 🌤 **Weather card** — live conditions for the user's city with animated 3D condition (sun / rain particles / clouds).
+  - 🌤 **Weather card** — live conditions for the visitor's location, autodetected via the Geolocation API (Imperial °F/mph); falls back to a configured city. Animated 3D condition (sun / rain particles / clouds).
   - 📰 **World news card** — top headlines, latest first.
   - ⚡ **Tech news card** — latest tech stories.
 - **Social orbit:** GitHub / LinkedIn / X / email as clickable glowing icons orbiting the globe.
@@ -40,7 +40,8 @@ Full-screen Three.js canvas (`react-three-fiber`), dark space background:
 
 | Source | Purpose | Key needed? |
 |---|---|---|
-| [Open-Meteo](https://open-meteo.com) | Weather (current + conditions) | No |
+| [Open-Meteo](https://open-meteo.com) | Weather (current + conditions, imperial units) | No |
+| [BigDataCloud](https://www.bigdatacloud.com) | Reverse geocode (friendly city name for geolocation) | No |
 | Hacker News / The Verge RSS | Tech news | No |
 | BBC / Reuters RSS | World news | No |
 

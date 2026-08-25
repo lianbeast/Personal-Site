@@ -1,10 +1,10 @@
-import { getWeather, type Weather } from '../lib/weather'
+import { getWeatherAuto, type Weather } from '../lib/weather'
 import { site } from '../config'
 import { useAsync } from '../hooks/useAsync'
 import { HoloCard } from './HoloCard'
 
 export function WeatherCard({ onFocus }: { onFocus: (w: Weather) => void }) {
-  const { state, refresh } = useAsync(() => getWeather(site.city), [site.city])
+  const { state, refresh } = useAsync(() => getWeatherAuto(site.city), [site.city])
 
   return (
     <HoloCard
@@ -27,7 +27,7 @@ export function WeatherCard({ onFocus }: { onFocus: (w: Weather) => void }) {
           </div>
           <div className="mt-3 flex gap-4 text-[11px] text-cyan-200/70">
             <span>💧 {state.data.humidity}%</span>
-            <span>🌬 {state.data.wind} km/h</span>
+            <span>🌬 {state.data.wind} mph</span>
           </div>
         </div>
       )}

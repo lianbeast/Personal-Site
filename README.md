@@ -9,7 +9,7 @@ A 3D holographic personal landing page. Your name glows at the core of a rotatin
 ## ✨ Features
 
 - 🌍 Rotating 3D wireframe globe (Three.js / react-three-fiber) — drag to spin
-- 🌤 **Weather** — live conditions for your city (Open-Meteo, free & keyless)
+- 🌤 **Weather** — autodetects the visitor's location (Imperial °F/mph), falls back to a configured city (Open-Meteo, free & keyless)
 - ⚡ **Tech news** — Hacker News top stories (CORS-enabled API)
 - 📰 **World news** — BBC headlines via rss2json (native CORS)
 - 👤 Glowing identity core with social links, plus About + Projects sections

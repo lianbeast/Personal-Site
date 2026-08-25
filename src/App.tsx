@@ -26,7 +26,7 @@ function WeatherDetail({ w }: { w: Weather }) {
       <div className="mt-6 grid grid-cols-3 gap-3 text-center">
         {[
           ['💧 Humidity', `${w.humidity}%`],
-          ['🌬 Wind', `${w.wind} km/h`],
+          ['🌬 Wind', `${w.wind} mph`],
           ['🌡 Code', String(w.code)],
         ].map(([label, value]) => (
           <div key={label} className="rounded-xl border border-cyan-400/20 bg-cyan-400/5 p-3">
