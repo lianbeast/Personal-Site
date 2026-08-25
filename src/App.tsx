@@ -63,6 +63,7 @@ function NewsDetail({ articles }: { articles: Article[] }) {
 
 export default function App() {
   const [focus, setFocus] = useState<FocusState | null>(null)
+  const [paused, setPaused] = useState(false)
   const [now, setNow] = useState(() => new Date())
 
   useEffect(() => {
@@ -84,7 +85,7 @@ export default function App() {
     <div className="min-h-screen bg-slate-950 text-slate-200">
       {/* ── 3D hero ─────────────────────────────────── */}
       <div className="relative h-[100dvh]">
-        <Scene onFocusWeather={openWeather} onFocusNews={openNews} />
+        <Scene paused={paused} onFocusWeather={openWeather} onFocusNews={openNews} />
 
         {/* HUD header */}
         <header className="pointer-events-none absolute inset-x-0 top-0 z-20 flex items-start justify-between p-5">
@@ -103,10 +104,24 @@ export default function App() {
           </div>
         </header>
 
-        {/* HUD hint */}
-        <p className="pointer-events-none absolute inset-x-0 bottom-5 z-20 text-center text-[10px] tracking-[0.25em] text-cyan-200/50 uppercase">
-          ◉ drag to rotate · click a card to zoom
-        </p>
+        {/* HUD controls */}
+        <div className="absolute inset-x-0 bottom-5 z-50 flex flex-col items-center gap-3">
+          <button
+            onClick={() => setPaused((p) => !p)}
+            aria-label={paused ? 'Resume orbit' : 'Pause orbit'}
+            title={paused ? 'Resume orbit' : 'Pause orbit'}
+            className={`flex items-center gap-2 rounded-full border px-4 py-1.5 font-display text-[11px] font-bold tracking-[0.25em] uppercase backdrop-blur-md transition ${
+              paused
+                ? 'border-amber-300/60 bg-amber-400/10 text-amber-200 shadow-[0_0_20px_rgba(251,191,36,0.25)]'
+                : 'border-cyan-400/40 bg-slate-950/70 text-cyan-200 hover:border-cyan-300 hover:text-white'
+            }`}
+          >
+            {paused ? '▶ resume orbit' : '⏸ pause orbit'}
+          </button>
+          <p className="pointer-events-none text-center text-[10px] tracking-[0.25em] text-cyan-200/50 uppercase">
+            {paused ? '✥ drag cards to rearrange · click a card to zoom' : '◉ drag to rotate · click a card to zoom'}
+          </p>
+        </div>
 
         <FocusModal
           open={focus !== null}

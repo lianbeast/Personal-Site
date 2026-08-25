@@ -61,14 +61,64 @@ for (let i = 0; i < count && !(hoverFroze && hoverResumed); i++) {
   if (hoverFroze && hoverResumed) break
 }
 
+// ── Pause control ────────────────────────────────────────────────
+await page.click('[aria-label="Pause orbit"]')
+await new Promise((r) => setTimeout(r, 300))
+const cardX = async (n) => {
+  const b = await cards.nth(n).boundingBox()
+  return b ? Math.round(b.x + b.width / 2) : 0
+}
+const visibleCard = async () => {
+  for (let i = 0; i < count; i++) {
+    const pe = await cards.nth(i).evaluate((el) => getComputedStyle(el).pointerEvents)
+    if (pe === 'auto' && (await cards.nth(i).boundingBox())) return i
+  }
+  return -1
+}
+
+// Paused: cards must hold still.
+const vi = await visibleCard()
+let pauseFroze = false
+if (vi >= 0) {
+  const p1 = await cardX(vi)
+  await new Promise((r) => setTimeout(r, 2500))
+  const p2 = await cardX(vi)
+  pauseFroze = Math.abs(p2 - p1) < 3
+}
+
+// Paused: dragging a card must move it to a new spot.
+let dragMoved = false
+if (vi >= 0) {
+  const b = await cards.nth(vi).boundingBox()
+  await page.mouse.move(b.x + b.width / 2, b.y + b.height / 2)
+  await page.mouse.down()
+  await page.mouse.move(b.x + b.width / 2 + 90, b.y + b.height / 2, { steps: 6 })
+  await page.mouse.up()
+  const d0 = await cardX(vi)
+  dragMoved = Math.abs(d0 - Math.round(b.x + b.width / 2)) > 30
+}
+
+// Resumed: cards must orbit again.
+await page.click('[aria-label="Resume orbit"]')
+await new Promise((r) => setTimeout(r, 300))
+let resumeMoved = false
+if (vi >= 0) {
+  const r1 = await cardX(vi)
+  await new Promise((r) => setTimeout(r, 2500))
+  const r2 = await cardX(vi)
+  resumeMoved = Math.abs(r2 - r1) > 3
+}
+
 await browser.close()
 
 console.log(JSON.stringify(report, null, 2))
 const stuck = report.cardTexts.some((t) => /acquiring feed|signal lost/i.test(t))
 const offscreen = report.cards.some((c) => !c.visible)
 console.log(
-  `hover freeze: ${hoverFroze ? 'frozen ✓' : 'MOVED ✗'} | ` +
-    `resume: ${hoverResumed ? 'moving ✓' : 'STUCK ✗'}`,
+  `hover: ${hoverFroze ? 'frozen ✓' : 'MOVED ✗'}/${hoverResumed ? 'moving ✓' : 'STUCK ✗'} | ` +
+    `pause: ${pauseFroze ? 'frozen ✓' : 'MOVED ✗'} | ` +
+    `drag: ${dragMoved ? 'moved ✓' : 'STUCK ✗'} | ` +
+    `resume: ${resumeMoved ? 'moving ✓' : 'STUCK ✗'}`,
 )
 if (stuck) {
   console.error('✗ some cards did not load live data')
@@ -82,8 +132,8 @@ if (!report.canvas || report.canvas.w < 300 || report.canvas.h < 300) {
   console.error('✗ canvas missing or tiny')
   process.exit(1)
 }
-if (!hoverFroze || !hoverResumed) {
-  console.error('✗ hover-to-pause carousel not working')
+if (!hoverFroze || !hoverResumed || !pauseFroze || !dragMoved || !resumeMoved) {
+  console.error('✗ carousel controls not working')
   process.exit(1)
 }
 console.log('layout OK ✓')

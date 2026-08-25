@@ -6,6 +6,8 @@
 export const site = {
   name: 'Lian Beast',
   tagline: 'Builder · Dreamer · Explorer',
+  // GitHub username used for the live projects feed (public repos, by recency).
+  githubUser: 'lianbeast',
   // Fallback city used when the visitor denies location access (weather is otherwise autodetected).
   city: 'San Francisco',
 

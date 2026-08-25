@@ -11,6 +11,7 @@ import { NewsCard } from './NewsCard'
 import { GithubIcon, LinkedinIcon, MailIcon, XIcon } from './icons'
 
 interface SceneProps {
+  paused: boolean
   onFocusWeather: (w: Weather) => void
   onFocusNews: (kind: 'tech' | 'world', articles: Article[]) => void
 }
@@ -47,7 +48,7 @@ function Identity() {
   )
 }
 
-export function Scene({ onFocusWeather, onFocusNews }: SceneProps) {
+export function Scene({ paused, onFocusWeather, onFocusNews }: SceneProps) {
   return (
     <Canvas camera={{ position: [0, 0, 11], fov: 50 }} dpr={[1, 1.75]} gl={{ antialias: true }}>
       <color attach="background" args={['#020617']} />
@@ -58,15 +59,15 @@ export function Scene({ onFocusWeather, onFocusNews }: SceneProps) {
       <SocialOrbit />
       <Identity />
 
-      <OrbitingCard radius={6.4} height={2.2} speed={0.12} phase={0.6}>
+      <OrbitingCard paused={paused} radius={6.4} height={2.2} speed={0.12} phase={0.6}>
         <WeatherCard onFocus={onFocusWeather} />
       </OrbitingCard>
 
-      <OrbitingCard radius={6.9} height={0.3} speed={-0.1} phase={2.4}>
+      <OrbitingCard paused={paused} radius={6.9} height={0.3} speed={-0.1} phase={2.4}>
         <NewsCard kind="world" icon="📰" title="World News" onFocus={(a) => onFocusNews('world', a)} />
       </OrbitingCard>
 
-      <OrbitingCard radius={6.1} height={-2.0} speed={0.14} phase={4.2}>
+      <OrbitingCard paused={paused} radius={6.1} height={-2.0} speed={0.14} phase={4.2}>
         <NewsCard kind="tech" icon="⚡" title="Tech News" onFocus={(a) => onFocusNews('tech', a)} />
       </OrbitingCard>
     </Canvas>
