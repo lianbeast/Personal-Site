@@ -4,7 +4,7 @@
 // ─────────────────────────────────────────────────────────────
 
 export const site = {
-  name: 'Your Name',
+  name: 'Lian Beast',
   tagline: 'Builder · Dreamer · Explorer',
   // Fallback city used when the visitor denies location access (weather is otherwise autodetected).
   city: 'San Francisco',
