@@ -13,6 +13,7 @@ A 3D holographic personal landing page. Your name glows at the core of a rotatin
 - ⚡ **Tech news** — Hacker News top stories (CORS-enabled API)
 - 📰 **World news** — BBC headlines via rss2json (native CORS)
 - 📦 **Live GitHub projects** — most recently pushed public repos pulled from the GitHub API
+- 🗺 **Map Room** — full browser GIS (GeoLibre) embedded with map-only chrome, pan/zoom + 1,000 geoprocessing tools, everything local
 - 👤 Glowing identity core with social links, plus About + Projects sections
 - 🎛 Click any card to zoom into "focus mode"
 - ⏸ **Pause orbit** — freeze the carousel, then **drag cards anywhere** to rearrange; resume to start orbiting again

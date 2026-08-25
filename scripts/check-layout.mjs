@@ -109,6 +109,24 @@ if (vi >= 0) {
   resumeMoved = Math.abs(r2 - r1) > 3
 }
 
+// ── Map Room section ─────────────────────────────────────────────
+// Verify the GeoLibre embed section exists and its iframe target is a
+// live GeoLibre URL. The heavy GIS iframe itself isn't driven (too slow).
+await page.evaluate(() =>
+  document.getElementById('map-room')?.scrollIntoView(),
+)
+await new Promise((r) => setTimeout(r, 800))
+const mapRoom = await page.evaluate(() => {
+  const section = document.getElementById('map-room')
+  const frame = document.querySelector('#map-room iframe')
+  const r = section ? section.getBoundingClientRect() : null
+  return {
+    present: !!section,
+    inViewport: !!r && r.height > 300 && r.width > 300,
+    iframe: frame?.getAttribute('src') || null,
+  }
+})
+
 await browser.close()
 
 console.log(JSON.stringify(report, null, 2))
@@ -136,4 +154,16 @@ if (!hoverFroze || !hoverResumed || !pauseFroze || !dragMoved || !resumeMoved) {
   console.error('✗ carousel controls not working')
   process.exit(1)
 }
+const mapOk =
+  mapRoom.present &&
+  mapRoom.inViewport &&
+  !!mapRoom.iframe &&
+  /web\.geolibre\.app/.test(mapRoom.iframe)
+if (!mapOk) {
+  console.error(
+    `✗ map room broken (present=${mapRoom.present} inView=${mapRoom.inViewport} iframe=${mapRoom.iframe})`,
+  )
+  process.exit(1)
+}
+console.log(`map room: section ✓ iframe: ${mapRoom.iframe}`)
 console.log('layout OK ✓')

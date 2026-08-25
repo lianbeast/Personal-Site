@@ -3,6 +3,7 @@ import type { Article } from './lib/news'
 import type { Weather } from './lib/weather'
 import { Scene } from './components/Scene'
 import { FocusModal } from './components/FocusModal'
+import { MapRoomSection } from './components/MapRoomSection'
 import { AboutSection, Footer, ProjectsSection } from './components/Sections'
 
 interface FocusState {
@@ -121,6 +122,14 @@ export default function App() {
           <p className="pointer-events-none text-center text-[10px] tracking-[0.25em] text-cyan-200/50 uppercase">
             {paused ? '✥ drag cards to rearrange · click a card to zoom' : '◉ drag to rotate · click a card to zoom'}
           </p>
+          <button
+            onClick={() =>
+              document.getElementById('map-room')?.scrollIntoView({ behavior: 'smooth' })
+            }
+            className="flex items-center gap-2 rounded-full border border-cyan-400/40 bg-slate-950/70 px-4 py-1.5 font-display text-[11px] font-bold tracking-[0.25em] text-cyan-200 uppercase backdrop-blur-md transition hover:border-cyan-300 hover:text-white"
+          >
+            🗺 open map room
+          </button>
         </div>
 
         <FocusModal
@@ -135,6 +144,7 @@ export default function App() {
 
       {/* ── content sections ────────────────────────── */}
       <AboutSection />
+      <MapRoomSection />
       <ProjectsSection />
       <Footer />
     </div>

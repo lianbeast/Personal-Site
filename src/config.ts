@@ -47,6 +47,16 @@ export const site = {
     // world uses an RSS feed via a free CORS proxy
     world: 'https://feeds.bbci.co.uk/news/world/rss.xml',
   },
+
+  // GeoLibre — full browser GIS embedded in the Map Room section.
+  // data can be a public .geojson / .geoparquet / COG URL (optional).
+  // layout=compact + panels=none + maponly = chrome-free, map-only embed.
+  geolibre: {
+    embedBase: 'https://web.geolibre.app',
+    // Set a hosted dataset to preload, or leave null for the default basemap.
+    data: null as string | null,
+    embedParams: '&layout=compact&panels=none&maponly',
+  },
 }
 
 export type FeedKind = 'tech' | 'world'
