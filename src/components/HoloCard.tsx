@@ -13,7 +13,7 @@ interface HoloCardProps {
 export function HoloCard({ icon, title, state, onRefresh, onFocus, children }: HoloCardProps) {
   const ok = state.status === 'ok'
   return (
-    <div className="scanlines relative w-[300px] rounded-2xl border border-cyan-400/30 bg-slate-950/80 p-4 backdrop-blur-md panel-glow">
+    <div className="scanlines relative w-[340px] rounded-2xl border border-cyan-400/30 bg-slate-950/80 p-4 backdrop-blur-md panel-glow">
       <div className="mb-3 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <span className="text-lg">{icon}</span>

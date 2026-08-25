@@ -36,10 +36,10 @@ export function NewsCard({ kind, icon, title, onFocus }: NewsCardProps) {
                   rel="noopener noreferrer"
                   className="group block rounded-lg border border-transparent p-2 transition hover:border-cyan-400/30 hover:bg-cyan-400/5"
                 >
-                  <span className="text-[13px] leading-snug text-slate-200 group-hover:text-cyan-100 line-clamp-2">
+                  <span className="text-[14px] leading-snug text-slate-200 group-hover:text-cyan-100 line-clamp-2">
                     {a.title}
                   </span>
-                  <span className="mt-1 block text-[10px] tracking-wider text-cyan-500/80 uppercase">{a.source}</span>
+                  <span className="mt-1 block text-[11px] tracking-wider text-cyan-500/80 uppercase">{a.source}</span>
                 </a>
               </li>
             ))}
