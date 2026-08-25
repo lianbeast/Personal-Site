@@ -1,0 +1,40 @@
+name: Update Live Preview GIF
+
+on:
+  workflow_run:
+    workflows: ['Deploy to GitHub Pages']
+    types: [completed]
+
+permissions:
+  contents: write
+
+jobs:
+  record:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+
+      - name: Record preview GIF
+        env:
+          PREVIEW_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
+        run: npm run record:preview
+
+      - name: Commit preview.gif (if changed)
+        run: |
+          if git diff --quiet preview.gif; then
+            echo "preview.gif unchanged — nothing to commit"
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add preview.gif
+            # [skip ci] + deploy paths-ignore break the regenerate loop
+            git commit -m "[skip ci] Update live preview gif"
+            git push
+          fi
