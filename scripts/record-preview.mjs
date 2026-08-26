@@ -11,10 +11,10 @@ const url = process.env.PREVIEW_URL || process.argv[2] || 'http://localhost:4173
 const out = process.env.PREVIEW_OUT || process.argv[3] || 'preview.gif'
 const channel = process.env.PLAYWRIGHT_CHANNEL || undefined
 
-const FPS = 8
-const DURATION = 6
-const WIDTH = 800
-const HEIGHT = 500
+const FPS = 6
+const DURATION = 5
+const WIDTH = 640
+const HEIGHT = 400
 const FRAMES = FPS * DURATION
 const DELAY = 1000 / FPS
 
@@ -53,9 +53,9 @@ const scrollPerFrame = Math.max(1, (scrollHeight - viewHeight) / FRAMES)
 const pngs = []
 for (let i = 0; i < FRAMES; i++) {
   await page.evaluate((y) => window.scrollTo(0, y), Math.round(scrollPerFrame * i))
-  await new Promise((r) => setTimeout(r, 150)) // let paint settle
+  await new Promise((r) => setTimeout(r, 120)) // let paint settle
   pngs.push(await page.screenshot({ type: 'png' }))
-  await new Promise((r) => setTimeout(r, DELAY - 150))
+  await new Promise((r) => setTimeout(r, DELAY - 120))
 }
 await browser.close()
 
