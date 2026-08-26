@@ -8,6 +8,7 @@ import { SocialOrbit } from './SocialOrbit'
 import { OrbitingCard } from './OrbitingCard'
 import { WeatherCard } from './WeatherCard'
 import { NewsCard } from './NewsCard'
+import { MapCard } from './MapCard'
 import { GithubIcon, LinkedinIcon, MailIcon, XIcon } from './icons'
 
 interface SceneProps {
@@ -69,6 +70,10 @@ export function Scene({ paused, onFocusWeather, onFocusNews }: SceneProps) {
 
       <OrbitingCard paused={paused} radius={6.1} height={-2.0} speed={0.14} phase={4.2}>
         <NewsCard kind="tech" icon="⚡" title="Tech News" onFocus={(a) => onFocusNews('tech', a)} />
+      </OrbitingCard>
+
+      <OrbitingCard paused={paused} radius={6.7} height={-0.5} speed={-0.08} phase={5.8}>
+        <MapCard />
       </OrbitingCard>
     </Canvas>
   )
