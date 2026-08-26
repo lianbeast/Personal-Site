@@ -1,8 +1,8 @@
 import { site } from '../config'
+import { FadeIn } from './FadeIn'
 
 function embedUrl() {
   const { embedBase, data, embedParams } = site.geolibre
-  // data produces '?data=…&layout…', embedParams.slice(1) produces 'layout…'.
   return data
     ? `${embedBase}/?data=${encodeURIComponent(data)}${embedParams}`
     : `${embedBase}/?${embedParams.slice(1)}`
@@ -11,49 +11,55 @@ function embedUrl() {
 export function MapRoomSection() {
   const src = embedUrl()
   return (
-    <section className="relative border-t border-cyan-400/15 bg-slate-950 px-4 sm:px-6 py-12 sm:py-20" id="map-room">
-      <div className="mx-auto">
-        <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <p className="font-display text-[10px] sm:text-[11px] font-bold tracking-[0.25em] sm:tracking-[0.35em] text-cyan-400 uppercase">
-              // map room
-            </p>
-            <h2 className="mt-2 font-display text-base sm:text-lg font-bold tracking-wider text-cyan-100 holo-glow">
-              GeoLibre GIS
-            </h2>
+    <section className="relative border-t border-white/[0.06] px-6 py-24 sm:py-32" id="map-room">
+      <div className="mx-auto max-w-4xl">
+        <FadeIn>
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p className="font-mono text-xs tracking-widest text-sky-400/80 uppercase">
+                // map room
+              </p>
+              <h2 className="mt-4 font-display text-2xl font-bold tracking-tight text-white sm:text-3xl">
+                GeoLibre GIS
+              </h2>
+            </div>
+            <a
+              href={src}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs tracking-wider text-slate-500 transition hover:text-slate-300"
+            >
+              open full screen ↗
+            </a>
           </div>
-          <a
-            href={src}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[10px] tracking-wider text-cyan-200/50 uppercase transition hover:text-cyan-200"
-          >
-            open full screen ↗
-          </a>
-        </div>
+        </FadeIn>
 
-        <div className="scanlines panel-glow relative w-full overflow-hidden rounded-2xl border border-cyan-400/25 bg-slate-950" style={{ aspectRatio: '4/3' }}>
-          <iframe
-            src={src}
-            title="GeoLibre map"
-            className="absolute inset-0 h-full w-full border-0"
-            loading="lazy"
-            allow="geolocation"
-          />
-        </div>
+        <FadeIn delay={1}>
+          <div className="mt-8 overflow-hidden rounded-xl border border-white/[0.08] bg-white/[0.02]">
+            <iframe
+              src={src}
+              title="GeoLibre map"
+              className="h-[50vh] w-full border-0 sm:h-[60vh]"
+              loading="lazy"
+              allow="geolocation"
+            />
+          </div>
+        </FadeIn>
 
-        <p className="mt-3 text-[11px] text-cyan-200/40">
-          Interactive GIS running entirely in your browser — powered by{' '}
-          <a
-            href="https://geolibre.app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-cyan-300/70 hover:text-cyan-200"
-          >
-            GeoLibre
-          </a>
-          . Pan, zoom, and explore — all local, no data leaves your machine.
-        </p>
+        <FadeIn delay={2}>
+          <p className="mt-4 text-xs text-slate-500">
+            Interactive GIS running in your browser — powered by{' '}
+            <a
+              href="https://geolibre.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sky-400/80 transition hover:text-sky-300"
+            >
+              GeoLibre
+            </a>
+            . Pan, zoom, and explore — all local, no data leaves your machine.
+          </p>
+        </FadeIn>
       </div>
     </section>
   )

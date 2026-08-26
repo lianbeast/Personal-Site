@@ -42,13 +42,20 @@ const pageErrors = []
 page.on('pageerror', (e) => pageErrors.push(String(e)))
 page.on('console', (m) => m.type() === 'error' && pageErrors.push(m.text()))
 
-await page.waitForSelector('canvas', { timeout: 30000 })
-await new Promise((r) => setTimeout(r, 1500)) // let the scene settle
+await page.waitForSelector('h1', { timeout: 30000 })
+await new Promise((r) => setTimeout(r, 2000)) // let fonts + animations settle
+
+// Slowly scroll through the page while recording to showcase the full design.
+const scrollHeight = await page.evaluate(() => document.body.scrollHeight)
+const viewHeight = HEIGHT
+const scrollPerFrame = Math.max(1, (scrollHeight - viewHeight) / FRAMES)
 
 const pngs = []
 for (let i = 0; i < FRAMES; i++) {
+  await page.evaluate((y) => window.scrollTo(0, y), Math.round(scrollPerFrame * i))
+  await new Promise((r) => setTimeout(r, 150)) // let paint settle
   pngs.push(await page.screenshot({ type: 'png' }))
-  await new Promise((r) => setTimeout(r, DELAY))
+  await new Promise((r) => setTimeout(r, DELAY - 150))
 }
 await browser.close()
 
