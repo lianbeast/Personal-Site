@@ -2,9 +2,10 @@ import { site } from '../config'
 
 function embedUrl() {
   const { embedBase, data, embedParams } = site.geolibre
-  // embedParams always starts with '&', so it extends cleanly onto a ?data= arg.
-  const query = data ? `?data=${encodeURIComponent(data)}${embedParams}` : embedParams.slice(1)
-  return `${embedBase}/?${query}`
+  // data produces '?data=…&layout…', embedParams.slice(1) produces 'layout…'.
+  return data
+    ? `${embedBase}/?data=${encodeURIComponent(data)}${embedParams}`
+    : `${embedBase}/?${embedParams.slice(1)}`
 }
 
 export function MapRoomSection() {

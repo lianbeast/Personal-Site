@@ -6,10 +6,9 @@ const idle: AsyncState<null> = { status: 'ok', data: null }
 
 function embedUrl() {
   const { embedBase, data, embedParams } = site.geolibre
-  const query = data
-    ? `?data=${encodeURIComponent(data)}${embedParams}`
-    : embedParams.slice(1)
-  return `${embedBase}/?${query}`
+  return data
+    ? `${embedBase}/?data=${encodeURIComponent(data)}${embedParams}`
+    : `${embedBase}/?${embedParams.slice(1)}`
 }
 
 export function MapCard() {

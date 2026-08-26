@@ -53,8 +53,9 @@ export const site = {
   // layout=compact + panels=none + maponly = chrome-free, map-only embed.
   geolibre: {
     embedBase: 'https://web.geolibre.app',
-    // Set a hosted dataset to preload, or leave null for the default basemap.
-    data: null as string | null,
+    // World population density choropleth (211 countries, POP2005 + AREA).
+    // Source: MinnPost/simple-map-d3 — CC-BY-3.0.
+    data: 'https://raw.githubusercontent.com/MinnPost/simple-map-d3/master/example-data/world-population.geo.json',
     embedParams: '&layout=compact&panels=none&maponly',
   },
 }
