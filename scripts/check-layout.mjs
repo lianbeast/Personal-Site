@@ -17,15 +17,20 @@ const report = await page.evaluate(() => {
   const vh = window.innerHeight
   const canvas = document.querySelector('canvas')
   const c = canvas ? canvas.getBoundingClientRect() : null
-  // Only orbit cards (inside the 340px holo shell) count for visibility.
-  const cards = [...document.querySelectorAll('.w-\\[340px\\]')].map((el) => {
+  // Orbit cards are scanline panels with a h3 title inside the 3D scene.
+  // Exclude project cards (they have '↗' in the title and live outside the hero).
+  const cards = [...document.querySelectorAll('.scanlines')].filter(
+    (el) => el.querySelector('h3') && !el.querySelector('h3')?.textContent?.includes('↗'),
+  ).map((el) => {
     const r = el.getBoundingClientRect()
     return {
       title: el.querySelector('h3')?.textContent,
       visible: r.right > 0 && r.left < vw && r.bottom > 0 && r.top < vh,
     }
   })
-  const cardTexts = [...document.querySelectorAll('.w-\\[340px\\]')].map((el) =>
+  const cardTexts = [...document.querySelectorAll('.scanlines')].filter(
+    (el) => el.querySelector('h3') && !el.querySelector('h3')?.textContent?.includes('↗'),
+  ).map((el) =>
     (el.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 70),
   )
   return {
@@ -40,7 +45,7 @@ const report = await page.evaluate(() => {
 // Hover-to-pause: a card's screen position must freeze while hovered, then
 // resume moving after the mouse leaves. Try each card in case one is
 // currently occluded behind the planet (pointer-events disabled).
-const cards = page.locator('.w-\\[340px\\]')
+const cards = page.locator('.scanlines').filter({ has: page.locator('h3') })
 const count = await cards.count()
 let hoverFroze = false
 let hoverResumed = false

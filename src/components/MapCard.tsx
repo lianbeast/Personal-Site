@@ -40,7 +40,7 @@ export function MapCard() {
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
       </div>
 
-      <p className="mt-2 text-[10px] text-cyan-200/50">
+      <p className="mt-1.5 text-[9px] sm:text-[10px] text-cyan-200/50">
         Interactive GIS — pan, zoom, 1000+ tools. Click ⤢ to expand.
       </p>
     </HoloCard>

@@ -27,8 +27,8 @@ export function NewsCard({ kind, icon, title, onFocus }: NewsCardProps) {
     >
       {state.status === 'ok' && (
         <div>
-          <ul className="space-y-2">
-            {state.data.slice(0, 4).map((a, i) => (
+          <ul className="space-y-1.5">
+            {state.data.slice(0, 3).map((a, i) => (
               <li key={i}>
                 <a
                   href={a.url}
@@ -36,17 +36,17 @@ export function NewsCard({ kind, icon, title, onFocus }: NewsCardProps) {
                   rel="noopener noreferrer"
                   className="group block rounded-lg border border-transparent p-2 transition hover:border-cyan-400/30 hover:bg-cyan-400/5"
                 >
-                  <span className="text-[14px] leading-snug text-slate-200 group-hover:text-cyan-100 line-clamp-2">
+                  <span className="text-[12px] sm:text-[13px] leading-snug text-slate-200 group-hover:text-cyan-100 line-clamp-2">
                     {a.title}
                   </span>
-                  <span className="mt-1 block text-[11px] tracking-wider text-cyan-500/80 uppercase">{a.source}</span>
+                  <span className="mt-0.5 block text-[9px] sm:text-[10px] tracking-wider text-cyan-500/80 uppercase">{a.source}</span>
                 </a>
               </li>
             ))}
           </ul>
           <button
             onClick={() => onFocus(state.data)}
-            className="mt-2 w-full rounded-lg border border-cyan-400/30 py-1.5 text-[11px] tracking-[0.2em] text-cyan-300 uppercase transition hover:bg-cyan-400/10"
+            className="mt-1.5 w-full rounded-lg border border-cyan-400/30 py-1 text-[10px] tracking-[0.15em] text-cyan-300 uppercase transition hover:bg-cyan-400/10"
           >
             view all ▸
           </button>

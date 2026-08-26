@@ -3,6 +3,7 @@ import { useFrame } from '@react-three/fiber'
 import { Html } from '@react-three/drei'
 import * as THREE from 'three'
 import { useReducedMotion } from '../hooks/useReducedMotion'
+import { useIsMobile } from '../hooks/useMediaQuery'
 
 // Planet silhouette radius (equator ring). Cards fade out as the planet
 // blocks them from the camera so they never draw on top of it.
@@ -129,9 +130,11 @@ export function OrbitingCard({ radius, height, speed, phase, paused, children }:
     }
   })
 
+  const mobile = useIsMobile()
+
   return (
     <group ref={group}>
-      <Html center distanceFactor={10} zIndexRange={[40, 0]} style={{ pointerEvents: 'none', width: 340 }}>
+      <Html center distanceFactor={11} zIndexRange={[40, 0]} style={{ pointerEvents: 'none', width: mobile ? 240 : 280 }}>
         <div
           ref={overlay}
           onMouseEnter={() => setHovered(true)}

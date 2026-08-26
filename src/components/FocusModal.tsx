@@ -24,7 +24,7 @@ export function FocusModal({ open, title, icon, onClose, children }: FocusModalP
       onClick={onClose}
     >
       <div
-        className="scanlines relative max-h-[82vh] w-[min(92vw,640px)] overflow-y-auto rounded-2xl border border-cyan-400/30 bg-slate-950/95 p-6 panel-glow"
+        className="scanlines relative max-h-[82vh] w-[min(92vw,640px)] overflow-y-auto rounded-2xl border border-cyan-400/30 bg-slate-950/95 p-4 sm:p-6 panel-glow"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="mb-4 flex items-center justify-between">

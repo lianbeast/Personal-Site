@@ -18,14 +18,14 @@ export function WeatherCard({ onFocus }: { onFocus: (w: Weather) => void }) {
         <div>
           <div className="flex items-end justify-between">
             <div>
-              <div className="font-display text-4xl font-bold text-white holo-glow">{state.data.temperature}°</div>
-              <div className="mt-1 text-xs text-cyan-200/80">
+              <div className="font-display text-3xl sm:text-4xl font-bold text-white holo-glow">{state.data.temperature}°</div>
+              <div className="mt-0.5 text-[11px] sm:text-xs text-cyan-200/80">
                 {state.data.description} · {state.data.city}
               </div>
             </div>
-            <div className="text-5xl">{state.data.icon}</div>
+            <div className="text-4xl sm:text-5xl">{state.data.icon}</div>
           </div>
-          <div className="mt-3 flex gap-4 text-[11px] text-cyan-200/70">
+          <div className="mt-2 flex gap-3 text-[10px] sm:text-[11px] text-cyan-200/70">
             <span>💧 {state.data.humidity}%</span>
             <span>🌬 {state.data.wind} mph</span>
           </div>

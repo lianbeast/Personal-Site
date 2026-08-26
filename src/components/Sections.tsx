@@ -4,12 +4,12 @@ import { useAsync } from '../hooks/useAsync'
 
 export function AboutSection() {
   return (
-    <section className="relative border-t border-cyan-400/15 bg-slate-950 px-6 py-20">
+    <section className="relative border-t border-cyan-400/15 bg-slate-950 px-4 sm:px-6 py-12 sm:py-20">
       <div className="mx-auto max-w-3xl">
-        <p className="font-display text-[11px] font-bold tracking-[0.35em] text-cyan-400 uppercase">
+        <p className="font-display text-[10px] sm:text-[11px] font-bold tracking-[0.25em] sm:tracking-[0.35em] text-cyan-400 uppercase">
           // about
         </p>
-        <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-slate-300">
+        <div className="mt-4 sm:mt-6 space-y-3 sm:space-y-4 text-[13px] sm:text-[15px] leading-relaxed text-slate-300">
           {site.about.map((p, i) => (
             <p key={i}>{p}</p>
           ))}
@@ -52,7 +52,7 @@ function RepoCard({ repo }: { repo: Repo }) {
       href={repo.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="scanlines group relative rounded-2xl border border-cyan-400/25 bg-slate-950/80 p-5 panel-glow transition hover:border-cyan-300/60 hover:shadow-[0_0_30px_rgba(34,211,238,0.2)]"
+      className="scanlines group relative rounded-2xl border border-cyan-400/25 bg-slate-950/80 p-4 sm:p-5 panel-glow transition hover:border-cyan-300/60 hover:shadow-[0_0_30px_rgba(34,211,238,0.2)]"
     >
       <h3 className="font-display text-sm font-bold tracking-wider text-cyan-200 transition group-hover:text-white">
         {repo.name} <span className="text-cyan-500">↗</span>
@@ -80,14 +80,14 @@ export function ProjectsSection() {
   const fallback = state.status === 'error' ? site.projects : null
 
   return (
-    <section className="relative border-t border-cyan-400/15 bg-slate-950 px-6 pb-24">
+    <section className="relative border-t border-cyan-400/15 bg-slate-950 px-4 sm:px-6 pb-16 sm:pb-24">
       <div className="mx-auto max-w-3xl">
-        <div className="flex items-baseline justify-between gap-4">
-          <p className="font-display text-[11px] font-bold tracking-[0.35em] text-cyan-400 uppercase">
+        <div className="flex flex-wrap items-baseline justify-between gap-2 sm:gap-4">
+          <p className="font-display text-[10px] sm:text-[11px] font-bold tracking-[0.25em] sm:tracking-[0.35em] text-cyan-400 uppercase">
             // projects
           </p>
           {repos && (
-            <p className="text-[10px] tracking-wider text-cyan-200/40 uppercase">
+            <p className="text-[9px] sm:text-[10px] tracking-wider text-cyan-200/40 uppercase">
               live from github.com/{site.githubUser}
             </p>
           )}
@@ -100,7 +100,7 @@ export function ProjectsSection() {
           </p>
         )}
 
-        <div className="mt-6 grid gap-4 sm:grid-cols-2">
+        <div className="mt-4 sm:mt-6 grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2">
           {repos?.map((r) => (
             <RepoCard key={r.name} repo={r} />
           ))}
@@ -110,7 +110,7 @@ export function ProjectsSection() {
               href={p.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="scanlines group relative rounded-2xl border border-cyan-400/25 bg-slate-950/80 p-5 panel-glow transition hover:border-cyan-300/60 hover:shadow-[0_0_30px_rgba(34,211,238,0.2)]"
+              className="scanlines group relative rounded-2xl border border-cyan-400/25 bg-slate-950/80 p-4 sm:p-5 panel-glow transition hover:border-cyan-300/60 hover:shadow-[0_0_30px_rgba(34,211,238,0.2)]"
             >
               <h3 className="font-display text-sm font-bold tracking-wider text-cyan-200 transition group-hover:text-white">
                 {p.name} <span className="text-cyan-500">↗</span>
@@ -132,7 +132,7 @@ export function ProjectsSection() {
 
 export function Footer() {
   return (
-    <footer className="border-t border-cyan-400/15 bg-slate-950 px-6 py-8 text-center">
+    <footer className="border-t border-cyan-400/15 bg-slate-950 px-4 sm:px-6 py-6 sm:py-8 text-center">
       <p className="text-[10px] tracking-[0.3em] text-cyan-200/40 uppercase">
         {site.name} · mission control · orbiting since forever
       </p>

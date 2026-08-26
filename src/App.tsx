@@ -89,29 +89,29 @@ export default function App() {
         <Scene paused={paused} onFocusWeather={openWeather} onFocusNews={openNews} />
 
         {/* HUD header */}
-        <header className="pointer-events-none absolute inset-x-0 top-0 z-20 flex items-start justify-between p-5">
+        <header className="pointer-events-none absolute inset-x-0 top-0 z-20 flex items-start justify-between p-3 sm:p-5">
           <div>
-            <p className="font-display text-[10px] font-bold tracking-[0.35em] text-cyan-400">
+            <p className="font-display text-[9px] sm:text-[10px] font-bold tracking-[0.25em] sm:tracking-[0.35em] text-cyan-400">
               MISSION CONTROL
             </p>
-            <p className="mt-1 flex items-center gap-2 text-[11px] text-cyan-200/70">
+            <p className="mt-1 flex items-center gap-2 text-[10px] sm:text-[11px] text-cyan-200/70">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 pulse-dot" />
               systems online · {now.toLocaleTimeString()}
             </p>
           </div>
-          <div className="text-right text-[10px] leading-relaxed tracking-[0.2em] text-cyan-200/50 uppercase">
+          <div className="text-right text-[8px] sm:text-[10px] leading-relaxed tracking-[0.15em] sm:tracking-[0.2em] text-cyan-200/50 uppercase">
             <p>live from orbit</p>
             <p>{now.toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' })}</p>
           </div>
         </header>
 
         {/* HUD controls */}
-        <div className="absolute inset-x-0 bottom-5 z-50 flex flex-col items-center gap-3">
+        <div className="absolute inset-x-0 bottom-3 sm:bottom-5 z-50 flex flex-col items-center gap-2 sm:gap-3">
           <button
             onClick={() => setPaused((p) => !p)}
             aria-label={paused ? 'Resume orbit' : 'Pause orbit'}
             title={paused ? 'Resume orbit' : 'Pause orbit'}
-            className={`flex items-center gap-2 rounded-full border px-4 py-1.5 font-display text-[11px] font-bold tracking-[0.25em] uppercase backdrop-blur-md transition ${
+            className={`flex items-center gap-1.5 sm:gap-2 rounded-full border px-3 sm:px-4 py-1 sm:py-1.5 font-display text-[10px] sm:text-[11px] font-bold tracking-[0.2em] sm:tracking-[0.25em] uppercase backdrop-blur-md transition ${
               paused
                 ? 'border-amber-300/60 bg-amber-400/10 text-amber-200 shadow-[0_0_20px_rgba(251,191,36,0.25)]'
                 : 'border-cyan-400/40 bg-slate-950/70 text-cyan-200 hover:border-cyan-300 hover:text-white'
@@ -119,14 +119,14 @@ export default function App() {
           >
             {paused ? '▶ resume orbit' : '⏸ pause orbit'}
           </button>
-          <p className="pointer-events-none text-center text-[10px] tracking-[0.25em] text-cyan-200/50 uppercase">
+          <p className="pointer-events-none text-center text-[8px] sm:text-[10px] tracking-[0.15em] sm:tracking-[0.25em] text-cyan-200/50 uppercase px-2">
             {paused ? '✥ drag cards to rearrange · click a card to zoom' : '◉ drag to rotate · click a card to zoom'}
           </p>
           <button
             onClick={() =>
               document.getElementById('map-room')?.scrollIntoView({ behavior: 'smooth' })
             }
-            className="flex items-center gap-2 rounded-full border border-cyan-400/40 bg-slate-950/70 px-4 py-1.5 font-display text-[11px] font-bold tracking-[0.25em] text-cyan-200 uppercase backdrop-blur-md transition hover:border-cyan-300 hover:text-white"
+            className="flex items-center gap-1.5 sm:gap-2 rounded-full border border-cyan-400/40 bg-slate-950/70 px-3 sm:px-4 py-1 sm:py-1.5 font-display text-[10px] sm:text-[11px] font-bold tracking-[0.2em] sm:tracking-[0.25em] text-cyan-200 uppercase backdrop-blur-md transition hover:border-cyan-300 hover:text-white"
           >
             🗺 open map room
           </button>
