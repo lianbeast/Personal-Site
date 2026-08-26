@@ -6,8 +6,8 @@ export function AboutSection() {
     <section className="relative px-6 py-24 sm:py-32" id="about">
       <div className="mx-auto max-w-3xl">
         <FadeIn>
-          <p className="font-mono text-xs tracking-widest text-sky-400/80 uppercase">
-            // about
+          <p className="font-mono text-[10px] tracking-widest text-slate-500 uppercase">
+            about
           </p>
         </FadeIn>
 

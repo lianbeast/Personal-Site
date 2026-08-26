@@ -36,9 +36,9 @@ function RepoCard({ repo }: { repo: Repo }) {
       href={repo.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="card-hover group block rounded-xl border border-white/[0.06] bg-white/[0.02] p-5 transition-colors hover:border-white/[0.12] hover:bg-white/[0.04]"
+      className="card-hover group block rounded-xl border var(--color-border) bg-[var(--color-bg-card)] p-5 transition-colors hover:border-[var(--color-border-hover)] hover:bg-[var(--color-bg-card-hover)]"
     >
-      <h3 className="font-display text-sm font-semibold tracking-wide text-white transition group-hover:text-sky-300">
+      <h3 className="font-display text-sm font-semibold tracking-wide text-white transition group-hover:text-[var(--color-accent)]">
         {repo.name} <span className="text-slate-500">↗</span>
       </h3>
       <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-slate-400">
@@ -64,31 +64,31 @@ export function ProjectsSection() {
   const fallback = state.status === 'error' ? site.projects : null
 
   return (
-    <section className="relative border-t border-white/[0.06] px-6 py-24 sm:py-32" id="projects">
+    <section className="relative border-t var(--color-border) px-6 py-24 sm:py-32" id="projects">
       <div className="mx-auto max-w-4xl">
         <FadeIn>
-          <div className="flex flex-wrap items-baseline justify-between gap-4">
+          <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-4">
             <div>
-              <p className="font-mono text-xs tracking-widest text-sky-400/80 uppercase">
-                // projects
+              <p className="font-mono text-[10px] tracking-widest text-slate-500 uppercase">
+                projects
               </p>
               <h2 className="mt-4 font-display text-2xl font-bold tracking-tight text-white sm:text-3xl">
                 Open Source
               </h2>
+              {repos && (
+                <p className="mt-1 text-[11px] text-slate-500">
+                  live from github.com/{site.githubUser}
+                </p>
+              )}
             </div>
-            {repos && (
-              <p className="text-[11px] text-slate-500">
-                live from github.com/{site.githubUser}
-              </p>
-            )}
           </div>
         </FadeIn>
 
         {state.status === 'loading' && (
           <FadeIn>
             <p className="mt-8 flex items-center gap-2 text-sm text-slate-500">
-              <span className="h-1.5 w-1.5 rounded-full bg-amber-400 pulse-dot" />
-              syncing repos…
+              <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-warning)] pulse-dot" />
+              syncing repos&hellip;
             </p>
           </FadeIn>
         )}
@@ -105,9 +105,9 @@ export function ProjectsSection() {
                 href={p.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="card-hover group block rounded-xl border border-white/[0.06] bg-white/[0.02] p-5 transition-colors hover:border-white/[0.12] hover:bg-white/[0.04]"
+                className="card-hover group block rounded-xl border var(--color-border) bg-[var(--color-bg-card)] p-5 transition-colors hover:border-[var(--color-border-hover)] hover:bg-[var(--color-bg-card-hover)]"
               >
-                <h3 className="font-display text-sm font-semibold tracking-wide text-white transition group-hover:text-sky-300">
+                <h3 className="font-display text-sm font-semibold tracking-wide text-white transition group-hover:text-[var(--color-accent)]">
                   {p.name} <span className="text-slate-500">↗</span>
                 </h3>
                 <p className="mt-2 text-xs leading-relaxed text-slate-400">{p.description}</p>
@@ -119,7 +119,7 @@ export function ProjectsSection() {
         {state.status === 'error' && (
           <FadeIn>
             <p className="mt-4 text-xs text-slate-500">
-              GitHub unreachable — showing cached projects.
+              GitHub unreachable &mdash; showing cached projects.
             </p>
           </FadeIn>
         )}

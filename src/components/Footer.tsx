@@ -2,10 +2,10 @@ import { site } from '../config'
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/[0.06] px-6 py-10">
+    <footer className="border-t var(--color-border) px-6 py-10">
       <div className="mx-auto flex max-w-4xl flex-col items-center justify-between gap-4 sm:flex-row">
-        <p className="text-xs text-slate-600">
-          © {new Date().getFullYear()} {site.name}
+        <p className="text-[10px] text-slate-700">
+          &copy; {new Date().getFullYear()} {site.name}
         </p>
         <div className="flex gap-4">
           {[
@@ -19,7 +19,7 @@ export function Footer() {
               href={href}
               target={href.startsWith('mailto') ? undefined : '_blank'}
               rel="noopener noreferrer"
-              className="text-xs text-slate-600 transition hover:text-slate-400"
+              className="text-xs text-slate-500 transition hover:text-slate-300"
             >
               {label}
             </a>
