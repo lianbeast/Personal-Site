@@ -1,5 +1,5 @@
 import { site } from '../config'
-import { FadeIn } from './FadeIn'
+import { ScrollReveal } from './ScrollReveal'
 
 function embedUrl() {
   const { embedBase, data, embedParams } = site.geolibre
@@ -11,15 +11,15 @@ function embedUrl() {
 export function MapRoomSection() {
   const src = embedUrl()
   return (
-    <section className="relative border-t var(--color-border) px-6 py-24 sm:py-32" id="map-room">
+    <section className="relative border-t border-[var(--color-border)] px-6 py-24 sm:py-32" id="map-room">
       <div className="mx-auto max-w-4xl">
-        <FadeIn>
+        <ScrollReveal>
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <p className="font-mono text-[10px] tracking-widest text-slate-500 uppercase">
+              <p className="font-mono text-[10px] tracking-[0.3em] text-[var(--color-text-subtle)] uppercase">
                 map room
               </p>
-              <h2 className="mt-4 font-display text-2xl font-bold tracking-tight text-white sm:text-3xl">
+              <h2 className="mt-4 font-display text-2xl font-medium tracking-tight text-white sm:text-3xl">
                 GeoLibre GIS
               </h2>
             </div>
@@ -27,15 +27,15 @@ export function MapRoomSection() {
               href={src}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs tracking-wider text-slate-500 transition hover:text-slate-300"
+              className="text-xs tracking-wider text-[var(--color-text-subtle)] transition hover:text-[var(--color-text)]"
             >
               open full screen &rarr;
             </a>
           </div>
-        </FadeIn>
+        </ScrollReveal>
 
-        <FadeIn delay={1}>
-          <div className="mt-8 overflow-hidden rounded-xl border var(--color-border) bg-[var(--color-bg-card)]">
+        <ScrollReveal delay={0.1}>
+          <div className="mt-8 overflow-hidden rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-card)]">
             <iframe
               src={src}
               title="GeoLibre map"
@@ -44,10 +44,10 @@ export function MapRoomSection() {
               allow="geolocation"
             />
           </div>
-        </FadeIn>
+        </ScrollReveal>
 
-        <FadeIn delay={2}>
-          <p className="mt-4 text-xs text-slate-500">
+        <ScrollReveal delay={0.2}>
+          <p className="mt-4 text-xs text-[var(--color-text-subtle)]">
             Interactive GIS running in your browser &mdash; powered by{' '}
             <a
               href="https://geolibre.app"
@@ -59,7 +59,7 @@ export function MapRoomSection() {
             </a>
             . Pan, zoom, and explore &mdash; all local, no data leaves your machine.
           </p>
-        </FadeIn>
+        </ScrollReveal>
       </div>
     </section>
   )

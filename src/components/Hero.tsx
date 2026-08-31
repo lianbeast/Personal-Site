@@ -3,46 +3,40 @@ import { site } from '../config'
 export function Hero() {
   return (
     <section className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden px-6">
-      {/* Subtle gradient orbs */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -left-40 -top-40 h-[500px] w-[500px] rounded-full bg-sky-500/[0.07] blur-[120px]" />
-        <div className="absolute -bottom-40 -right-40 h-[400px] w-[400px] rounded-full bg-indigo-500/[0.06] blur-[100px]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_#0A0A0A_75%)]"></div>
       </div>
 
-      {/* Grid overlay */}
-      <div className="pointer-events-none absolute inset-0 grid-bg opacity-40" />
-
-      <div className="relative z-10 mx-auto max-w-3xl text-center">
-        <div className="fade-in visible mb-6 inline-flex items-center gap-2 rounded-full border var(--color-border) bg-[var(--color-bg-card)] px-4 py-1.5 text-[10px] tracking-widest text-slate-500 uppercase">
-          <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-accent)] pulse-dot" />
-          open to work
+      <div className="relative z-10 mx-auto max-w-4xl text-center">
+        <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-card)] px-5 py-2 text-[10px] tracking-[0.3em] text-[var(--color-text-muted)] uppercase">
+          <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-accent)] pulse-dot"></span>
+          open for commissions
         </div>
 
-        <h1 className="fade-in visible fade-in-delay-1 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+        <h1 className="font-display text-5xl font-medium leading-[1.05] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl">
           {site.hero.headline}
         </h1>
 
-        <p className="fade-in visible fade-in-delay-2 mx-auto mt-6 max-w-xl text-base leading-relaxed text-slate-400 sm:text-lg">
+        <p className="mx-auto mt-8 max-w-xl text-base leading-relaxed text-[var(--color-text-muted)] sm:text-lg font-light">
           {site.hero.sub}
         </p>
 
-        <div className="fade-in visible fade-in-delay-3 mt-10 flex flex-wrap items-center justify-center gap-4">
+        <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
           <a
             href={site.hero.cta.href}
-            className="rounded-lg bg-[var(--color-accent)] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[var(--color-accent-hover)] hover:shadow-[var(--shadow-glow)]"
+            className="group relative overflow-hidden rounded-md bg-[var(--color-accent)] px-8 py-3.5 text-sm font-medium tracking-wide text-[var(--color-text-inverse)] transition-all duration-300 hover:bg-[var(--color-accent-hover)] hover:shadow-[0_0_40px_rgba(212,175,55,0.2)]"
           >
-            {site.hero.cta.label}
+            <span className="relative z-10">{site.hero.cta.label}</span>
           </a>
           <a
             href={site.hero.ctaSecondary.href}
-            className="rounded-lg border var(--color-border) bg-[var(--color-bg-card)] px-6 py-3 text-sm font-semibold text-slate-300 transition hover:border-[var(--color-border-hover)] hover:bg-[var(--color-bg-card-hover)] hover:text-white"
+            className="rounded-md border border-[var(--color-border)] bg-transparent px-8 py-3.5 text-sm font-medium tracking-wide text-[var(--color-text)] transition-all duration-300 hover:border-[var(--color-border-hover)] hover:text-white"
           >
             {site.hero.ctaSecondary.label}
           </a>
         </div>
 
-        {/* Social links */}
-        <div className="fade-in visible fade-in-delay-3 mt-12 flex items-center justify-center gap-4">
+        <div className="mt-16 flex flex-wrap items-center justify-center gap-8">
           {[
             { href: site.links.github, label: 'GitHub' },
             { href: site.links.linkedin, label: 'LinkedIn' },
@@ -50,11 +44,11 @@ export function Hero() {
             { href: site.links.email, label: 'Email' },
           ].map(({ href, label }) => (
             <a
-              key={label}
+              key={href}
               href={href}
               target={href.startsWith('mailto') ? undefined : '_blank'}
               rel="noopener noreferrer"
-              className="text-xs tracking-wider text-slate-500 transition hover:text-slate-300"
+              className="text-[10px] tracking-[0.25em] text-[var(--color-text-subtle)] uppercase transition-colors duration-300 hover:text-[var(--color-accent)]"
             >
               {label}
             </a>
@@ -62,12 +56,9 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-        <div className="float flex flex-col items-center gap-2 text-[10px] tracking-widest text-slate-600 uppercase">
-          <span>scroll</span>
-          <div className="h-8 w-px bg-gradient-to-b from-slate-600 to-transparent" />
-        </div>
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 tracking-[0.3em] text-[var(--color-text-subtle)] text-[10px] uppercase">
+        <span>scroll</span>
+        <div className="h-12 w-px bg-gradient-to-b from-[var(--color-accent)] to-transparent"></div>
       </div>
     </section>
   )

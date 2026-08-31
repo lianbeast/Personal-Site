@@ -6,18 +6,22 @@ import { MapRoomSection } from './components/MapRoomSection'
 import { ProjectsSection } from './components/ProjectsSection'
 import { ContactSection } from './components/ContactSection'
 import { Footer } from './components/Footer'
+import { ThreeCanvas } from './components/ThreeCanvas'
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#0a0e1a] text-slate-300">
-      <Hero />
-      <AboutSection />
-      <FeaturesSection />
-      <MapRoomSection />
-      <TestimonialsSection />
-      <ProjectsSection />
-      <ContactSection />
-      <Footer />
+    <div className="relative min-h-screen bg-bg text-text font-body antialiased">
+      <ThreeCanvas />
+      <main className="relative z-10">
+        <Hero />
+        <AboutSection />
+        <FeaturesSection />
+        <MapRoomSection />
+        <TestimonialsSection />
+        <ProjectsSection />
+        <ContactSection />
+        <Footer />
+      </main>
     </div>
   )
 }
