@@ -60,19 +60,34 @@ export const site = {
 
   projects: [
     {
-      name: 'Personal Site',
-      description: 'This very page — a clean, dark landing page with live data and a map room.',
-      url: 'https://github.com/lianbeast/Personal-Site',
+      name: 'GeoLibre',
+      description: 'A lightweight, cloud-native GIS platform for visualizing, exploring, and analyzing geospatial data — runs in the browser, on the desktop, on mobile, and inside Jupyter notebooks.',
+      url: 'https://github.com/lianbeast/GeoLibre',
     },
     {
-      name: 'Project Two',
-      description: 'A short, punchy description of something cool you built.',
-      url: 'https://github.com/lianbeast',
+      name: 'worldmonitor',
+      description: 'Real-time global intelligence dashboard. AI-powered news aggregation, geopolitical monitoring, and infrastructure tracking in a unified situational awareness interface.',
+      url: 'https://github.com/lianbeast/worldmonitor',
     },
     {
-      name: 'Project Three',
-      description: 'Another thing you\'re proud of. Keep it to one sentence.',
-      url: 'https://github.com/lianbeast',
+      name: '9drive',
+      description: 'A storage gateway web app connecting multiple Google Drive accounts into one virtual storage dashboard with quota tracking, file routing, and virtual folders.',
+      url: 'https://github.com/lianbeast/9drive',
+    },
+    {
+      name: 'code-review-graph',
+      description: 'Local-first code intelligence graph for MCP and CLI. Builds a persistent map of your codebase so AI coding tools read only what matters.',
+      url: 'https://github.com/lianbeast/code-review-graph',
+    },
+    {
+      name: 'Claude-Code-Agent-Monitor',
+      description: 'Real-time monitoring dashboard for Claude Code — tracks sessions, agent activity, tool usage, and subagent orchestration via SQLite3, React, and WebSockets.',
+      url: 'https://github.com/lianbeast/Claude-Code-Agent-Monitor',
+    },
+    {
+      name: 'tweakcc',
+      description: 'Customize Claude Code system prompts, themes, input styling, custom toolsets, and unlock private/unreleased features across all platforms.',
+      url: 'https://github.com/lianbeast/tweakcc',
     },
   ],
 
