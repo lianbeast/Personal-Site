@@ -98,8 +98,49 @@ export const site = {
 
   geolibre: {
     embedBase: 'https://web.geolibre.app',
-    data: 'https://raw.githubusercontent.com/MinnPost/simple-map-d3/master/example-data/world-population.geo.json',
-    embedParams: '&layout=compact&panels=none&maponly',
+    // Shared project from GeoLibre's Project → Share
+    // (e.g. https://share.geolibre.app/<you>/<project>.geolibre.json).
+    // When set, the embed loads THIS instead of the raw datasets below —
+    // layers, styles, basemaps and display plugins all come from the project.
+    projectUrl: '',
+    // Fallback: stacked raw datasets (repeated data= params; style must sit
+    // at the SAME position as its dataset, empty '' = default styling).
+    // All URLs need CORS; PMTiles/COG also need HTTP byte-range support.
+    datasets: [
+      {
+        label: 'World population',
+        url: 'https://raw.githubusercontent.com/MinnPost/simple-map-d3/master/example-data/world-population.geo.json',
+        style: '',
+      },
+      {
+        label: 'Places (GeoLibre sample)',
+        url: 'https://assets.geolibre.app/data/places.geojson',
+        style: 'https://assets.geolibre.app/data/sample.style.json',
+      },
+      {
+        label: 'Multi-layer sample (parks + counties)',
+        url: 'https://assets.geolibre.app/data/multiple-layers.zip',
+        style: 'https://assets.geolibre.app/data/multiple-layers.style.json',
+      },
+      {
+        label: 'Building count (H3, GeoParquet)',
+        url: 'https://data.source.coop/giswqs/opengeos/building_count_h3.parquet',
+        style: 'https://assets.geolibre.app/data/sample.style.json',
+      },
+      {
+        label: 'Digital elevation model (COG)',
+        url: 'https://data.source.coop/giswqs/opengeos/dem.tif',
+        style: 'https://assets.geolibre.app/data/dem.style.json',
+      },
+    ],
+    embedParams: '&layout=compact&panels=collapsed',
+    // Short feature list shown under the map embed.
+    features: [
+      { icon: '🗂', label: 'Vector & raster layers', desc: 'GeoJSON, PMTiles, COG, GeoParquet' },
+      { icon: '🧮', label: 'Geoprocessing', desc: '1,000+ local analysis tools' },
+      { icon: '🎨', label: 'Live styling', desc: 'Per-layer colors, sizes, opacity' },
+      { icon: '🔒', label: 'Private by default', desc: 'Everything runs in your browser' },
+    ],
   },
 }
 

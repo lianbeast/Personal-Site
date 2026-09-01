@@ -2,10 +2,22 @@ import { site } from '../config'
 import { ScrollReveal } from './ScrollReveal'
 
 function embedUrl() {
-  const { embedBase, data, embedParams } = site.geolibre
-  return data
-    ? `${embedBase}/?data=${encodeURIComponent(data)}${embedParams}`
-    : `${embedBase}/?${embedParams.slice(1)}`
+  const { embedBase, projectUrl, datasets, embedParams } = site.geolibre
+  // A shared project (url=) wins: layers, styles, basemaps and display
+  // plugins all come from the .geolibre.json — no raw data= params needed.
+  if (projectUrl) {
+    return `${embedBase}/?url=${encodeURIComponent(projectUrl)}${embedParams}`
+  }
+  if (!datasets.length) return embedBase
+  // GeoLibre pairs each style= with the data= at the same position;
+  // an empty style value means "use the dataset's default styling".
+  const pairs = datasets
+    .map((d) => {
+      const data = `data=${encodeURIComponent(d.url)}`
+      return d.style ? `${data}&style=${encodeURIComponent(d.style)}` : `${data}&style=`
+    })
+    .join('&')
+  return `${embedBase}/?${pairs}${embedParams}`
 }
 
 export function MapRoomSection() {
@@ -20,7 +32,7 @@ export function MapRoomSection() {
                 map room
               </p>
               <h2 className="mt-4 font-display text-2xl font-medium tracking-tight text-white sm:text-3xl">
-                GeoLibre GIS
+                The Map Room
               </h2>
             </div>
             <a
@@ -29,7 +41,7 @@ export function MapRoomSection() {
               rel="noopener noreferrer"
               className="text-xs tracking-wider text-[var(--color-text-subtle)] transition hover:text-[var(--color-text)]"
             >
-              open full screen &rarr;
+              Launch GeoLibre &rarr;
             </a>
           </div>
         </ScrollReveal>
@@ -41,14 +53,14 @@ export function MapRoomSection() {
               title="GeoLibre map"
               className="h-[50vh] w-full border-0 sm:h-[60vh]"
               loading="lazy"
-              allow="geolocation"
+              allow="fullscreen; geolocation"
             />
           </div>
         </ScrollReveal>
 
         <ScrollReveal delay={0.2}>
           <p className="mt-4 text-xs text-[var(--color-text-subtle)]">
-            Interactive GIS running in your browser &mdash; powered by{' '}
+            A full GIS in your browser &mdash; powered by{' '}
             <a
               href="https://geolibre.app"
               target="_blank"
@@ -57,7 +69,7 @@ export function MapRoomSection() {
             >
               GeoLibre
             </a>
-            . Pan, zoom, and explore &mdash; all local, no data leaves your machine.
+            . A complete GIS in your browser &mdash; pan, zoom, style layers, and run geoprocessing &mdash; all local, nothing leaves your machine.
           </p>
         </ScrollReveal>
       </div>
