@@ -1,10 +1,12 @@
 import { site } from '../config'
 import { ScrollReveal } from './ScrollReveal'
+import { Background } from './Background'
 
 export function AboutSection() {
   return (
     <section className="relative px-6 py-24 sm:py-32" id="about">
-      <div className="mx-auto max-w-3xl">
+      <Background variant="contours" />
+      <div className="relative z-10 mx-auto max-w-3xl">
         <ScrollReveal>
           <p className="font-mono text-[10px] tracking-[0.3em] text-[var(--color-text-subtle)] uppercase">
             about

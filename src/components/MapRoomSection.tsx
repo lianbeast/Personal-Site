@@ -1,16 +1,13 @@
 import { site } from '../config'
 import { ScrollReveal } from './ScrollReveal'
+import { Background } from './Background'
 
 function embedUrl() {
   const { embedBase, projectUrl, datasets, embedParams } = site.geolibre
-  // A shared project (url=) wins: layers, styles, basemaps and display
-  // plugins all come from the .geolibre.json — no raw data= params needed.
   if (projectUrl) {
     return `${embedBase}/?url=${encodeURIComponent(projectUrl)}${embedParams}`
   }
   if (!datasets.length) return embedBase
-  // GeoLibre pairs each style= with the data= at the same position;
-  // an empty style value means "use the dataset's default styling".
   const pairs = datasets
     .map((d) => {
       const data = `data=${encodeURIComponent(d.url)}`
@@ -24,7 +21,8 @@ export function MapRoomSection() {
   const src = embedUrl()
   return (
     <section className="relative border-t border-[var(--color-border)] px-6 py-24 sm:py-32" id="map-room">
-      <div className="mx-auto max-w-4xl">
+      <Background variant="nebula" />
+      <div className="relative z-10 mx-auto max-w-4xl">
         <ScrollReveal>
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>

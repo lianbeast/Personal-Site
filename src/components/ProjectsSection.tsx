@@ -2,6 +2,7 @@ import { site } from '../config'
 import { getRepos, type Repo } from '../lib/github'
 import { useAsync } from '../hooks/useAsync'
 import { ScrollReveal } from './ScrollReveal'
+import { Background } from './Background'
 
 const LANG_COLORS: Record<string, string> = {
   TypeScript: '#3178c6',
@@ -65,7 +66,8 @@ export function ProjectsSection() {
 
   return (
     <section className="relative border-t border-[var(--color-border)] px-6 py-24 sm:py-32" id="projects">
-      <div className="mx-auto max-w-4xl">
+      <Background variant="contours" />
+      <div className="relative z-10 mx-auto max-w-4xl">
         <ScrollReveal>
           <p className="font-mono text-[10px] tracking-[0.3em] text-[var(--color-text-subtle)] uppercase">
             projects

@@ -1,8 +1,10 @@
 import { site } from '../config'
+import { Background } from './Background'
 
 export function Hero() {
   return (
     <section className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden px-6">
+      <Background variant="space" />
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_#0A0A0A_75%)]"></div>
       </div>

@@ -1,10 +1,12 @@
 import { site } from '../config'
 import { ScrollReveal } from './ScrollReveal'
+import { Background } from './Background'
 
 export function FeaturesSection() {
   return (
     <section className="relative border-t border-[var(--color-border)] px-6 py-24 sm:py-32">
-      <div className="mx-auto max-w-4xl">
+      <Background variant="blueprint" />
+      <div className="relative z-10 mx-auto max-w-4xl">
         <ScrollReveal stagger={0.1} className="text-center">
           <p className="font-mono text-[10px] tracking-[0.3em] text-[var(--color-text-subtle)] uppercase">
             what i do

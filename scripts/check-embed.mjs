@@ -24,7 +24,7 @@ const page = await browser.newPage({ viewport: { width: 1280, height: 900 } })
 const pageErrors = []
 page.on('pageerror', (e) => pageErrors.push('site: ' + String(e).slice(0, 150)))
 
-await page.goto('http://localhost:4173/Personal-Site/', { waitUntil: 'networkidle', timeout: 30000 })
+await page.goto('http://localhost:4173/Personal-Site/', { waitUntil: 'domcontentloaded', timeout: 30000 })
 
 const iframeInfo = await page.evaluate(() => {
   const f = document.querySelector('iframe[title="GeoLibre map"]')

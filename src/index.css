@@ -156,3 +156,83 @@ body,
   line-height: 1;
   pointer-events: none;
 }
+
+/* ══════════════════════════════════════════════════════════════
+   BACKGROUND TEXTURES — CSS-only, GPU-accelerated
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── 1. Star Field ── */
+.bg-stars {
+  background:
+    radial-gradient(1px 1px at 20px 30px, white, transparent),
+    radial-gradient(1px 1px at 40px 70px, white, transparent),
+    radial-gradient(1px 1px at 50px 160px, white, transparent),
+    radial-gradient(1px 1px at 90px 40px, white, transparent),
+    radial-gradient(1px 1px at 130px 80px, white, transparent),
+    radial-gradient(1px 1px at 160px 120px, white, transparent),
+    radial-gradient(1.5px 1.5px at 200px 150px, rgba(212, 175, 55, 0.8), transparent),
+    radial-gradient(1px 1px at 250px 50px, white, transparent),
+    radial-gradient(1px 1px at 280px 180px, white, transparent),
+    radial-gradient(1.5px 1.5px at 320px 100px, rgba(212, 175, 55, 0.6), transparent),
+    radial-gradient(1px 1px at 350px 200px, white, transparent),
+    radial-gradient(1px 1px at 400px 60px, white, transparent),
+    radial-gradient(1px 1px at 450px 140px, white, transparent),
+    radial-gradient(1.5px 1.5px at 500px 90px, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1px 1px at 550px 170px, white, transparent),
+    radial-gradient(1px 1px at 600px 30px, white, transparent),
+    radial-gradient(1px 1px at 650px 110px, white, transparent),
+    radial-gradient(1.5px 1.5px at 700px 190px, rgba(212, 175, 55, 0.5), transparent),
+    radial-gradient(1px 1px at 750px 70px, white, transparent),
+    radial-gradient(1px 1px at 800px 150px, white, transparent);
+  background-size: 850px 250px;
+  background-repeat: repeat;
+  opacity: 0.4;
+}
+
+/* ── 2. Nebula Wisps ── */
+.bg-nebula {
+  background:
+    radial-gradient(ellipse 800px 400px at 20% 30%, rgba(99, 60, 130, 0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 600px 500px at 80% 60%, rgba(30, 60, 120, 0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 400px 300px at 50% 80%, rgba(150, 50, 100, 0.04) 0%, transparent 70%);
+}
+
+/* ── 3. Blueprint Grid ── */
+.bg-blueprint {
+  background-image:
+    linear-gradient(rgba(0, 180, 216, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 180, 216, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ── 4. Film Grain Noise ── */
+.bg-noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+}
+
+/* ── 5. Topographic Contours ── */
+.bg-contours {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cpath d='M0 200 Q100 150 200 200 T400 200' fill='none' stroke='%23D4AF37' stroke-width='0.5' opacity='0.08'/%3E%3Cpath d='M0 180 Q100 130 200 180 T400 180' fill='none' stroke='%23D4AF37' stroke-width='0.5' opacity='0.06'/%3E%3Cpath d='M0 220 Q100 170 200 220 T400 220' fill='none' stroke='%23D4AF37' stroke-width='0.5' opacity='0.06'/%3E%3Cpath d='M0 160 Q100 110 200 160 T400 160' fill='none' stroke='%23D4AF37' stroke-width='0.5' opacity='0.04'/%3E%3Cpath d='M0 240 Q100 190 200 240 T400 240' fill='none' stroke='%23D4AF37' stroke-width='0.5' opacity='0.04'/%3E%3Cpath d='M0 260 Q100 210 200 260 T400 260' fill='none' stroke='%23D4AF37' stroke-width='0.5' opacity='0.03'/%3E%3Cpath d='M0 140 Q100 90 200 140 T400 140' fill='none' stroke='%23D4AF37' stroke-width='0.5' opacity='0.03'/%3E%3C/svg%3E");
+  background-size: 400px 400px;
+  background-repeat: repeat;
+}
+
+/* ── Combination presets ── */
+.bg-space {
+  background: var(--color-bg);
+  position: relative;
+}
+.bg-space::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 800px 400px at 20% 30%, rgba(99, 60, 130, 0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 600px 500px at 80% 60%, rgba(30, 60, 120, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}

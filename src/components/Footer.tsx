@@ -1,9 +1,11 @@
 import { site } from '../config'
+import { Background } from './Background'
 
 export function Footer() {
   return (
-    <footer className="border-t border-[var(--color-border)] px-6 py-10">
-      <div className="mx-auto flex max-w-4xl flex-col items-center justify-between gap-4 sm:flex-row">
+    <footer className="relative border-t border-[var(--color-border)] px-6 py-10">
+      <Background variant="blueprint" />
+      <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center justify-between gap-4 sm:flex-row">
         <p className="text-[10px] text-[var(--color-text-subtle)]">
           &copy; {new Date().getFullYear()} {site.name}
         </p>

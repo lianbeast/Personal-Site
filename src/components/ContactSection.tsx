@@ -1,10 +1,12 @@
 import { site } from '../config'
 import { ScrollReveal } from './ScrollReveal'
+import { Background } from './Background'
 
 export function ContactSection() {
   return (
     <section className="relative border-t border-[var(--color-border)] px-6 py-24 sm:py-32" id="contact">
-      <div className="mx-auto max-w-3xl text-center">
+      <Background variant="noise" />
+      <div className="relative z-10 mx-auto max-w-3xl text-center">
         <ScrollReveal>
           <p className="font-mono text-[10px] tracking-[0.3em] text-[var(--color-text-subtle)] uppercase">
             contact
