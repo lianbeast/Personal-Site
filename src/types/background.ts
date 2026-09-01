@@ -4,7 +4,9 @@ export type BackgroundVariant =
   | 'blueprint'
   | 'noise'
   | 'contours'
-  | 'space';
+  | 'space'
+  | 'techImage'
+  | 'spaceTech';
 
 export const backgroundVariants: { value: BackgroundVariant; label: string; description: string }[] = [
   { value: 'stars', label: 'Star Field', description: 'Deep space with faint stars' },
@@ -13,4 +15,6 @@ export const backgroundVariants: { value: BackgroundVariant; label: string; desc
   { value: 'noise', label: 'Film Grain', description: 'Monochrome noise texture' },
   { value: 'contours', label: 'Topographic Contours', description: 'Gold contour lines' },
   { value: 'space', label: 'Full Space', description: 'Stars + nebula combined' },
+  { value: 'techImage', label: 'AI Tech Background', description: 'Generated tech/engineering image' },
+  { value: 'spaceTech', label: 'Space + Tech Image', description: 'Stars + nebula + AI tech image' },
 ];

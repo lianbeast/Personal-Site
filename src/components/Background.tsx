@@ -13,6 +13,8 @@ const variantClasses: Record<BackgroundVariant, string> = {
   noise: 'bg-noise relative',
   contours: 'bg-contours',
   space: 'bg-space',
+  techImage: 'bg-tech-image',
+  spaceTech: 'bg-space-tech',
 };
 
 export function Background({ variant, className = '', children }: BackgroundProps) {
