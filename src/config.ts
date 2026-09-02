@@ -58,6 +58,12 @@ export const site = {
     },
   ],
 
+  contact: {
+    eyebrow: 'contact',
+    headline: "Let's build something together.",
+    sub: 'Got an idea, a project, or just want to say hi? I\'m always open to new conversations and collaborations.',
+  },
+
   projects: [
     {
       name: 'GeoLibre',

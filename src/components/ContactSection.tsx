@@ -1,4 +1,5 @@
 import { site } from '../config'
+import { SocialLinks } from './SocialLinks'
 import { ScrollReveal } from './ScrollReveal'
 import { Background } from './Background'
 

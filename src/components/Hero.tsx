@@ -1,5 +1,8 @@
 import { site } from '../config'
 import { Background } from './Background'
+import { SocialLinks } from './SocialLinks'
+
+// ponytail: social row now uses shared <SocialLinks>; edit one place, all sections update
 
 export function Hero() {
   return (
@@ -15,7 +18,7 @@ export function Hero() {
           open for commissions
         </div>
 
-        <h1 className="font-display text-5xl font-medium leading-[1.05] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl">
+        <h1 className="font-display text-4xl font-medium leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
           {site.hero.headline}
         </h1>
 
@@ -26,7 +29,7 @@ export function Hero() {
         <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
           <a
             href={site.hero.cta.href}
-            className="group relative overflow-hidden rounded-md bg-[var(--color-accent)] px-8 py-3.5 text-sm font-medium tracking-wide text-[var(--color-text-inverse)] transition-all duration-300 hover:bg-[var(--color-accent-hover)] hover:shadow-[0_0_40px_rgba(212,175,55,0.2)]"
+            className="group relative overflow-hidden rounded-md bg-[var(--color-accent)] px-8 py-3.5 text-sm font-medium tracking-wide text-[var(--color-text-inverse)] transition-all duration-300 hover:bg-[var(--color-accent-hover)] hover:shadow-[0_0_40px_var(--color-accent-glow)]"
           >
             <span className="relative z-10">{site.hero.cta.label}</span>
           </a>
@@ -38,24 +41,7 @@ export function Hero() {
           </a>
         </div>
 
-        <div className="mt-16 flex flex-wrap items-center justify-center gap-8">
-          {[
-            { href: site.links.github, label: 'GitHub' },
-            { href: site.links.linkedin, label: 'LinkedIn' },
-            { href: site.links.x, label: 'X' },
-            { href: site.links.email, label: 'Email' },
-          ].map(({ href, label }) => (
-            <a
-              key={href}
-              href={href}
-              target={href.startsWith('mailto') ? undefined : '_blank'}
-              rel="noopener noreferrer"
-              className="text-[10px] tracking-[0.25em] text-[var(--color-text-subtle)] uppercase transition-colors duration-300 hover:text-[var(--color-accent)]"
-            >
-              {label}
-            </a>
-          ))}
-        </div>
+        <SocialLinks variant="inline" className="mt-16" />
       </div>
 
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 tracking-[0.3em] text-[var(--color-text-subtle)] text-[10px] uppercase">
