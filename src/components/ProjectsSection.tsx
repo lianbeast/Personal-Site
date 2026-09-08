@@ -1,4 +1,4 @@
-import { site } from '../config'
+import { site, type Project } from '../config'
 import { getRepos, type Repo } from '../lib/github'
 import { useAsync } from '../hooks/useAsync'
 import { ScrollReveal } from './ScrollReveal'
@@ -30,17 +30,16 @@ function timeAgo(iso: string) {
   return new Date(iso).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })
 }
 
-function RepoCard({ repo }: { repo: Repo }) {
+type CardRepo = Repo & { live?: string }
+
+function RepoCard({ repo }: { repo: CardRepo }) {
   const color = LANG_COLORS[repo.language ?? ''] ?? '#D4AF37'
   return (
-    <a
-      href={repo.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group block rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-card)] p-5 transition-all duration-300 hover:border-[var(--color-accent)] hover:bg-[var(--color-bg-card-hover)] hover:shadow-[0_0_30px_rgba(212,175,55,0.06)]"
-    >
+    <div className="group block rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-card)] p-5 transition-all duration-300 hover:border-[var(--color-accent)] hover:bg-[var(--color-bg-card-hover)] hover:shadow-[0_0_30px_rgba(212,175,55,0.06)]">
       <h3 className="font-display text-sm font-semibold tracking-wide text-white transition group-hover:text-[var(--color-accent)]">
-        {repo.name} <span className="text-[var(--color-text-subtle)]">↗</span>
+        <a href={repo.url} target="_blank" rel="noopener noreferrer">
+          {repo.name} <span className="text-[var(--color-text-subtle)]">↗</span>
+        </a>
       </h3>
       <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-[var(--color-text-muted)]">
         {repo.description || 'No description yet.'}
@@ -53,16 +52,48 @@ function RepoCard({ repo }: { repo: Repo }) {
           </span>
         )}
         {repo.stars > 0 && <span>⭐ {repo.stars}</span>}
-        <span className="ml-auto">{timeAgo(repo.updated)}</span>
+        {repo.live && (
+          <a
+            href={repo.live}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 text-[var(--color-accent)] transition hover:opacity-75"
+          >
+            <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-accent)] pulse-dot" />
+            live site
+          </a>
+        )}
+        {repo.updated && <span className="ml-auto">{timeAgo(repo.updated)}</span>}
       </div>
-    </a>
+    </div>
   )
 }
 
 export function ProjectsSection() {
   const { state } = useAsync(() => getRepos(site.githubUser), [site.githubUser])
-  const repos = state.status === 'ok' ? state.data : null
-  const fallback = state.status === 'error' ? site.projects : null
+
+  // Curated entries from config.ts fill missing GitHub descriptions and attach
+  // live-site URLs by repo name.
+  const curated = new Map<string, Project>(site.projects.map((p) => [p.name, p]))
+  const repos: CardRepo[] | null =
+    state.status === 'ok'
+      ? state.data.map((r) => {
+          const c = curated.get(r.name)
+          return { ...r, description: r.description ?? c?.description ?? null, live: c?.live }
+        })
+      : null
+  const fallback: CardRepo[] | null =
+    state.status === 'error'
+      ? site.projects.map((p) => ({
+          name: p.name,
+          description: p.description,
+          url: p.url,
+          language: null,
+          stars: 0,
+          updated: '',
+          live: p.live,
+        }))
+      : null
 
   return (
     <section className="relative border-t border-[var(--color-border)] px-6 py-24 sm:py-32" id="projects">
@@ -92,22 +123,8 @@ export function ProjectsSection() {
         )}
 
         <ScrollReveal stagger={0.08} className="mt-8 grid gap-4 sm:grid-cols-2">
-          {repos?.map((r) => (
+          {(repos ?? fallback)?.map((r) => (
             <RepoCard key={r.name} repo={r} />
-          ))}
-          {fallback?.map((p) => (
-            <a
-              key={p.name}
-              href={p.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group block rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-card)] p-5 transition-all duration-300 hover:border-[var(--color-accent)] hover:bg-[var(--color-bg-card-hover)]"
-            >
-              <h3 className="font-display text-sm font-semibold tracking-wide text-white transition group-hover:text-[var(--color-accent)]">
-                {p.name} <span className="text-[var(--color-text-subtle)]">↗</span>
-              </h3>
-              <p className="mt-2 text-xs leading-relaxed text-[var(--color-text-muted)]">{p.description}</p>
-            </a>
           ))}
         </ScrollReveal>
 

@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { BackgroundVariant } from '../types/background';
 
 interface BackgroundProps {
@@ -18,9 +19,34 @@ const variantClasses: Record<BackgroundVariant, string> = {
 };
 
 export function Background({ variant, className = '', children }: BackgroundProps) {
+  const ref = useRef<HTMLDivElement>(null);
   const cls = variantClasses[variant] || '';
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const el = ref.current;
+    if (!el) return;
+    let raf = 0;
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const y = window.scrollY * 0.15;
+        el.style.transform = `translate3d(0, ${y}px, 0)`;
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener('scroll', onScroll);
+    };
+  }, []);
+
   return (
-    <div className={`absolute inset-0 pointer-events-none ${cls} ${className}`} aria-hidden="true">
+    <div
+      ref={ref}
+      className={`absolute inset-0 pointer-events-none ${cls} ${className}`}
+      aria-hidden="true"
+    >
       {children}
     </div>
   );

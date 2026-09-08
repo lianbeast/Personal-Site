@@ -3,6 +3,14 @@
 //  Every push to main auto-deploys + regenerates the GIF preview.
 // ─────────────────────────────────────────────────────────────
 
+export interface Project {
+  name: string
+  description: string
+  url: string
+  /** Deployed site URL (e.g. GitHub Pages), shown as a "live" link on project cards. */
+  live?: string
+}
+
 export const site = {
   name: 'Lian Beast',
   tagline: 'Builder · Dreamer · Explorer',
@@ -64,36 +72,39 @@ export const site = {
     sub: 'Got an idea, a project, or just want to say hi? I\'m always open to new conversations and collaborations.',
   },
 
+  // Repos I created (source repos, not forks). The live GitHub feed in the
+  // projects section is enriched with these descriptions + live-site URLs,
+  // and this list doubles as the offline fallback.
   projects: [
     {
-      name: 'GeoLibre',
-      description: 'A lightweight, cloud-native GIS platform for visualizing, exploring, and analyzing geospatial data — runs in the browser, on the desktop, on mobile, and inside Jupyter notebooks.',
-      url: 'https://github.com/lianbeast/GeoLibre',
+      name: 'EliteHuman',
+      description: 'Scroll-driven 3D brand site — Body → Mind → Spirit → Apex — with a browsable archive of 105 Instagram posts. React Three Fiber, postprocessing, and Lenis smooth scroll.',
+      url: 'https://github.com/lianbeast/EliteHuman',
+      live: 'https://lianbeast.github.io/EliteHuman/',
     },
     {
-      name: 'worldmonitor',
-      description: 'Real-time global intelligence dashboard. AI-powered news aggregation, geopolitical monitoring, and infrastructure tracking in a unified situational awareness interface.',
-      url: 'https://github.com/lianbeast/worldmonitor',
+      name: 'Lian-Arch-Linux-Site',
+      description: 'Arch Linux scroll landing page — particle backdrop, scroll-progress nav, and an in-page terminal that answers real pacman commands. React 19 + Vite.',
+      url: 'https://github.com/lianbeast/Lian-Arch-Linux-Site',
+      live: 'https://lianbeast.github.io/Lian-Arch-Linux-Site/',
     },
     {
-      name: '9drive',
-      description: 'A storage gateway web app connecting multiple Google Drive accounts into one virtual storage dashboard with quota tracking, file routing, and virtual folders.',
-      url: 'https://github.com/lianbeast/9drive',
+      name: 'debian-linux-site',
+      description: 'Cosmic single-file landing page for Debian 13 "Trixie" — animated Three.js hero, an actually interactive bash terminal, and first-class accessibility. Zero build step.',
+      url: 'https://github.com/lianbeast/debian-linux-site',
+      live: 'https://lianbeast.github.io/debian-linux-site/',
     },
     {
-      name: 'code-review-graph',
-      description: 'Local-first code intelligence graph for MCP and CLI. Builds a persistent map of your codebase so AI coding tools read only what matters.',
-      url: 'https://github.com/lianbeast/code-review-graph',
+      name: 'hamna-Henna-Site',
+      description: 'Immersive 3D portfolio for a henna artist — mandala scene with neon wireframes, scroll-driven reveals, and a Web Audio tanpura drone. Astro + React Three Fiber.',
+      url: 'https://github.com/lianbeast/hamna-Henna-Site',
+      live: 'https://lianbeast.github.io/hamna-Henna-Site/',
     },
     {
-      name: 'Claude-Code-Agent-Monitor',
-      description: 'Real-time monitoring dashboard for Claude Code — tracks sessions, agent activity, tool usage, and subagent orchestration via SQLite3, React, and WebSockets.',
-      url: 'https://github.com/lianbeast/Claude-Code-Agent-Monitor',
-    },
-    {
-      name: 'tweakcc',
-      description: 'Customize Claude Code system prompts, themes, input styling, custom toolsets, and unlock private/unreleased features across all platforms.',
-      url: 'https://github.com/lianbeast/tweakcc',
+      name: 'Personal-Site',
+      description: 'This site — interactive 3D portfolio with React Three Fiber, GSAP, and a live GitHub feed, deployed to GitHub Pages on every push.',
+      url: 'https://github.com/lianbeast/Personal-Site',
+      live: 'https://lianbeast.github.io/Personal-Site/',
     },
   ],
 

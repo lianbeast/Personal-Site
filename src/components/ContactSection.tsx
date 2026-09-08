@@ -6,7 +6,7 @@ import { Background } from './Background'
 export function ContactSection() {
   return (
     <section className="relative border-t border-[var(--color-border)] px-6 py-24 sm:py-32" id="contact">
-      <Background variant="noise" />
+      <Background variant="space" />
       <div className="relative z-10 mx-auto max-w-3xl text-center">
         <ScrollReveal>
           <p className="font-mono text-[10px] tracking-[0.3em] text-[var(--color-text-subtle)] uppercase">
@@ -28,14 +28,7 @@ export function ContactSection() {
             >
               Send me an email
             </a>
-            <p className="text-xs text-[var(--color-text-subtle)]">
-              or find me on{' '}
-              <a href={site.links.github} target="_blank" rel="noopener noreferrer" className="text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors">GitHub</a>{' '}
-              &middot;{' '}
-              <a href={site.links.linkedin} target="_blank" rel="noopener noreferrer" className="text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors">LinkedIn</a>{' '}
-              &middot;{' '}
-              <a href={site.links.x} target="_blank" rel="noopener noreferrer" className="text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors">X</a>
-            </p>
+            <SocialLinks variant="stacked" />
           </div>
         </ScrollReveal>
       </div>

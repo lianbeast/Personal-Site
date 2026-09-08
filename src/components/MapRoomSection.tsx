@@ -21,7 +21,7 @@ export function MapRoomSection() {
   const src = embedUrl()
   return (
     <section className="relative border-t border-[var(--color-border)] px-6 py-24 sm:py-32" id="map-room">
-      <Background variant="nebula" />
+      <Background variant="techImage" />
       <div className="relative z-10 mx-auto max-w-4xl">
         <ScrollReveal>
           <div className="flex flex-wrap items-end justify-between gap-4">

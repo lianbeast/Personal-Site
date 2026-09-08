@@ -11,7 +11,7 @@ const ITEMS = Object.entries(site.links).map(([key, href]) => ({
   key,
   label: key.charAt(0).toUpperCase() + key.slice(1),
   href,
-})) as const
+}))
 
 export function SocialLinks({ variant = 'inline', className = '' }: SocialLinksProps) {
   const linkProps = (href: string) => ({

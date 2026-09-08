@@ -5,7 +5,7 @@ import { Background } from './Background'
 export function TestimonialsSection() {
   return (
     <section className="relative border-t border-[var(--color-border)] px-6 py-24 sm:py-32">
-      <Background variant="nebula" />
+      <Background variant="stars" />
       <div className="relative z-10 mx-auto max-w-4xl">
         <ScrollReveal>
           <p className="font-mono text-[10px] tracking-[0.3em] text-[var(--color-text-subtle)] uppercase">
