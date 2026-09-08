@@ -40,12 +40,12 @@ export const site = {
   },
 
   features: [
-    { icon: '⚡', title: 'Frontend Engineering', desc: 'React, TypeScript, Next.js — crafting fast, fluid interfaces.' },
-    { icon: '🎨', title: 'Creative Development', desc: 'Three.js, WebGL, GSAP — turning static pages into experiences.' },
-    { icon: '🗺', title: 'Geospatial & GIS', desc: 'MapLibre, DuckDB-WASM, GeoLibre — browser-native spatial tools.' },
-    { icon: '🔧', title: 'Tool Building', desc: 'CLI tools, dev utilities, and automation that save real time.' },
-    { icon: '📦', title: 'Full-Stack Apps', desc: 'End-to-end products with auth, databases, and deployment.' },
-    { icon: '🚀', title: 'Ship & Iterate', desc: 'CI/CD, preview deploys, and the confidence to push to main.' },
+    { icon: '<>', title: 'Frontend Engineering', desc: 'React, TypeScript, Next.js — crafting fast, fluid interfaces.' },
+    { icon: '{ }', title: 'Creative Development', desc: 'Three.js, WebGL, GSAP — turning static pages into experiences.' },
+    { icon: '[ ]', title: 'Geospatial & GIS', desc: 'MapLibre, DuckDB-WASM, GeoLibre — browser-native spatial tools.' },
+    { icon: '$ ', title: 'Tool Building', desc: 'CLI tools, dev utilities, and automation that save real time.' },
+    { icon: '[::]', title: 'Full-Stack Apps', desc: 'End-to-end products with auth, databases, and deployment.' },
+    { icon: '▶', title: 'Ship & Iterate', desc: 'CI/CD, preview deploys, and the confidence to push to main.' },
   ],
 
   testimonials: [

@@ -51,7 +51,7 @@ function RepoCard({ repo }: { repo: CardRepo }) {
             {repo.language}
           </span>
         )}
-        {repo.stars > 0 && <span>⭐ {repo.stars}</span>}
+        {repo.stars > 0 && <span>★ {repo.stars}</span>}
         {repo.live && (
           <a
             href={repo.live}

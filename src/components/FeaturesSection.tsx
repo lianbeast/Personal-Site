@@ -19,7 +19,7 @@ export function FeaturesSection() {
         <ScrollReveal stagger={0.08} className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {site.features.map((f) => (
             <Card key={f.title} featured>
-              <div className="text-3xl font-light">{f.icon}</div>
+              <div className="font-mono text-2xl font-light text-[var(--color-accent)]">{f.icon}</div>
               <h3 className="mt-4 font-display text-sm font-medium tracking-wider text-white">
                 {f.title}
               </h3>
