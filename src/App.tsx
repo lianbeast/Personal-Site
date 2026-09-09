@@ -1,27 +1,31 @@
-import { Hero } from './components/Hero'
-import { AboutSection } from './components/Sections'
-import { FeaturesSection } from './components/FeaturesSection'
+import { HeroScene, AboutScene, CapabilitiesScene, ProjectsScene, ContactScene } from './components/NarrativeScenes'
+import { NarrativeHUD } from './components/NarrativeHUD'
 import { TestimonialsSection } from './components/TestimonialsSection'
 import { MapRoomSection } from './components/MapRoomSection'
 import { ProjectsSection } from './components/ProjectsSection'
-import { ContactSection } from './components/ContactSection'
 import { Footer } from './components/Footer'
-import { ThreeCanvas } from './components/ThreeCanvas'
 
+// Scroll-narrative landing (opendesign/handoffs/scroll-narrative-landing).
+// Five sticky scenes + HUD; map room, live projects and testimonials stay
+// as normal scrolling sections after the descent. Three.js globe removed
+// from the landing — keep ThreeCanvas.tsx on disk for potential reuse.
 export default function App() {
   return (
     <div className="relative min-h-screen bg-bg text-text font-body antialiased">
-      <ThreeCanvas />
+      <NarrativeHUD />
       <main className="relative z-10">
-        <Hero />
-        <AboutSection />
-        <FeaturesSection />
+        <HeroScene />
+        <AboutScene />
+        <CapabilitiesScene />
+        <ProjectsScene />
+        <ContactScene />
+      </main>
+      <div className="relative z-10">
+        <ProjectsSection />
         <MapRoomSection />
         <TestimonialsSection />
-        <ProjectsSection />
-        <ContactSection />
         <Footer />
-      </main>
+      </div>
     </div>
   )
 }
