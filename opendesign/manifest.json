@@ -1,0 +1,35 @@
+{
+  "generated": "2026-09-08T20:55:00Z",
+  "sections": [
+    {
+      "id": "mockups",
+      "label": "Mockups",
+      "groups": [
+        {
+          "slug": "site-interactions-prototype",
+          "files": [
+            { "label": "globe-walkthrough.html", "path": "mockups/site-interactions-prototype/globe-walkthrough.html" },
+            { "label": "scroll-narrative.html", "path": "mockups/site-interactions-prototype/scroll-narrative.html" },
+            { "label": "focus-mode.html", "path": "mockups/site-interactions-prototype/focus-mode.html" },
+            { "label": "orbit-narrative.html", "path": "mockups/site-interactions-prototype/orbit-narrative.html" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "design-systems",
+      "label": "Design Systems",
+      "groups": [
+        {
+          "slug": "personal-site",
+          "files": [
+            { "label": "SKILL.md", "path": "design-systems/personal-site/SKILL.md" },
+            { "label": "tokens/colors_and_type.css", "path": "design-systems/personal-site/tokens/colors_and_type.css" },
+            { "label": "brand/style-notes.md", "path": "design-systems/personal-site/brand/style-notes.md" },
+            { "label": "brand/voice-and-tone.md", "path": "design-systems/personal-site/brand/voice-and-tone.md" }
+          ]
+        }
+      ]
+    }
+  ]
+}

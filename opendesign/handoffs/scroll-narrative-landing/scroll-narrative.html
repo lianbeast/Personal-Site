@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Descent — Scroll Narrative</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-1:#0A0A0A; --bg-2:#121212;
+  --bg-card:rgba(255,255,255,0.01); --bg-card-hover:rgba(255,255,255,0.03);
+  --border-1:rgba(255,255,255,0.04); --border-2:rgba(255,255,255,0.10);
+  --fg-1:#E5E5E5; --fg-2:#A1A1AA; --fg-3:#71717A; --fg-inverse:#0A0A0A;
+  --accent-1:#D4AF37; --accent-1-hover:#C5A02C;
+  --accent-1-glow:rgba(212,175,55,0.15); --accent-1-subtle:rgba(212,175,55,0.08);
+  --accent-2:#A1A1AA;
+  --font-display:"Playfair Display",serif;
+  --font-body:"Inter",ui-sans-serif,system-ui,sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,monospace;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+  --t-fast:150ms var(--ease); --t-base:300ms var(--ease); --t-slow:500ms var(--ease);
+  --radius-md:8px; --radius-xl:16px; --radius-full:9999px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg-1);color:var(--fg-1);font-family:var(--font-body);-webkit-font-smoothing:antialiased}
+[hidden]{display:none!important}
+
+/* ══ sticky scenes: each 100vh, content scrubs through ══ */
+.scene{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;padding:96px 24px;overflow:hidden}
+.scene .bg{position:absolute;inset:-20% 0;pointer-events:none;opacity:0;transition:opacity 600ms var(--ease)}
+.scene .bg.active{opacity:1}
+
+/* background variants (CSS-only recipes from src/index.css) */
+.bg-space-tech{background:
+  radial-gradient(circle 20% 30%,rgba(212,175,55,.05) 0%,50%),
+  radial-gradient(circle 80% 70%,rgba(245,213,71,.04) 0%,40%),
+  linear-gradient(rgba(212,175,55,.03) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(212,175,55,.03) 1px,transparent 1px);
+  background-size:400px 400px,500px 500px,60px 60px,60px 60px}
+.bg-nebula{background:
+  radial-gradient(ellipse 20% 30%,rgba(99,60,130,.08) 0%,70%),
+  radial-gradient(ellipse 80% 60%,rgba(30,60,120,.06) 0%,70%),
+  radial-gradient(ellipse 50% 80%,rgba(150,50,100,.04) 0%,70%)}
+.bg-blueprint{background-image:
+  linear-gradient(rgba(245,213,71,.03) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(245,213,71,.03) 1px,transparent 1px),
+  radial-gradient(circle 50% 50%,rgba(245,213,71,.04) 0%,45%),
+  radial-gradient(circle 0% 100%,rgba(212,175,55,.04) 0%,45%);
+  background-size:40px 40px,40px 40px,600px 600px,700px 700px}
+.bg-stars{opacity:0;background:
+  radial-gradient(1px 1px at 20px 30px,#fff,transparent),
+  radial-gradient(1px 1px at 90px 40px,#fff,transparent),
+  radial-gradient(1.5px 1.5px at 200px 150px,rgba(212,175,55,.8),transparent),
+  radial-gradient(1px 1px at 320px 100px,rgba(212,175,55,.6),transparent),
+  radial-gradient(1px 1px at 600px 30px,#fff,transparent),
+  radial-gradient(1px 1px at 800px 150px,#fff,transparent);
+  background-size:850px 250px}
+.bg-stars.active{opacity:.4}
+.bg-contours{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cpath d='M0 200 Q100 150 200 200 T400 200' fill='none' stroke='%23D4AF37' stroke-width='0.5' opacity='0.08'/%3E%3Cpath d='M0 180 Q100 130 200 180 T400 180' fill='none' stroke='%23D4AF37' stroke-width='0.5' opacity='0.06'/%3E%3Cpath d='M0 220 Q100 170 200 220 T400 220' fill='none' stroke='%23D4AF37' stroke-width='0.5' opacity='0.06'/%3E%3Cpath d='M0 160 Q100 110 200 160 T400 160' fill='none' stroke='%23D4AF37' stroke-width='0.5' opacity='0.04'/%3E%3C/svg%3E");
+  background-size:400px 400px}
+
+/* ══ scene foreground art — per-scene signature layer ══ */
+.art{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity 900ms var(--ease);z-index:1}
+.art.active{opacity:1}
+
+/* Hero: wireframe planet horizon — orbit arc + graticule crescent rising behind headline */
+.art-hero svg{position:absolute;left:50%;bottom:-42vmin;transform:translateX(-50%);width:110vmin;height:110vmin}
+.art-hero .meridian{stroke:var(--accent-1);opacity:.14;fill:none;stroke-width:1}
+.art-hero .orbit-arc{stroke:var(--accent-2);opacity:.22;fill:none;stroke-width:1;stroke-dasharray:2 7}
+.art-hero .node{fill:var(--accent-1);opacity:.6}
+.art-hero .horizon{stroke:var(--accent-1);opacity:.25;fill:none;stroke-width:1.2}
+
+/* About: concentric transmission rings pulsing from a beacon */
+.art-about{background:
+  radial-gradient(circle 1px at 50% 46%,rgba(212,175,55,.9) 0%,transparent 100%),
+  repeating-radial-gradient(circle at 50% 46%,transparent 0 118px,rgba(212,175,55,.05) 118px 119px,transparent 119px 178px,rgba(212,175,55,.04) 178px 179px,transparent 179px 268px,rgba(212,175,55,.03) 268px 269px)}
+
+/* Capabilities: circuit traces — orthogonal stepped runs with via dots */
+.art-cap svg{position:absolute;inset:0;width:100%;height:100%}
+.art-cap .trace{stroke:rgba(212,175,55,.10);fill:none;stroke-width:1}
+.art-cap .trace.dash{stroke-dasharray:1 6}
+.art-cap .via{fill:rgba(245,213,71,.14)}
+
+/* Projects: constellation — gold nodes joined by thin sight-lines */
+.art-proj svg{position:absolute;inset:0;width:100%;height:100%}
+.art-proj .line{stroke:rgba(212,175,55,.07);stroke-width:1}
+.art-proj .star{fill:rgba(212,175,55,.35)}
+.art-proj .star.bright{fill:rgba(212,175,55,.7)}
+
+/* Contact: runway beacon — centered crosshair + descending guide line */
+.art-contact svg{position:absolute;inset:0;width:100%;height:100%}
+.art-contact .guide{stroke:rgba(212,175,55,.12);stroke-width:1;stroke-dasharray:3 9}
+.art-contact .cross{stroke:rgba(212,175,55,.18);stroke-width:1}
+.art-contact .pad{stroke:rgba(212,175,55,.25);fill:none;stroke-width:1.2}
+
+/* slow drift for SVG art layers */
+@media(prefers-reduced-motion:no-preference){
+  .art-hero svg{animation:hero-drift 24s ease-in-out infinite alternate}
+  .art-about{animation:beacon-breathe 7s ease-in-out infinite}
+  @keyframes hero-drift{from{transform:translateX(-50%) rotate(0deg)}to{transform:translateX(-50%) rotate(2deg)}}
+  @keyframes beacon-breathe{0%,100%{opacity:.7}50%{opacity:1}}
+}
+
+/* scene content */
+.content{position:relative;z-index:2;max-width:896px;margin:0 auto;text-align:center;width:100%}
+.eyebrow{font-family:var(--font-mono);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--fg-3);margin:0 0 16px}
+h1,h2{font-family:var(--font-display);font-weight:500;color:#fff;margin:0}
+h1{font-size:clamp(36px,7vw,72px);line-height:1.05}
+h2{font-size:clamp(30px,5vw,48px);line-height:1.2}
+p.lead{font-size:16px;line-height:1.625;font-weight:300;color:var(--fg-2);max-width:36rem;margin:24px auto 0}
+.glyph{font-family:var(--font-mono);font-weight:300;font-size:24px;color:var(--accent-1)}
+.btn{display:inline-block;font-size:14px;font-weight:500;padding:14px 32px;border-radius:var(--radius-md);text-decoration:none;transition:all var(--t-base)}
+.btn-primary{background:var(--accent-1);color:var(--fg-inverse)}
+.btn-primary:hover{background:var(--accent-1-hover);box-shadow:0 0 30px var(--accent-1-glow)}
+
+/* capability cards scrub in from alternating sides */
+.scrub-l,.scrub-r{opacity:0;transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.scrub-l{transform:translateX(-60px)}
+.scrub-r{transform:translateX(60px)}
+.in .scrub-l,.in .scrub-r{opacity:1;transform:none}
+.card{background:var(--bg-card);border:1px solid var(--border-1);border-radius:var(--radius-xl);padding:24px;text-align:left;transition:border-color var(--t-fast),background var(--t-base),box-shadow var(--t-base)}
+.card:hover{border-color:var(--accent-1);background:var(--bg-card-hover);box-shadow:0 0 30px rgba(212,175,55,.06)}
+.card h3{font-family:var(--font-display);font-weight:500;font-size:14px;color:#fff;margin:12px 0 8px}
+.card p{margin:0;font-size:14px;line-height:1.6;color:var(--fg-2)}
+.grid{display:grid;gap:24px;margin-top:48px;text-align:left}
+@media(min-width:900px){.grid{grid-template-columns:repeat(3,1fr)}}
+
+/* project rows scrub with stagger */
+.row{display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:baseline;padding:20px 0;border-bottom:1px solid var(--border-1);text-align:left}
+.row h3{font-family:var(--font-display);font-weight:500;color:#fff;font-size:18px;margin:0}
+.row p{margin:4px 0 0;font-size:13px;color:var(--fg-2);line-height:1.6}
+.row .arrow{color:var(--accent-1);font-size:16px;opacity:0;transition:opacity var(--t-fast),transform var(--t-fast)}
+.row:hover .arrow{opacity:1;transform:translateX(4px)}
+.num{font-family:var(--font-mono);font-size:11px;color:var(--fg-3)}
+
+/* progress rail — scroll depth as a vertical system readout */
+#rail{position:fixed;right:24px;top:50%;transform:translateY(-50%);z-index:10;display:flex;flex-direction:column;gap:20px;align-items:center}
+#rail a{width:8px;height:8px;border-radius:50%;border:1px solid var(--fg-3);background:transparent;transition:all var(--t-fast)}
+#rail a:hover{border-color:var(--fg-1)}
+#rail a.on{background:var(--accent-1);border-color:var(--accent-1);box-shadow:0 0 12px var(--accent-1-glow)}
+#rail .label{font-family:var(--font-mono);font-size:9px;letter-spacing:.25em;color:var(--fg-3);writing-mode:vertical-rl;text-transform:uppercase;height:0}
+
+/* depth meter (left) — ties scroll to the space-descent metaphor */
+#depth{position:fixed;left:24px;top:50%;transform:translateY(-50%);z-index:10;font-family:var(--font-mono);font-size:10px;color:var(--fg-3);text-align:left}
+#depth .val{color:var(--accent-1)}
+#depth .bar{width:1px;height:96px;background:var(--border-2);margin:10px 0;position:relative;overflow:hidden}
+#depth .bar i{position:absolute;top:0;left:0;bottom:0;width:100%;background:var(--accent-1);transform-origin:top;transform:scaleY(0)}
+
+.pulse-dot{display:inline-block;width:6px;height:6px;border-radius:var(--radius-full);background:var(--accent-1);animation:pulse 2.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+
+#variant-bar{position:fixed;bottom:16px;right:16px;z-index:20;display:flex;gap:8px;padding:8px;border-radius:var(--radius-md);background:rgba(18,18,18,.85);border:1px solid var(--border-1);backdrop-filter:blur(8px)}
+#variant-bar a{font-family:var(--font-mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--fg-3);text-decoration:none;padding:6px 10px;border-radius:4px}
+#variant-bar a:hover{color:var(--fg-1)}
+#variant-bar a[aria-current]{color:var(--fg-inverse);background:var(--accent-1)}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .scrub-l,.scrub-r{opacity:1;transform:none}
+}
+
+/* ── mobile: fixed HUD elements move to bottom corners, 44px targets ── */
+@media(max-width:640px){
+  #rail{right:16px;top:auto;bottom:88px;transform:none;gap:16px}
+  #rail a{width:12px;height:12px}
+  #depth{left:16px;top:auto;bottom:88px;transform:none;font-size:9px}
+  #depth .bar{height:48px}
+  #variant-bar{bottom:16px;right:16px;left:16px;justify-content:center}
+  #variant-bar a{padding:12px 10px;font-size:9px}
+}
+</style>
+</head>
+<body>
+
+<div id="depth" aria-hidden="true">
+  <span>ALT</span>
+  <div class="bar"><i id="depth-fill"></i></div>
+  <span class="val" id="depth-val">400km</span>
+</div>
+
+<div id="rail">
+  <a href="#s-hero" aria-label="hero"></a>
+  <a href="#s-about" aria-label="about"></a>
+  <a href="#s-capabilities" aria-label="capabilities"></a>
+  <a href="#s-projects" aria-label="projects"></a>
+  <a href="#s-contact" aria-label="contact"></a>
+</div>
+
+<section class="scene" id="s-hero">
+  <div class="bg bg-space-tech active" data-bg></div>
+  <div class="art art-hero active" data-art>
+    <svg viewBox="0 0 1000 1000" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+      <!-- planet horizon: graticule crescent -->
+      <g class="meridian">
+        <circle cx="500" cy="500" r="480"/>
+        <circle cx="500" cy="500" r="380"/>
+        <circle cx="500" cy="500" r="260"/>
+        <ellipse cx="500" cy="500" rx="480" ry="160"/>
+        <ellipse cx="500" cy="500" rx="480" ry="280"/>
+        <ellipse cx="500" cy="500" rx="480" ry="400"/>
+      </g>
+      <circle class="horizon" cx="500" cy="500" r="480"/>
+      <!-- satellite orbit arcs + nodes -->
+      <path class="orbit-arc" d="M 60 660 A 480 480 0 0 1 940 660" transform="rotate(-18 500 500)"/>
+      <path class="orbit-arc" d="M 120 560 A 400 400 0 0 1 880 560" transform="rotate(10 500 500)"/>
+      <circle class="node" cx="212" cy="700" r="3"/>
+      <circle class="node" cx="830" cy="640" r="2.5"/>
+      <circle class="node" cx="500" cy="640" r="2"/>
+    </svg>
+  </div>
+  <div class="content">
+    <span style="display:inline-flex;align-items:center;gap:12px;border:1px solid var(--border-1);background:var(--bg-card);border-radius:var(--radius-full);padding:8px 20px;font-family:var(--font-mono);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--fg-2)">
+      <span class="pulse-dot"></span> open for commissions
+    </span>
+    <h1 style="margin-top:32px">I build things live on web.</h1>
+    <p class="lead">Interactive, playful, and a little bit extra. Descend to explore.</p>
+  </div>
+</section>
+
+<section class="scene" id="s-about">
+  <div class="bg bg-nebula" data-bg></div>
+  <div class="art art-about" data-art></div>
+  <div class="content in">
+    <p class="eyebrow">01 · about</p>
+    <h2>Hi, I'm Lian Beast.</h2>
+    <p class="lead">Builder · Dreamer · Explorer. When I'm not shipping code you'll find me exploring new tools, reading about space, chasing the next cool idea.</p>
+  </div>
+</section>
+
+<section class="scene" id="s-capabilities">
+  <div class="bg bg-blueprint" data-bg></div>
+  <div class="content">
+  <div class="art art-cap" data-art>
+    <svg viewBox="0 0 1000 700" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+      <g class="trace">
+        <path d="M 0 140 H 220 V 240 H 420"/>
+        <path d="M 1000 90 H 700 V 210 H 520"/>
+        <path d="M 0 560 H 160 V 470 H 360"/>
+        <path d="M 1000 610 H 760 V 500 H 600"/>
+      </g>
+      <g class="trace dash">
+        <path d="M 300 700 V 560 H 480"/>
+        <path d="M 640 0 V 120 H 800"/>
+      </g>
+      <g class="via">
+        <circle cx="220" cy="140" r="3"/>
+        <circle cx="220" cy="240" r="3"/>
+        <circle cx="420" cy="240" r="3"/>
+        <circle cx="700" cy="90" r="3"/>
+        <circle cx="700" cy="210" r="3"/>
+        <circle cx="520" cy="210" r="3"/>
+        <circle cx="160" cy="560" r="3"/>
+        <circle cx="160" cy="470" r="3"/>
+        <circle cx="360" cy="470" r="3"/>
+        <circle cx="760" cy="610" r="3"/>
+        <circle cx="760" cy="500" r="3"/>
+        <circle cx="600" cy="500" r="3"/>
+        <circle cx="300" cy="560" r="3"/>
+        <circle cx="480" cy="560" r="3"/>
+        <circle cx="640" cy="120" r="3"/>
+        <circle cx="800" cy="120" r="3"/>
+      </g>
+    </svg>
+  </div>
+  <div class="content">
+    <p class="eyebrow">02 · what i do</p>
+    <h2>Capabilities</h2>
+    <div class="grid">
+      <div class="card scrub-l"><span class="glyph">&lt;&gt;</span><h3>Frontend Engineering</h3><p>React, TypeScript, Next.js — crafting fast, fluid interfaces.</p></div>
+      <div class="card scrub-r"><span class="glyph">{ }</span><h3>Creative Development</h3><p>Three.js, WebGL, GSAP — turning static pages into experiences.</p></div>
+      <div class="card scrub-l"><span class="glyph">[ ]</span><h3>Geospatial &amp; GIS</h3><p>MapLibre, DuckDB-WASM, GeoLibre — browser-native spatial tools.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="scene" id="s-projects">
+  <div class="bg bg-contours" data-bg></div>
+  <div class="art art-proj" data-art>
+    <svg viewBox="0 0 1000 700" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+      <g class="line">
+        <path d="M 120 120 L 300 210 L 520 140 L 760 240"/>
+        <path d="M 80 420 L 260 330 L 520 140"/>
+        <path d="M 300 210 L 380 480 L 640 560"/>
+        <path d="M 760 240 L 900 400 L 640 560"/>
+        <path d="M 380 480 L 200 620"/>
+        <path d="M 900 400 L 820 640 L 640 560"/>
+      </g>
+      <g class="star">
+        <circle cx="120" cy="120" r="3.5"/>
+        <circle cx="80" cy="420" r="3.5"/>
+        <circle cx="380" cy="480" r="4"/>
+        <circle cx="200" cy="620" r="3"/>
+        <circle cx="820" cy="640" r="3.5"/>
+        <circle cx="900" cy="400" r="4"/>
+        <circle cx="640" cy="560" r="3"/>
+      </g>
+      <g class="star bright">
+        <circle cx="300" cy="210" r="5"/>
+        <circle cx="520" cy="140" r="5.5"/>
+        <circle cx="760" cy="240" r="5"/>
+        <circle cx="260" cy="330" r="4.5"/>
+      </g>
+    </svg>
+  </div>
+  <div class="content">
+    <p class="eyebrow">03 · projects</p>
+    <h2>Featured work</h2>
+    <div style="margin-top:48px">
+      <div class="row scrub-r"><span class="num">01</span><div><h3>EliteHuman</h3><p>Scroll-driven 3D brand site — Body → Mind → Spirit → Apex. React Three Fiber, postprocessing, Lenis.</p></div><span class="arrow">→</span></div>
+      <div class="row scrub-l"><span class="num">02</span><div><h3>Arch Linux Site</h3><p>Particle backdrop, scroll-progress nav, in-page terminal answering real pacman commands.</p></div><span class="arrow">→</span></div>
+      <div class="row scrub-r"><span class="num">03</span><div><h3>debian-linux-site</h3><p>Cosmic single-file landing page for Debian 13 "Trixie" — interactive bash terminal, first-class a11y.</p></div><span class="arrow">→</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="scene" id="s-contact">
+  <div class="bg bg-stars" data-bg></div>
+  <div class="art art-contact" data-art>
+    <svg viewBox="0 0 1000 700" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+      <!-- landing guide: dashed vertical from top to pad -->
+      <line class="guide" x1="500" y1="0" x2="500" y2="280"/>
+      <g class="cross">
+        <line x1="430" y1="350" x2="570" y2="350"/>
+        <line x1="500" y1="280" x2="500" y2="420"/>
+      </g>
+      <!-- pad: double circle target -->
+      <circle class="pad" cx="500" cy="350" r="46"/>
+      <circle class="pad" cx="500" cy="350" r="72" opacity=".5"/>
+      <!-- corner range marks -->
+      <g class="guide">
+        <line x1="60" y1="60" x2="140" y2="60"/>
+        <line x1="60" y1="60" x2="60" y2="140"/>
+        <line x1="940" y1="60" x2="860" y2="60"/>
+        <line x1="940" y1="60" x2="940" y2="140"/>
+        <line x1="60" y1="640" x2="140" y2="640"/>
+        <line x1="60" y1="640" x2="60" y2="560"/>
+        <line x1="940" y1="640" x2="860" y2="640"/>
+        <line x1="940" y1="640" x2="940" y2="560"/>
+      </g>
+    </svg>
+  </div>
+  <div class="content">
+    <p class="eyebrow">04 · contact</p>
+    <h2>Let's build something together.</h2>
+    <p class="lead">Got an idea, a project, or just want to say hi? I'm always open to new conversations and collaborations.</p>
+    <div style="margin-top:48px"><a class="btn btn-primary" href="mailto:you@example.com">Send me an email</a></div>
+  </div>
+</section>
+
+<div id="variant-bar" aria-label="prototype variants">
+  <a href="globe-walkthrough.html">globe</a>
+  <a href="scroll-narrative.html" aria-current="true">scroll</a>
+  <a href="focus-mode.html">focus</a>
+  <a href="orbit-narrative.html">orbit</a>
+</div>
+
+<script>
+(function(){
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const scenes=[...document.querySelectorAll('.scene')];
+  const railLinks=[...document.querySelectorAll('#rail a')];
+
+  /* ── per-scene: activate bg, add .in, swap rail dot ── */
+  const io=new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      const i=scenes.indexOf(e.target);
+      if(e.isIntersecting){
+        e.target.querySelector('[data-bg]')?.classList.add('active');
+        e.target.querySelector('[data-art]')?.classList.add('active');
+        e.target.querySelector('.content')?.classList.add('in');
+        railLinks.forEach((a,j)=>a.classList.toggle('on',j===i));
+      }
+    });
+  },{threshold:.5});
+  scenes.forEach(s=>io.observe(s));
+
+  /* ── depth meter: scroll % → altitude readout ── */
+  const fill=document.getElementById('depth-fill');
+  const val=document.getElementById('depth-val');
+  let raf=0;
+  function upd(){
+    const max=document.documentElement.scrollHeight-innerHeight;
+    const p=max>0?scrollY/max:0;
+    fill.style.transform=`scaleY(${p})`;
+    const km=Math.round(400-p*396);
+    val.textContent=p>=1?'ground':km+'km';
+  }
+  addEventListener('scroll',()=>{ if(!reduce){cancelAnimationFrame(raf);raf=requestAnimationFrame(upd);} else upd(); },{passive:true});
+  upd();
+})();
+</script>
+</body>
+</html>

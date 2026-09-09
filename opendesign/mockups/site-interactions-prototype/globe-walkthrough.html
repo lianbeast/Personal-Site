@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mission Control — Globe Walkthrough</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+/* ══ personal-site design system tokens ══ */
+:root{
+  --bg-1:#0A0A0A; --bg-2:#121212;
+  --bg-card:rgba(255,255,255,0.01); --bg-card-hover:rgba(255,255,255,0.03);
+  --border-1:rgba(255,255,255,0.04); --border-2:rgba(255,255,255,0.10);
+  --fg-1:#E5E5E5; --fg-2:#A1A1AA; --fg-3:#71717A; --fg-inverse:#0A0A0A;
+  --accent-1:#D4AF37; --accent-1-hover:#C5A02C;
+  --accent-1-glow:rgba(212,175,55,0.15); --accent-1-subtle:rgba(212,175,55,0.08);
+  --accent-2:#A1A1AA; --accent-2-glow:rgba(161,161,170,0.15);
+  --font-display:"Playfair Display",serif;
+  --font-body:"Inter",ui-sans-serif,system-ui,sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,monospace;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+  --t-fast:150ms var(--ease); --t-base:300ms var(--ease); --t-slow:500ms var(--ease);
+  --radius-md:8px; --radius-xl:16px; --radius-full:9999px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg-1);color:var(--fg-1);font-family:var(--font-body);-webkit-font-smoothing:antialiased}
+[hidden]{display:none!important}
+
+/* ══ fixed 3D layer ══ */
+#scene{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+#scene::before{ /* stars: CSS-only field */
+  content:"";position:absolute;inset:0;opacity:.4;
+  background:
+  radial-gradient(1px 1px at 20px 30px,#fff,transparent),
+  radial-gradient(1px 1px at 40px 70px,#fff,transparent),
+  radial-gradient(1px 1px at 50px 160px,#fff,transparent),
+  radial-gradient(1px 1px at 90px 40px,#fff,transparent),
+  radial-gradient(1.5px 1.5px at 200px 150px,rgba(212,175,55,.8),transparent),
+  radial-gradient(1px 1px at 250px 50px,#fff,transparent),
+  radial-gradient(1px 1px at 280px 180px,#fff,transparent),
+  radial-gradient(1.5px 1.5px at 320px 100px,rgba(212,175,55,.6),transparent),
+  radial-gradient(1px 1px at 350px 200px,#fff,transparent),
+  radial-gradient(1px 1px at 450px 140px,#fff,transparent),
+  radial-gradient(1.5px 1.5px at 500px 90px,rgba(255,255,255,.8),transparent),
+  radial-gradient(1px 1px at 600px 30px,#fff,transparent),
+  radial-gradient(1.5px 1.5px at 700px 190px,rgba(212,175,55,.5),transparent),
+  radial-gradient(1px 1px at 800px 150px,#fff,transparent);
+  background-size:850px 250px;background-repeat:repeat;
+}
+
+/* globe — pure CSS/SVG wireframe */
+.globe-wrap{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);touch-action:none}
+.globe{width:min(64vmin,520px);height:min(64vmin,520px);position:relative}
+.globe svg{width:100%;height:100%;overflow:visible}
+.graticule{stroke:var(--accent-1);fill:none;opacity:.32}
+.ring{position:absolute;inset:-9%;border:1.5px solid var(--accent-2);border-radius:50%;opacity:.45;transform:rotateX(72deg) rotateY(-8deg);transform-style:preserve-3d}
+.glowspot{position:absolute;left:50%;top:50%;width:130%;height:130%;transform:translate(-50%,-50%);
+  background:radial-gradient(circle,rgba(212,175,55,.10) 0%,transparent 60%);border-radius:50%}
+
+/* globe drag hint */
+.drag-hint{position:absolute;left:50%;top:calc(50% + min(36vmin,295px));transform:translateX(-50%);
+  font-family:var(--font-mono);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--fg-3);white-space:nowrap}
+
+/* ══ orbiting cards ══ */
+.orbit-card{position:absolute;left:50%;top:50%;width:min(230px,42vw);padding:16px 18px;
+  background:var(--bg-card);border:1px solid var(--border-1);border-radius:var(--radius-xl);
+  backdrop-filter:blur(6px);box-shadow:0 4px 20px rgba(0,0,0,.5);z-index:2;
+  transition:border-color var(--t-fast),background var(--t-base),box-shadow var(--t-base),transform var(--t-slow)}
+.orbit-card:hover,.orbit-card:focus-visible{border-color:var(--accent-1);background:var(--bg-card-hover);
+  box-shadow:0 0 30px rgba(212,175,55,.06);transform:translate(var(--ox,0),var(--oy,0)) scale(1.06)!important;outline:none}
+.orbit-card h3{margin:0 0 8px;font-family:var(--font-display);font-weight:500;font-size:15px;color:#fff}
+.orbit-card p{margin:0;font-size:12px;line-height:1.6;color:var(--fg-2)}
+.orbit-card .eyebrow{font-family:var(--font-mono);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--fg-3);margin-bottom:6px}
+
+/* ══ content sections above the fold-out zone ══ */
+main{position:relative;z-index:3}
+.sec{position:relative;padding:96px 24px 128px;max-width:896px;margin:0 auto}
+.sec + .sec{border-top:1px solid var(--border-1)}
+.eyebrow{font-family:var(--font-mono);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--fg-3);margin:0 0 16px}
+h1,h2{font-family:var(--font-display);font-weight:500;color:#fff;margin:0}
+h1{font-size:clamp(36px,7vw,72px);line-height:1.05;letter-spacing:-.02em}
+h2{font-size:clamp(24px,4vw,30px);line-height:1.3}
+p.lead{font-size:16px;line-height:1.625;font-weight:300;color:var(--fg-2);max-width:36rem}
+
+.btn{display:inline-block;font-size:14px;font-weight:500;letter-spacing:.025em;padding:14px 32px;border-radius:var(--radius-md);text-decoration:none;transition:all var(--t-base)}
+.btn-primary{background:var(--accent-1);color:var(--fg-inverse);border:1px solid var(--accent-1)}
+.btn-primary:hover{background:var(--accent-1-hover);border-color:var(--accent-1-hover);box-shadow:0 0 30px var(--accent-1-glow)}
+.btn-ghost{background:transparent;color:var(--fg-1);border:1px solid var(--border-1)}
+.btn-ghost:hover{border-color:var(--border-2);color:#fff}
+a.gold{color:var(--accent-1);text-decoration:none;transition:color var(--t-fast)}
+a.gold:hover{color:var(--accent-1-hover)}
+
+.glyph{font-family:var(--font-mono);font-weight:300;font-size:24px;color:var(--accent-1)}
+.grid{display:grid;gap:24px;margin-top:48px}
+@media(min-width:640px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.grid{grid-template-columns:repeat(3,1fr)}}
+.card{background:var(--bg-card);border:1px solid var(--border-1);border-radius:var(--radius-xl);padding:20px;transition:transform var(--t-base),box-shadow var(--t-base),border-color var(--t-fast)}
+.card:hover{border-color:var(--accent-1);background:var(--bg-card-hover);box-shadow:0 0 30px rgba(212,175,55,.06)}
+.card h3{font-family:var(--font-display);font-weight:500;font-size:14px;color:#fff;margin:12px 0 8px}
+.card p{margin:0;font-size:14px;line-height:1.6;color:var(--fg-2)}
+
+/* scroll indicator */
+.scroll-cue{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:12px;
+  font-family:var(--font-mono);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--fg-3)}
+.scroll-cue .line{width:1px;height:48px;background:linear-gradient(to bottom,var(--accent-1),transparent)}
+
+/* pulse dot */
+.pulse-dot{display:inline-block;width:6px;height:6px;border-radius:var(--radius-full);background:var(--accent-1);animation:pulse 2.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+
+/* reveal-on-scroll */
+.rv{opacity:0;transform:translateY(40px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.rv.in{opacity:1;transform:none}
+
+/* ══ nav ══ */
+nav{position:fixed;top:0;left:0;right:0;z-index:10;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 24px;background:rgba(10,10,10,.72);backdrop-filter:blur(10px);border-bottom:1px solid var(--border-1)}
+nav a{font-family:var(--font-mono);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--fg-3);text-decoration:none;transition:color var(--t-fast)}
+nav a:hover{color:var(--fg-1)}
+nav .brand{color:var(--accent-1)}
+
+/* reduced motion */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .rv{opacity:1;transform:none}
+}
+
+/* variant picker overlay */
+#variant-bar{position:fixed;bottom:16px;right:16px;z-index:20;display:flex;gap:8px;padding:8px;border-radius:var(--radius-md);background:rgba(18,18,18,.85);border:1px solid var(--border-1);backdrop-filter:blur(8px)}
+#variant-bar a{font-family:var(--font-mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--fg-3);text-decoration:none;padding:6px 10px;border-radius:4px}
+#variant-bar a:hover{color:var(--fg-1)}
+#variant-bar a[aria-current]{color:var(--fg-inverse);background:var(--accent-1)}
+
+/* ── mobile: nav condenses, variant bar widens, cards shrink ── */
+@media(max-width:640px){
+  nav{padding:12px 16px}
+  nav div{gap:14px}
+  nav a{font-size:8px;letter-spacing:.2em}
+  #variant-bar{right:16px;left:16px;justify-content:center}
+  #variant-bar a{padding:12px 10px;font-size:9px}
+  .orbit-card{font-size:11px}
+  .drag-hint{font-size:8px}
+}
+</style>
+</head>
+<body>
+
+<div id="scene" aria-hidden="true">
+  <div class="glowspot"></div>
+  <div class="globe-wrap">
+    <div class="globe" id="globe">
+      <svg viewBox="0 0 200 200" aria-hidden="true">
+        <g class="graticule" fill="none">
+          <circle cx="100" cy="100" r="96"/>
+          <circle cx="100" cy="100" r="80"/>
+          <circle cx="100" cy="100" r="60"/>
+          <circle cx="100" cy="100" r="36"/>
+          <ellipse cx="100" cy="100" rx="96" ry="40"/>
+          <ellipse cx="100" cy="100" rx="80" ry="30"/>
+          <ellipse cx="100" cy="100" rx="60" ry="22"/>
+          <ellipse cx="100" cy="100" rx="40" ry="14"/>
+          <ellipse cx="100" cy="100" rx="40" ry="96"/>
+          <ellipse cx="100" cy="100" rx="30" ry="80"/>
+          <ellipse cx="100" cy="100" rx="14" ry="60"/>
+          <line x1="4" y1="100" x2="196" y2="100"/>
+          <line x1="100" y1="4" x2="100" y2="196"/>
+        </g>
+      </svg>
+      <div class="ring"></div>
+    </div>
+  </div>
+  <div class="drag-hint">drag to rotate · scroll to descend</div>
+
+  <!-- orbit cards: JS positions them on ellipse around globe -->
+  <div class="orbit-card" id="oc0" tabindex="0" style="--ox:-116px;--oy:-88px">
+    <p class="eyebrow">weather · sf</p>
+    <h3>18°C clear</h3>
+    <p>Live conditions placeholder — Open-Meteo slot in production build.</p>
+  </div>
+  <div class="orbit-card" id="oc1" tabindex="0" style="--ox:116px;--oy:-70px">
+    <p class="eyebrow">tech news</p>
+    <h3>Hacker News</h3>
+    <p>Top story slot — HN Firebase API in production build.</p>
+  </div>
+  <div class="orbit-card" id="oc2" tabindex="0" style="--ox:-116px;--oy:88px">
+    <p class="eyebrow">projects</p>
+    <h3>Featured work</h3>
+    <p>EliteHuman · Arch Linux Site · Debian 13 · GeoLibre.</p>
+  </div>
+  <div class="orbit-card" id="oc3" tabindex="0" style="--ox:116px;--oy:80px">
+    <p class="eyebrow">about</p>
+    <h3>Lian Beast</h3>
+    <p>Builder · Dreamer · Explorer. San Francisco.</p>
+  </div>
+</div>
+
+<nav>
+  <a class="brand" href="#">lianbeast</a>
+  <div style="display:flex;gap:24px">
+    <a href="#about">About</a>
+    <a href="#what-i-do">What I do</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<main>
+  <section class="sec" style="min-height:100dvh;display:flex;align-items:center;justify-content:center;text-align:center;flex-direction:column">
+    <div class="rv" style="margin-bottom:32px">
+      <span style="display:inline-flex;align-items:center;gap:12px;border:1px solid var(--border-1);background:var(--bg-card);border-radius:var(--radius-full);padding:8px 20px;font-family:var(--font-mono);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--fg-2)">
+        <span class="pulse-dot"></span> open for commissions
+      </span>
+    </div>
+    <h1 class="rv">I build things live on web.</h1>
+    <p class="lead rv" style="margin:32px auto 0">Interactive, playful, and a little bit extra. Currently exploring new tools, reading about space, chasing the next cool idea.</p>
+    <div class="rv" style="display:flex;gap:16px;justify-content:center;margin-top:48px;flex-wrap:wrap">
+      <a class="btn btn-primary" href="#projects">View my work</a>
+      <a class="btn btn-ghost" href="#contact">Get in touch</a>
+    </div>
+    <div class="scroll-cue"><span>scroll</span><div class="line"></div></div>
+  </section>
+
+  <section class="sec" id="about">
+    <p class="eyebrow rv">about</p>
+    <h2 class="rv">Hi, I'm Lian Beast.</h2>
+    <p class="lead rv" style="margin-top:24px">I build things live on the web — interactive, playful, a little bit extra. When I'm not shipping code you'll find me exploring new tools, reading about space, chasing the next cool idea.</p>
+  </section>
+
+  <section class="sec" id="what-i-do">
+    <p class="eyebrow rv">what i do</p>
+    <h2 class="rv">Capabilities</h2>
+    <div class="grid">
+      <div class="card rv"><span class="glyph">&lt;&gt;</span><h3>Frontend Engineering</h3><p>React, TypeScript, Next.js — crafting fast, fluid interfaces.</p></div>
+      <div class="card rv"><span class="glyph">{ }</span><h3>Creative Development</h3><p>Three.js, WebGL, GSAP — turning static pages into experiences.</p></div>
+      <div class="card rv"><span class="glyph">[ ]</span><h3>Geospatial &amp; GIS</h3><p>MapLibre, DuckDB-WASM, GeoLibre — browser-native spatial tools.</p></div>
+    </div>
+  </section>
+
+  <section class="sec" id="projects">
+    <p class="eyebrow rv">projects</p>
+    <h2 class="rv">Featured work</h2>
+    <div class="grid">
+      <div class="card rv"><h3 style="margin-top:0">EliteHuman ↗</h3><p>Scroll-driven 3D brand site — Body → Mind → Spirit → Apex.</p></div>
+      <div class="card rv"><h3 style="margin-top:0">Arch Linux Site ↗</h3><p>Particle backdrop, scroll-progress nav, live pacman terminal.</p></div>
+      <div class="card rv"><h3 style="margin-top:0">debian-linux-site ↗</h3><p>Cosmic landing page for Debian 13 "Trixie" with interactive bash.</p></div>
+    </div>
+  </section>
+
+  <section class="sec" id="contact">
+    <p class="eyebrow rv">contact</p>
+    <h2 class="rv">Let's build something together.</h2>
+    <p class="lead rv" style="margin-top:24px">Got an idea, a project, or just want to say hi? I'm always open to new conversations and collaborations.</p>
+    <div class="rv" style="margin-top:48px"><a class="btn btn-primary" href="mailto:you@example.com">Send me an email</a></div>
+  </section>
+</main>
+
+<div id="variant-bar" aria-label="prototype variants">
+  <a href="globe-walkthrough.html" aria-current="true">globe</a>
+  <a href="scroll-narrative.html">scroll</a>
+  <a href="focus-mode.html">focus</a>
+  <a href="orbit-narrative.html">orbit</a>
+</div>
+
+<script>
+/* ── globe drag: pointer rotates the graticule via CSS var ── */
+(function(){
+  const g=document.getElementById('globe');
+  const svg=g.querySelector('g');
+  const ring=g.querySelector('.ring');
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let rx=-12, ry=0, vx=0.008, vy=0.02, dragging=false, lx=0, ly=0, raf=0;
+  function apply(){
+    const t=`perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+    svg.style.transform=t; svg.style.transition='none';
+    ring.style.transform=`${t} rotateX(72deg) rotateY(-8deg)`;
+  }
+  function tick(){
+    if(!dragging){ rx+=vx; ry+=vy; }
+    apply();
+    raf=requestAnimationFrame(tick);
+  }
+  addEventListener('pointerdown',e=>{
+    if(e.target.closest('a,button,.orbit-card,nav'))return; /* don't hijack UI taps */
+    dragging=true; lx=e.clientX; ly=e.clientY;
+  });
+  addEventListener('pointermove',e=>{
+    if(!dragging)return;
+    ry+=(e.clientX-lx)*.3; rx-=(e.clientY-ly)*.3;
+    rx=Math.max(-80,Math.min(80,rx)); lx=e.clientX; ly=e.clientY;
+  });
+  addEventListener('pointerup',()=>dragging=false);
+  addEventListener('pointercancel',()=>dragging=false);
+  if(!reduce) tick();
+
+  /* ── orbit cards ride an ellipse, phase-offset ── */
+  const cards=[...document.querySelectorAll('.orbit-card')];
+  const MW=Math.min(innerWidth*.22,230), MH=Math.min(innerHeight*.24,200);
+  cards.forEach((c,i)=>{
+    const phase=i*(Math.PI*2/cards.length)+.6;
+    let t=0;
+    (function orbit(){
+      t+=.004;
+      const x=Math.cos(phase+t)*MW, y=Math.sin(phase+t)*MH;
+      const depth=(Math.sin(phase+t)+1)/2;          /* 0 back, 1 front */
+      c.style.transform=`translate(calc(-50% + ${x}px),calc(-50% + ${y}px)) scale(${.86+depth*.14})`;
+      c.style.zIndex=String(1+Math.round(depth*3));
+      c.style.opacity=String(.55+depth*.45);
+      if(!reduce) requestAnimationFrame(orbit); else { c.style.transform=`translate(calc(-50% + ${x}px),calc(-50% + ${y}px))`; c.style.opacity='1'; }
+    })();
+  });
+
+  /* ── scene sinks and dims as you scroll (camera dolly) ── */
+  const scene=document.getElementById('scene');
+  let sraf=0;
+  addEventListener('scroll',()=>{
+    cancelAnimationFrame(sraf);
+    sraf=requestAnimationFrame(()=>{
+      const p=Math.min(1,scrollY/innerHeight);
+      scene.style.transform=`translateY(${scrollY*.15}px) scale(${1-p*.3})`;
+      scene.style.opacity=String(1-p*.75);
+    });
+  },{passive:true});
+
+  /* ── reveal on scroll ── */
+  const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); }),{threshold:.2});
+  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+})();
+</script>
+</body>
+</html>
