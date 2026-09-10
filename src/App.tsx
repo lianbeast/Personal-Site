@@ -7,8 +7,7 @@ import { Footer } from './components/Footer'
 
 // Scroll-narrative landing (opendesign/handoffs/scroll-narrative-landing).
 // Five sticky scenes + HUD; map room, live projects and testimonials stay
-// as normal scrolling sections after the descent. Three.js globe removed
-// from the landing — keep ThreeCanvas.tsx on disk for potential reuse.
+// as normal scrolling sections after the descent.
 export default function App() {
   return (
     <div className="relative min-h-screen bg-bg text-text font-body antialiased">
