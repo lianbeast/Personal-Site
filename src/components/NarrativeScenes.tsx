@@ -46,22 +46,22 @@ export function HeroScene() {
       <div className="absolute inset-0 z-0 opacity-40">
         <img
           src="https://images.unsplash.com/photo-1486406146988-2767ca1b8fb1?q=80&w=2070&auto=format&fit=crop"
-          alt="Architectural Space"
+          alt=""
           className="h-full w-full object-cover grayscale contrast-125"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/60 to-transparent" />
       </div>
-      <span className="relative z-10 mb-8 inline-flex items-center gap-3 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-card)] px-5 py-2 font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--color-text-muted)] scrub-l">
+      <span className="relative z-20 mb-8 inline-flex items-center gap-3 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-card)] px-5 py-2 font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--color-text-muted)] scrub-l">
         <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-accent)] pulse-dot" />
         open for commissions
       </span>
-      <h1 className="relative z-10 m-0 font-display text-4xl font-medium leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl scrub-l">
+      <h1 className="relative z-20 m-0 font-display text-4xl font-medium leading-[1.2] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl scrub-l">
         {site.hero.headline}
       </h1>
-      <p className="relative z-10 mx-auto mt-6 max-w-xl text-base font-light leading-relaxed text-[var(--color-text-muted)] sm:text-lg scrub-l">
+      <p className="relative z-20 mx-auto mt-6 max-w-xl text-base font-light leading-relaxed text-[var(--color-text-muted)] sm:text-lg scrub-l">
         {site.hero.sub}
       </p>
-      <div className="relative z-10 mt-10 scrub-l">
+      <div className="relative z-20 mt-10 scrub-l">
         <a
           href="#s-contact"
           className="btn-tactile btn-magnetic inline-block rounded-md bg-[var(--color-accent)] px-8 py-3.5 text-sm font-medium tracking-wide text-[var(--color-text-inverse)] no-underline transition-all duration-300 hover:bg-[var(--color-accent-hover)] hover:shadow-glow"
