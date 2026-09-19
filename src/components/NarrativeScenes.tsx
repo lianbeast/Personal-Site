@@ -86,12 +86,18 @@ export function CapabilitiesScene() {
       <h2 className="m-0 font-display text-3xl font-medium leading-[1.2] tracking-tight text-white sm:text-4xl lg:text-5xl">
         Capabilities
       </h2>
-      <div className="mt-12 grid gap-6 text-left sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-16 grid gap-8 text-left sm:grid-cols-2 lg:grid-cols-3">
         {site.features.map((f, i) => (
-          <div key={f.title} className={`card-hover ${scrub(i % 2 === 0 ? 'l' : 'r')} rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-card)] p-5`}>
-            <span className="font-mono text-2xl font-light text-[var(--color-accent)]">{f.icon}</span>
-            <h3 className="mt-3 font-display text-sm font-medium tracking-wide text-white">{f.title}</h3>
-            <p className="m-0 mt-2 text-sm leading-relaxed text-[var(--color-text-muted)]">{f.desc}</p>
+          <div key={f.title} className={`group relative ${scrub(i % 2 === 0 ? 'l' : 'r')}`}>
+            {/* Outer Shell (Double-Bezel) */}
+            <div className="rounded-[2rem] border border-white/10 bg-white/5 p-2 transition-all duration-500 group-hover:border-white/20 group-hover:bg-white/10">
+              {/* Inner Core */}
+              <div className="rounded-[calc(2rem-0.5rem)] bg-[var(--color-bg-card)] p-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] transition-transform duration-500 group-hover:translate-y-[-4px]">
+                <span className="font-mono text-2xl font-light text-[var(--color-accent)]">{f.icon}</span>
+                <h3 className="mt-4 font-display text-sm font-medium tracking-wide text-white">{f.title}</h3>
+                <p className="m-0 mt-2 text-sm leading-relaxed text-[var(--color-text-muted)]">{f.desc}</p>
+              </div>
+            </div>
           </div>
         ))}
       </div>
@@ -144,12 +150,15 @@ export function ContactScene() {
       <p className="mx-auto mt-6 max-w-xl text-base font-light leading-relaxed text-[var(--color-text-muted)]">
         {site.contact.sub}
       </p>
-      <div className="mt-12">
+      <div className="mt-16">
         <a
           href={site.links.email}
-          className="btn-tactile inline-block rounded-md bg-[var(--color-accent)] px-8 py-3.5 text-sm font-medium tracking-wide text-[var(--color-text-inverse)] no-underline transition-all duration-300 hover:bg-[var(--color-accent-hover)] hover:shadow-glow"
+          className="group relative btn-tactile inline-flex items-center gap-3 rounded-full bg-[var(--color-accent)] px-6 py-3.5 text-sm font-medium tracking-wide text-[var(--color-text-inverse)] no-underline transition-all duration-500 hover:bg-[var(--color-accent-hover)] hover:shadow-glow"
         >
-          Send me an email
+          <span>Send me an email</span>
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-black/10 transition-all duration-500 group-hover:scale-110 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+            <span className="text-xs">↗</span>
+          </span>
         </a>
       </div>
     </Scene>
