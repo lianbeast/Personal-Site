@@ -27,7 +27,7 @@ function Scene({
 
 function Eyebrow({ children }: { children: string }) {
   return (
-    <p className="m-0 mb-4 font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--color-text-subtle)]">
+    <p className="m-0 mb-4 font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--color-text-subtle)] scrub-l">
       {children}
     </p>
   )
@@ -51,20 +51,20 @@ export function HeroScene() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/60 to-transparent" />
       </div>
-      <span className="relative z-10 mb-8 inline-flex items-center gap-3 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-card)] px-5 py-2 font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--color-text-muted)]">
+      <span className="relative z-10 mb-8 inline-flex items-center gap-3 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-card)] px-5 py-2 font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--color-text-muted)] scrub-l">
         <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-accent)] pulse-dot" />
         open for commissions
       </span>
-      <h1 className="relative z-10 m-0 font-display text-4xl font-medium leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+      <h1 className="relative z-10 m-0 font-display text-4xl font-medium leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl scrub-l">
         {site.hero.headline}
       </h1>
-      <p className="relative z-10 mx-auto mt-6 max-w-xl text-base font-light leading-relaxed text-[var(--color-text-muted)] sm:text-lg">
+      <p className="relative z-10 mx-auto mt-6 max-w-xl text-base font-light leading-relaxed text-[var(--color-text-muted)] sm:text-lg scrub-l">
         {site.hero.sub}
       </p>
-      <div className="relative z-10 mt-10">
+      <div className="relative z-10 mt-10 scrub-l">
         <a
           href="#s-contact"
-          className="btn-tactile inline-block rounded-md bg-[var(--color-accent)] px-8 py-3.5 text-sm font-medium tracking-wide text-[var(--color-text-inverse)] no-underline transition-all duration-300 hover:bg-[var(--color-accent-hover)] hover:shadow-glow"
+          className="btn-tactile btn-magnetic inline-block rounded-md bg-[var(--color-accent)] px-8 py-3.5 text-sm font-medium tracking-wide text-[var(--color-text-inverse)] no-underline transition-all duration-300 hover:bg-[var(--color-accent-hover)] hover:shadow-glow"
         >
           Get in touch
         </a>
@@ -77,10 +77,10 @@ export function AboutScene() {
   return (
     <Scene id="s-about" bg="bg-nebula">
       <Eyebrow>01 · about</Eyebrow>
-      <h2 className="m-0 font-display text-3xl font-medium leading-[1.2] tracking-tight text-white sm:text-4xl lg:text-5xl">
+      <h2 className="m-0 font-display text-3xl font-medium leading-[1.2] tracking-tight text-white sm:text-4xl lg:text-5xl scrub-l">
         {site.about.intro}
       </h2>
-      <p className="mx-auto mt-6 max-w-xl text-base font-light leading-relaxed text-[var(--color-text-muted)]">
+      <p className="mx-auto mt-6 max-w-xl text-base font-light leading-relaxed text-[var(--color-text-muted)] scrub-l">
         {site.about.body.join(' ')}
       </p>
     </Scene>
@@ -91,7 +91,7 @@ export function CapabilitiesScene() {
   return (
     <Scene id="s-capabilities" bg="bg-blueprint">
       <Eyebrow>02 · what i do</Eyebrow>
-      <h2 className="m-0 font-display text-3xl font-medium leading-[1.2] tracking-tight text-white sm:text-4xl lg:text-5xl">
+      <h2 className="m-0 font-display text-3xl font-medium leading-[1.2] tracking-tight text-white sm:text-4xl lg:text-5xl scrub-l">
         Capabilities
       </h2>
       <div className="mt-16 grid gap-8 text-left sm:grid-cols-2 lg:grid-cols-3">
@@ -108,9 +108,9 @@ export function CapabilitiesScene() {
             <div key={f.title} className={`group relative ${scrub(i % 2 === 0 ? 'l' : 'r')}`}>
               {/* Outer Shell (Double-Bezel) */}
               <div className="rounded-[2rem] border border-white/10 bg-white/5 p-2 transition-all duration-500 group-hover:border-white/20 group-hover:bg-white/10">
-                {/* Inner Core */}
-                <div className="relative overflow-hidden rounded-[calc(2rem-0.5rem)] bg-[var(--color-bg-card)] p-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] transition-transform duration-500 group-hover:translate-y-[-4px]">
-                  <div className="absolute inset-0 z-0 opacity-20 transition-opacity duration-500 group-hover:opacity-30">
+                {/* Inner Core - upgraded to glass-refract */}
+                <div className="relative overflow-hidden rounded-[calc(2rem-0.5rem)] bg-[var(--color-bg-card)] p-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] transition-all duration-500 group-hover:translate-y-[-4px] glass-refract">
+                  <div className="absolute inset-0 z-0 opacity-20 transition-all duration-700 group-hover:opacity-30 group-hover:scale-110">
                     <img
                       src={img}
                       alt=""
@@ -136,7 +136,7 @@ export function ProjectsScene() {
   return (
     <Scene id="s-projects" bg="bg-contours">
       <Eyebrow>03 · projects</Eyebrow>
-      <h2 className="m-0 font-display text-3xl font-medium leading-[1.2] tracking-tight text-white sm:text-4xl lg:text-5xl">
+      <h2 className="m-0 font-display text-3xl font-medium leading-[1.2] tracking-tight text-white sm:text-4xl lg:text-5xl scrub-l">
         Featured work
       </h2>
       <div className="mt-12">
@@ -155,7 +155,7 @@ export function ProjectsScene() {
                 className="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110"
               />
             </div>
-            <span>
+            <span className="relative z-10">
               <span className="m-0 font-display text-lg font-medium text-white">{p.name}</span>
               <span className="m-0 mt-1 block text-[13px] leading-relaxed text-[var(--color-text-muted)]">
                 {p.description}
@@ -175,18 +175,18 @@ export function ContactScene() {
   return (
     <Scene id="s-contact" bg="bg-stars">
       <Eyebrow>04 · contact</Eyebrow>
-      <h2 className="m-0 font-display text-3xl font-medium leading-[1.2] tracking-tight text-white sm:text-4xl lg:text-5xl">
+      <h2 className="m-0 font-display text-3xl font-medium leading-[1.2] tracking-tight text-white sm:text-4xl lg:text-5xl scrub-l">
         {site.contact.headline}
       </h2>
-      <p className="mx-auto mt-6 max-w-xl text-base font-light leading-relaxed text-[var(--color-text-muted)]">
+      <p className="mx-auto mt-6 max-w-xl text-base font-light leading-relaxed text-[var(--color-text-muted)] scrub-l">
         {site.contact.sub}
       </p>
-      <div className="mt-16">
+      <div className="mt-16 scrub-l">
         <a
           href={site.links.email}
           className="group relative btn-tactile inline-flex items-center gap-3 rounded-full bg-[var(--color-accent)] px-6 py-3.5 text-sm font-medium tracking-wide text-[var(--color-text-inverse)] no-underline transition-all duration-500 hover:bg-[var(--color-accent-hover)] hover:shadow-glow"
         >
-          <span>Send me an email</span>
+          <span className="relative z-10">Send me an email</span>
           <span className="flex h-8 w-8 items-center justify-center rounded-full bg-black/10 transition-all duration-500 group-hover:scale-110 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
             <span className="text-xs">↗</span>
           </span>

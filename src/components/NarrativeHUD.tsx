@@ -51,11 +51,11 @@ export function NarrativeHUD() {
   return (
     <>
       <div className="depth-meter" aria-hidden="true">
-        <span>ALT</span>
+        <span className="font-mono text-[9px] opacity-50">ALT</span>
         <div className="depth-bar">
           <i style={{ transform: `scaleY(${p})` }} />
         </div>
-        <span className="depth-val">{p >= 1 ? 'ground' : `${km}km`}</span>
+        <span className="depth-val font-mono text-xs">{p >= 1 ? 'ground' : `${km}km`}</span>
       </div>
 
       <nav className="scene-rail" aria-label="Scenes">
@@ -64,7 +64,7 @@ export function NarrativeHUD() {
             key={id}
             href={`#${id}`}
             aria-label={LABELS[i]}
-            className={`btn-tactile transition-transform duration-150 hover:scale-125 ${i === active ? 'on' : ''}`}
+            className={`btn-tactile btn-magnetic transition-transform duration-150 hover:scale-125 ${i === active ? 'on' : ''}`}
           />
         ))}
       </nav>
