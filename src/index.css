@@ -87,6 +87,12 @@ body,
   color: var(--color-text-inverse);
 }
 
+@media (prefers-contrast: more) {
+  .rounded-[2rem].border-white\/10 {
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+}
+
 /* ── Accessibility & Tactile ── */
 :focus-visible {
   outline: 2px solid var(--color-accent);
@@ -219,17 +225,17 @@ body,
 /* ── 2. Nebula Wisps ── */
 .bg-nebula {
   background:
-    radial-gradient(ellipse 800px 400px at 20% 30%, rgba(99, 60, 130, 0.08) 0%, transparent 70%),
-    radial-gradient(ellipse 600px 500px at 80% 60%, rgba(30, 60, 120, 0.06) 0%, transparent 70%),
-    radial-gradient(ellipse 400px 300px at 50% 80%, rgba(150, 50, 100, 0.04) 0%, transparent 70%);
+    radial-gradient(ellipse 800px 400px at 20% 30%, rgba(212, 175, 55, 0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 600px 500px at 80% 60%, rgba(161, 161, 170, 0.04) 0%, transparent 70%),
+    radial-gradient(ellipse 400px 300px at 50% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 70%);
 }
 
 /* ── 3. Blueprint Grid ── */
 .bg-blueprint {
   background-image:
-    linear-gradient(rgba(245, 213, 71, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(245, 213, 71, 0.03) 1px, transparent 1px),
-    radial-gradient(circle at 50% 50%, rgba(245, 213, 71, 0.04) 0%, transparent 45%),
+    linear-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px),
+    radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.04) 0%, transparent 45%),
     radial-gradient(circle at 0% 100%, rgba(212, 175, 55, 0.04) 0%, transparent 45%);
   background-size: 40px 40px, 40px 40px, 600px 600px, 700px 700px;
 }
@@ -384,6 +390,7 @@ body,
   background: var(--color-accent);
   border-color: var(--color-accent);
   box-shadow: 0 0 12px var(--color-accent-glow);
+  transform: scale(1.25);
 }
 
 /* ── HUD mobile: bottom corners, larger dots ── */
