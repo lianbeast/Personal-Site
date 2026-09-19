@@ -146,22 +146,22 @@ export function ProjectsScene() {
             href={p.url}
             target="_blank"
             rel="noopener noreferrer"
-            className={`group relative grid grid-cols-[auto_1fr_auto] items-center gap-6 border-b border-[var(--color-border)] py-6 text-left no-underline transition-colors duration-300 hover:bg-white/[0.02] ${scrub(i % 2 === 1 ? 'l' : 'r')}`}
+            className={`group relative grid grid-cols-[auto_1fr_auto] items-center gap-6 border-b border-[var(--color-border)] py-8 text-left no-underline transition-all duration-500 hover:bg-white/[0.02] ${scrub(i % 2 === 1 ? 'l' : 'r')}`}
           >
-            <div className="relative h-16 w-16 overflow-hidden rounded-lg bg-zinc-800 shadow-sm">
+            <div className="relative h-20 w-20 overflow-hidden rounded-xl bg-zinc-800 shadow-sm transition-transform duration-500 group-hover:scale-110 group-hover:rotate-2">
               <img
                 src={`https://picsum.photos/seed/project-${i}/160/160`}
                 alt={p.name}
-                className="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110"
+                className="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
               />
             </div>
             <span className="relative z-10">
-              <span className="m-0 font-display text-lg font-medium text-white">{p.name}</span>
-              <span className="m-0 mt-1 block text-[13px] leading-relaxed text-[var(--color-text-muted)]">
+              <span className="m-0 font-display text-xl font-medium text-white transition-colors duration-300 group-hover:text-[var(--color-accent)]">{p.name}</span>
+              <span className="m-0 mt-1 block text-[14px] leading-relaxed text-[var(--color-text-muted)] transition-colors duration-300 group-hover:text-white/80">
                 {p.description}
               </span>
             </span>
-            <span className="text-base text-[var(--color-accent)] opacity-60 transition-all duration-150 group-hover:translate-x-1 group-hover:opacity-100 group-focus-within:translate-x-1 group-focus-within:opacity-100">
+            <span className="text-xl text-[var(--color-accent)] opacity-40 transition-all duration-300 group-hover:translate-x-2 group-hover:opacity-100 group-focus-within:translate-x-2 group-focus-within:opacity-100">
               →
             </span>
           </a>

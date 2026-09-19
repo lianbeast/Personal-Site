@@ -70,6 +70,38 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ... existing content ... */
+
+/* ── Global Cursor Follower ── */
+.cursor-follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--color-accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform var(--transition-fast), width var(--transition-fast), height var(--transition-fast), opacity var(--transition-fast);
+  mix-blend-mode: difference;
+}
+
+.cursor-follower.active {
+  width: 80px;
+  height: 80px;
+  margin-left: -20px;
+  margin-top: -20px;
+  background: var(--color-accent-subtle);
+  opacity: 0.5;
+}
+
+/* ── Parallax Depth Helpers ── */
+.parallax-deep {
+  transition: transform var(--transition-kinetic) ease-out;
+  will-change: transform;
+}
+
 /* ── Physical Texture Overlay ── */
 body::after {
   content: "";
@@ -78,8 +110,9 @@ body::after {
   z-index: 100;
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  opacity: 0.02;
+  opacity: 0.03;
 }
+
 
 html {
   scroll-behavior: smooth;
