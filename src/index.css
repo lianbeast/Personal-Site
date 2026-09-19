@@ -73,6 +73,19 @@ body,
   color: var(--color-text-inverse);
 }
 
+/* ── Accessibility & Tactile ── */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+.btn-tactile {
+  transition: transform var(--transition-fast);
+}
+.btn-tactile:active {
+  transform: scale(0.98);
+}
+
 /* ── Scrollbar ── */
 *::-webkit-scrollbar { width: 6px; }
 *::-webkit-scrollbar-track { background: var(--color-bg); }

@@ -53,6 +53,14 @@ export function HeroScene() {
       <p className="mx-auto mt-6 max-w-xl text-base font-light leading-relaxed text-[var(--color-text-muted)] sm:text-lg">
         {site.hero.sub}
       </p>
+      <div className="mt-10">
+        <a
+          href="#s-contact"
+          className="btn-tactile inline-block rounded-md bg-[var(--color-accent)] px-8 py-3.5 text-sm font-medium tracking-wide text-[var(--color-text-inverse)] no-underline transition-all duration-300 hover:bg-[var(--color-accent-hover)] hover:shadow-glow"
+        >
+          Get in touch
+        </a>
+      </div>
     </Scene>
   )
 }
@@ -116,7 +124,7 @@ export function ProjectsScene() {
                 {p.description}
               </span>
             </span>
-            <span className="text-base text-[var(--color-accent)] opacity-0 transition-all duration-150 group-hover:translate-x-1 group-hover:opacity-100">
+            <span className="text-base text-[var(--color-accent)] opacity-40 transition-all duration-150 group-hover:translate-x-1 group-hover:opacity-100 group-focus-within:translate-x-1 group-focus-within:opacity-100">
               →
             </span>
           </a>
@@ -139,7 +147,7 @@ export function ContactScene() {
       <div className="mt-12">
         <a
           href={site.links.email}
-          className="inline-block rounded-md bg-[var(--color-accent)] px-8 py-3.5 text-sm font-medium tracking-wide text-[var(--color-text-inverse)] no-underline transition-all duration-300 hover:bg-[var(--color-accent-hover)] hover:shadow-glow"
+          className="btn-tactile inline-block rounded-md bg-[var(--color-accent)] px-8 py-3.5 text-sm font-medium tracking-wide text-[var(--color-text-inverse)] no-underline transition-all duration-300 hover:bg-[var(--color-accent-hover)] hover:shadow-glow"
         >
           Send me an email
         </a>

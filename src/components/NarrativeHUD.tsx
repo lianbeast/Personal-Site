@@ -60,7 +60,12 @@ export function NarrativeHUD() {
 
       <nav className="scene-rail" aria-label="Scenes">
         {SCENES.map((id, i) => (
-          <a key={id} href={`#${id}`} aria-label={LABELS[i]} className={i === active ? 'on' : ''} />
+          <a
+            key={id}
+            href={`#${id}`}
+            aria-label={LABELS[i]}
+            className={`btn-tactile transition-transform duration-150 hover:scale-125 ${i === active ? 'on' : ''}`}
+          />
         ))}
       </nav>
     </>
