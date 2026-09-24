@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
-    "record:preview": "node scripts/record-preview.mjs"
+    "record:preview": "node scripts/record-preview.mjs",
+    "record:previews": "node scripts/record-project-previews.mjs"
   },
   "dependencies": {
     "gsap": "^3.15.0",

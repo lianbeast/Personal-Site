@@ -26,15 +26,18 @@ jobs:
           PREVIEW_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
         run: npm run record:preview
 
-      - name: Commit preview.gif (if changed)
+      - name: Record project previews (mp4 + poster)
+        run: npm run record:previews
+
+      - name: Commit recorded previews (if changed)
         run: |
-          if git diff --quiet preview.gif; then
-            echo "preview.gif unchanged — nothing to commit"
+          if git diff --quiet preview.gif public/previews; then
+            echo "previews unchanged — nothing to commit"
           else
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add preview.gif
+            git add preview.gif public/previews
             # [skip ci] + deploy paths-ignore break the regenerate loop
-            git commit -m "[skip ci] Update live preview gif"
+            git commit -m "[skip ci] Update recorded previews"
             git push
           fi

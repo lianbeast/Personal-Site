@@ -1,6 +1,7 @@
 import { site } from '../config'
 import { useInView } from '../hooks/useInView'
 import { motion, useReducedMotion } from 'motion/react'
+import { ProjectPreview } from './ProjectPreview'
 
 /* ══ Scroll narrative — spec: opendesign/handoffs/scroll-narrative-landing/README.md
    5 sticky 100dvh scenes, each = background (CSS) + art layer (SVG/CSS) + content. */
@@ -287,12 +288,8 @@ export function ProjectsScene() {
                 rel="noopener noreferrer"
                 className="group relative grid grid-cols-[auto_1fr_auto] items-center gap-6 border-b border-[var(--color-border)] py-8 text-left no-underline transition-all duration-500 hover:bg-white/[0.02]"
               >
-                <div className="relative h-20 w-20 overflow-hidden rounded-xl bg-zinc-800 shadow-sm transition-transform duration-500 group-hover:scale-110 group-hover:rotate-2">
-                  <img
-                    src={`https://picsum.photos/seed/project-${i}/160/160`}
-                    alt={p.name}
-                    className="h-full w-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0"
-                  />
+                <div className="relative h-20 w-20 shrink-0 rounded-xl shadow-sm transition-transform duration-500 group-hover:scale-110 group-hover:rotate-2">
+                  <ProjectPreview name={p.name} live={p.live} className="h-full w-full rounded-xl" />
                 </div>
                 <span className="relative z-10">
                   <span className="m-0 font-display text-xl font-medium text-white transition-colors duration-300 group-hover:text-[var(--color-accent)]">{p.name}</span>

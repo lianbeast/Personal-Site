@@ -3,6 +3,7 @@ import { getRepos, type Repo } from '../lib/github'
 import { useAsync } from '../hooks/useAsync'
 import { ScrollReveal } from './ScrollReveal'
 import { Background } from './Background'
+import { ProjectPreview } from './ProjectPreview'
 
 const LANG_COLORS: Record<string, string> = {
   TypeScript: '#3178c6',
@@ -36,6 +37,7 @@ function RepoCard({ repo }: { repo: CardRepo }) {
   const color = LANG_COLORS[repo.language ?? ''] ?? '#D4AF37'
   return (
     <div className="group block rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-card)] p-5 transition-all duration-300 hover:border-[var(--color-accent)] hover:bg-[var(--color-bg-card-hover)] hover:shadow-[0_0_30px_rgba(212,175,55,0.06)]">
+      <ProjectPreview name={repo.name} live={repo.live} className="mb-4 aspect-[16/10] rounded-lg" />
       <h3 className="font-display text-sm font-semibold tracking-wide text-white transition group-hover:text-[var(--color-accent)]">
         <a href={repo.url} target="_blank" rel="noopener noreferrer">
           {repo.name} <span className="text-[var(--color-text-subtle)]">↗</span>

@@ -7,9 +7,19 @@ export interface Project {
   name: string
   description: string
   url: string
-  /** Deployed site URL (e.g. GitHub Pages), shown as a "live" link on project cards. */
+  /**
+   * Deployed site URL (e.g. GitHub Pages), shown as a "live" link on project
+   * card. Also opts the project into a recorded preview: `npm run
+   * record:previews` clips the live URL into /previews/<slug>.mp4 + .jpg on
+   * every deploy, where <slug> is this name lowercased with non-alphanumerics
+   * dashed (see previewSlug in config.ts). No preview key to maintain.
+   */
   live?: string
 }
+
+/** Filename stem for a project's recorded preview. Must match scripts/record-project-previews.mjs. */
+export const previewSlug = (name: string) =>
+  name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
 
 export const site = {
   name: 'Lian Beast',
