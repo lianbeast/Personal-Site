@@ -17,8 +17,8 @@ export const site = {
   hero: {
     headline: 'I build things that live on the web.',
     sub: 'Interactive, playful, and a little bit extra. Currently exploring new tools, reading about space, and chasing the next cool idea.',
-    cta: { label: 'View my work', href: '#projects' },
-    ctaSecondary: { label: 'Get in touch', href: '#contact' },
+    // Anchor must match a scene id in NarrativeScenes.tsx (s-*).
+    cta: { label: 'Get in touch', href: '#s-contact' },
   },
 
   githubUser: 'lianbeast',

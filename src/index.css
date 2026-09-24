@@ -136,7 +136,7 @@ body,
 }
 
 @media (prefers-contrast: more) {
-  .rounded-[2rem].border-white\/10 {
+  .card-shell {
     border-color: rgba(255, 255, 255, 0.3);
   }
 }
@@ -358,7 +358,7 @@ body,
   pointer-events: none;
 }
 /* ════════════════════════════════════════════════════════════
-   SCROLL NARRATIVE — sticky scenes, scrub content, HUD
+   SCROLL NARRATIVE — sticky scenes, kinetic reveals, art layers, HUD
    Spec: opendesign/handoffs/scroll-narrative-landing/README.md
    ════════════════════════════════════════════════════════════ */
 
@@ -374,14 +374,77 @@ body,
 .scene-bg.bg-stars { opacity: 0; background-repeat: repeat; }
 .scene-bg.bg-stars.active { opacity: 0.4; }
 
-/* Content scrub-in: alternate sides */
-.scrub-l, .scrub-r {
+/* ══ Foreground art layers — one signature motif per scene ══ */
+.art {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
   opacity: 0;
-  transition: opacity 800ms cubic-bezier(0.16, 1, 0.3, 1), transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 900ms cubic-bezier(0.16, 1, 0.3, 1);
 }
-.scrub-l { transform: translateX(-60px); }
-.scrub-r { transform: translateX(60px); }
-.scene-content.in .scrub-l, .scene-content.in .scrub-r { opacity: 1; transform: none; }
+.art.active { opacity: 1; }
+.art svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+/* Hero: wireframe planet horizon rising behind the headline */
+.art-hero-svg {
+  left: 50% !important;
+  bottom: -42vmin !important;
+  top: auto !important;
+  width: 110vmin !important;
+  height: 110vmin !important;
+  transform: translateX(-50%);
+}
+.art .meridian { fill: none; stroke: var(--color-accent); stroke-width: 1; opacity: 0.14; }
+.art .horizon { fill: none; stroke: var(--color-accent); stroke-width: 1.2; opacity: 0.25; }
+.art .orbit-arc { fill: none; stroke: var(--color-accent-secondary); stroke-width: 1; stroke-dasharray: 2 7; opacity: 0.22; }
+.art .node { fill: var(--color-accent); opacity: 0.6; }
+
+/* About: transmission rings pulsing from a beacon (pure CSS) */
+.art-about {
+  background:
+    radial-gradient(circle 1px at 50% 46%, rgba(212, 175, 55, 0.9) 0%, transparent 100%),
+    repeating-radial-gradient(
+      circle at 50% 46%,
+      transparent 0 118px, rgba(212, 175, 55, 0.05) 118px 119px,
+      transparent 119px 178px, rgba(212, 175, 55, 0.04) 178px 179px,
+      transparent 179px 268px, rgba(212, 175, 55, 0.03) 268px 269px
+    );
+}
+
+/* Capabilities: circuit traces with via dots */
+.art .trace { fill: none; stroke: rgba(212, 175, 55, 0.1); stroke-width: 1; }
+.art .trace.dash { stroke-dasharray: 1 6; }
+.art .via { fill: rgba(245, 213, 71, 0.14); }
+
+/* Projects: constellation joined by sight-lines */
+.art .line { fill: none; stroke: rgba(212, 175, 55, 0.07); stroke-width: 1; }
+.art .star { fill: rgba(212, 175, 55, 0.35); }
+.art .star.bright { fill: rgba(212, 175, 55, 0.7); }
+
+/* Contact: landing pad with descent guide and range marks */
+.art .guide { fill: none; stroke: rgba(212, 175, 55, 0.12); stroke-width: 1; stroke-dasharray: 3 9; }
+.art .cross { fill: none; stroke: rgba(212, 175, 55, 0.18); stroke-width: 1; }
+.art .pad { fill: none; stroke: rgba(212, 175, 55, 0.25); stroke-width: 1.2; }
+
+/* Drift + breathe, only when motion is welcome */
+@media (prefers-reduced-motion: no-preference) {
+  .art-hero-svg { animation: hero-drift 24s ease-in-out infinite alternate; }
+  .art-about { animation: beacon-breathe 7s ease-in-out infinite; }
+  @keyframes hero-drift {
+    from { transform: translateX(-50%) rotate(0deg); }
+    to { transform: translateX(-50%) rotate(2deg); }
+  }
+  @keyframes beacon-breathe {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+  }
+}
+/* Reduced motion: art still fades in, it just does not drift or breathe. */
+@media (prefers-reduced-motion: reduce) {
+  .art { transition-duration: 0.01ms; }
+  .scene-bg { transition-duration: 0.01ms; }
+}
 
 /* ── HUD: depth meter (left) ── */
 .depth-meter {

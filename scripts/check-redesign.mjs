@@ -19,12 +19,17 @@ const report = await page.evaluate(() => {
       height: Math.round(r.height),
     }
   })
-  const h1 = document.querySelector('h1')?.textContent
-  const cta = document.querySelector('a[href="#projects"]')?.textContent
+  // Only one h1 exists (hero scene) — the old sr-only one in index.html was removed.
+  const h1 = document.querySelector('#s-hero h1')?.textContent
+  // Hero CTA: read it, then assert its href resolves to a real element. Checking
+  // the href value itself would re-introduce the drift this check is meant to catch.
+  const ctaEl = document.querySelector('#s-hero a[href^="#"]')
+  const cta = ctaEl?.textContent
+  const ctaResolves = !!ctaEl && !!document.querySelector(ctaEl.getAttribute('href'))
   const contact = document.querySelector('a[href*="mailto"]')?.textContent
   const footer = document.querySelector('footer')?.textContent?.trim()?.slice(0, 50)
   const mapIframe = document.querySelector('#map-room iframe')?.getAttribute('src')
-  return { viewport: `${vw}x${vh}`, title: document.title, h1, cta, contact, footer, sections, mapIframe }
+  return { viewport: `${vw}x${vh}`, title: document.title, h1, cta, ctaResolves, contact, footer, sections, mapIframe }
 })
 
 await browser.close()
@@ -33,7 +38,8 @@ console.log(JSON.stringify(report, null, 2))
 const checks = [
   ['title', report.title?.includes('Lian Beast')],
   ['h1', report.h1?.includes('build things')],
-  ['cta', !!report.cta],
+  // Resolves, not just present: a CTA pointing at a renamed anchor is a dead link.
+  ['cta', !!report.cta && report.ctaResolves],
   ['contact', !!report.contact],
   ['footer', !!report.footer],
   ['sections ≥ 6', report.sections.length >= 6],
