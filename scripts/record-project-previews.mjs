@@ -54,7 +54,7 @@ async function readProjects() {
   return out
 }
 
-// ffmpeg ships on the GitHub runner image and is a normal local install.
+// ffmpeg is NOT on the GitHub runner image — preview-gif.yml installs it via apt.
 const FFMPEG = process.env.FFMPEG_PATH || 'ffmpeg'
 await mkdir(outDir, { recursive: true })
 
