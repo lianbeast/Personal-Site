@@ -4,3 +4,4 @@ dist
 .DS_Store
 # recorder scratch frames — a crashed/aborted run must never be committed
 public/previews/.frames/
+.impeccable/
