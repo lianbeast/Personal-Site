@@ -25,7 +25,7 @@ function Scene({
   const { ref, visible } = useInView(0.5)
   const on = active || visible
   return (
-    <section id={id} ref={ref} className="relative flex h-[100dvh] items-center justify-center overflow-hidden px-6 py-24">
+    <section id={id} ref={ref} className="relative flex h-[100dvh] items-center justify-center overflow-y-auto overflow-x-hidden px-6 py-24 pb-[calc(6rem+2.75rem)] sm:pb-24">
       <div className={`scene-bg ${bg} ${on ? 'active' : ''}`} aria-hidden="true" />
       {(art || artClass) && (
         <div className={`art ${artClass ?? ''} ${on ? 'active' : ''}`} aria-hidden="true">{art}</div>
@@ -192,7 +192,7 @@ export function HeroScene() {
           <div className="mt-10">
             <a
               href={site.hero.cta.href}
-              className="btn-tactile btn-magnetic inline-block rounded-md bg-[var(--color-accent)] px-8 py-3.5 text-sm font-medium tracking-wide text-[var(--color-inverse)] no-underline transition-all duration-300 hover:bg-[var(--color-accent-hover)] hover:shadow-glow"
+              className="btn-tactile btn-magnetic inline-block rounded-md bg-[var(--color-accent)] px-8 py-3.5 text-sm font-medium tracking-wide text-[var(--color-text-inverse)] no-underline transition-all duration-300 hover:bg-[var(--color-accent-hover)] hover:shadow-glow"
             >
               {site.hero.cta.label}
             </a>
@@ -233,7 +233,7 @@ export function CapabilitiesScene() {
             Capabilities
           </h2>
         </KineticReveal>
-        <div className="mt-16 grid gap-8 text-left sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid grid-cols-2 gap-3 text-left sm:mt-16 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
           {site.features.map((f, i) => {
             const images = [
               'https://images.unsplash.com/photo-1550745165-9bc1495deeae?q=80&w=800&auto=format&fit=crop',
@@ -248,14 +248,14 @@ export function CapabilitiesScene() {
                   {/* Outer shell (double-bezel) */}
                   <div className="card-shell rounded-[2rem] border border-white/10 bg-white/5 p-2 transition-all duration-500 group-hover:border-white/20 group-hover:bg-white/10">
                     {/* Inner core */}
-                    <div className="glass-refract relative overflow-hidden rounded-[calc(2rem-0.5rem)] bg-[var(--color-bg-card)] p-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] transition-all duration-500 group-hover:-translate-y-1">
+                    <div className="glass-refract relative overflow-hidden rounded-[calc(2rem-0.5rem)] bg-[var(--color-bg-card)] p-4 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] transition-all duration-500 group-hover:-translate-y-1 sm:p-6">
                       <div className="absolute inset-0 z-0 opacity-20 transition-all duration-700 group-hover:scale-110 group-hover:opacity-30">
                         <img src={images[i % images.length]} alt="" className="h-full w-full object-cover grayscale" />
                       </div>
                       <div className="relative z-10">
-                        <span className="font-mono text-2xl font-light text-[var(--color-accent)]">{f.icon}</span>
-                        <h3 className="mt-4 font-display text-sm font-medium tracking-wide text-white">{f.title}</h3>
-                        <p className="m-0 mt-2 text-sm leading-relaxed text-[var(--color-text-muted)]">{f.desc}</p>
+                        <span className="font-mono text-xl font-light text-[var(--color-accent)] sm:text-2xl">{f.icon}</span>
+                        <h3 className="mt-2 font-display text-sm font-medium tracking-wide text-white sm:mt-4">{f.title}</h3>
+                        <p className="m-0 mt-1.5 text-[13px] leading-snug text-[var(--color-text-muted)] sm:mt-2 sm:text-sm sm:leading-relaxed">{f.desc}</p>
                       </div>
                     </div>
                   </div>
@@ -328,7 +328,7 @@ export function ContactScene() {
           <div className="mt-16">
             <a
               href={site.links.email}
-              className="btn-tactile btn-magnetic group relative inline-flex items-center gap-3 rounded-full bg-[var(--color-accent)] px-6 py-3.5 text-sm font-medium tracking-wide text-[var(--color-inverse)] no-underline transition-all duration-500 hover:bg-[var(--color-accent-hover)] hover:shadow-glow"
+              className="btn-tactile btn-magnetic group relative inline-flex items-center gap-3 rounded-full bg-[var(--color-accent)] px-6 py-3.5 text-sm font-medium tracking-wide text-[var(--color-text-inverse)] no-underline transition-all duration-500 hover:bg-[var(--color-accent-hover)] hover:shadow-glow"
             >
               <span className="relative z-10">Send me an email</span>
               <span className="flex h-8 w-8 items-center justify-center rounded-full bg-black/10 transition-all duration-500 group-hover:scale-110 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">

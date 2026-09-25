@@ -15,7 +15,7 @@
 
   --color-text: #E5E5E5;
   --color-text-muted: #A1A1AA;
-  --color-text-subtle: #71717A;
+  --color-text-subtle: #7E7E86;
   --color-text-inverse: #0A0A0A;
 
   --color-accent: #D4AF37;
@@ -325,8 +325,8 @@ body,
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 800px 400px at 20% 30%, rgba(99, 60, 130, 0.08) 0%, transparent 70%),
-    radial-gradient(ellipse 600px 500px at 80% 60%, rgba(30, 60, 120, 0.06) 0%, transparent 70%);
+    radial-gradient(ellipse 800px 400px at 20% 30%, rgba(212, 175, 55, 0.05) 0%, transparent 70%),
+    radial-gradient(ellipse 600px 500px at 80% 60%, rgba(245, 213, 71, 0.04) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -353,8 +353,8 @@ body,
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 800px 400px at 20% 30%, rgba(99, 60, 130, 0.08) 0%, transparent 70%),
-    radial-gradient(ellipse 600px 500px at 80% 60%, rgba(30, 60, 120, 0.06) 0%, transparent 70%);
+    radial-gradient(ellipse 800px 400px at 20% 30%, rgba(212, 175, 55, 0.05) 0%, transparent 70%),
+    radial-gradient(ellipse 600px 500px at 80% 60%, rgba(245, 213, 71, 0.04) 0%, transparent 70%);
   pointer-events: none;
 }
 /* ════════════════════════════════════════════════════════════
@@ -447,6 +447,7 @@ body,
 }
 
 /* ── HUD: depth meter (left) ── */
+.hud { display: contents; }
 .depth-meter {
   position: fixed;
   left: 24px;
@@ -504,12 +505,40 @@ body,
   transform: scale(1.25);
 }
 
-/* ── HUD mobile: bottom corners, larger dots ── */
+/* ── HUD mobile: one bottom bar, so neither block floats over scene content ── */
 @media (max-width: 640px) {
-  .scene-rail { right: 16px; top: auto; bottom: 88px; transform: none; gap: 16px; }
+  .hud {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
+    background: color-mix(in srgb, var(--color-bg) 78%, transparent);
+    backdrop-filter: blur(14px) saturate(180%);
+    border-top: 1px solid var(--color-border);
+  }
+  .depth-meter {
+    position: static;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transform: none;
+    font-size: 9px;
+  }
+  .depth-meter .depth-bar { width: 56px; height: 1px; margin: 0; }
+  .depth-meter .depth-bar i { transform: scaleX(var(--p, 0)); transform-origin: left; }
+  .scene-rail {
+    position: static;
+    flex-direction: row;
+    gap: 14px;
+    margin-left: auto;
+  }
+  /* 12px keeps the dots a comfortable tap target now that they sit in a bar. */
   .scene-rail a { width: 12px; height: 12px; }
-  .depth-meter { left: 16px; top: auto; bottom: 88px; transform: none; font-size: 9px; }
-  .depth-meter .depth-bar { height: 48px; }
 }
 
 /* ... existing content ... */

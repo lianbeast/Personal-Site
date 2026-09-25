@@ -49,11 +49,14 @@ export function NarrativeHUD() {
   const km = Math.round(400 - p * 396)
 
   return (
-    <>
+    // `hud` is display:contents on desktop (children keep their own fixed
+    // anchors); on mobile it collapses into a single bottom chrome bar.
+    <div className="hud">
       <div className="depth-meter" aria-hidden="true">
-        <span className="font-mono text-[9px] opacity-50">ALT</span>
+        <span className="font-mono text-[10px] text-[var(--color-text-muted)]">ALT</span>
         <div className="depth-bar">
-          <i style={{ transform: `scaleY(${p})` }} />
+          {/* --p lets CSS pick the axis: vertical on desktop, horizontal in the mobile bar. */}
+          <i style={{ '--p': p } as React.CSSProperties} />
         </div>
         <span className="depth-val font-mono text-xs">{p >= 1 ? 'ground' : `${km}km`}</span>
       </div>
@@ -68,6 +71,6 @@ export function NarrativeHUD() {
           />
         ))}
       </nav>
-    </>
+    </div>
   )
 }
