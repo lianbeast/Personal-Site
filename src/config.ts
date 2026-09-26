@@ -91,6 +91,12 @@ export const site = {
       live: 'https://lianbeast.github.io/hamna-Henna-Site/',
     },
     {
+      name: 'The-Sleep-Etiquette',
+      description: 'Fashion-first sleepwear label — six pages, a working bag, and a coming-soon list. Warm off-white, five fabric colourways, serif-and-sans, zero build step.',
+      url: 'https://github.com/lianbeast/The-Sleep-Etiquette',
+      live: 'https://lianbeast.github.io/The-Sleep-Etiquette/',
+    },
+    {
       name: 'Personal-Site',
       description: 'This site — interactive 3D portfolio with React Three Fiber, GSAP, and a live GitHub feed, deployed to GitHub Pages on every push.',
       url: 'https://github.com/lianbeast/Personal-Site',
