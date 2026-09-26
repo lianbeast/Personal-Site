@@ -94,7 +94,7 @@ export const site = {
       name: 'The-Sleep-Etiquette',
       description: 'Fashion-first sleepwear label — six pages, a working bag, and a coming-soon list. Warm off-white, five fabric colourways, serif-and-sans, zero build step.',
       url: 'https://github.com/lianbeast/The-Sleep-Etiquette',
-      live: 'https://lianbeast.github.io/The-Sleep-Etiquette/',
+      live: 'https://lianbeast.github.io/The-Sleep-Etiquette/coming-soon.html',
     },
     {
       name: 'Personal-Site',
