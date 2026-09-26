@@ -3,12 +3,11 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
-    # GIF-only commits don't need a redeploy
-    paths-ignore: ['preview.gif']
-  # preview-gif.yml commits its recordings with [skip ci] (required — the encoder
-  # isn't byte-reproducible, so an unguarded loop would re-record and redeploy
-  # forever). That leaves new previews on main but not on Pages, so ship them
-  # by dispatching this workflow.
+  # preview-gif.yml commits its recordings with [skip ci] so the re-record
+  # deploy loop terminates. Every push here deploys: a previews-only commit
+  # still needs to ship, and paths-ignore cannot tell it apart from a code push
+  # (it suppresses the whole run if *any* pushed file matches, so it also ate
+  # the previews).
   workflow_dispatch:
 
 permissions:
