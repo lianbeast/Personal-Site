@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  workflows: write
 
 jobs:
   record:
@@ -45,4 +46,10 @@ jobs:
             # [skip ci] + deploy paths-ignore break the regenerate loop
             git commit -m "[skip ci] Update recorded previews"
             git push
+            # [skip ci] also blocks the push-triggered deploy that would
+            # actually ship these new preview assets to Pages, so trigger
+            # it explicitly. The loop still breaks: this deploy re-runs
+            # the recorder, which finds previews unchanged and commits
+            # nothing, so it never fires another deploy.
+            gh workflow run deploy.yml --ref main
           fi
