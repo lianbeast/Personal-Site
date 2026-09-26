@@ -45,6 +45,8 @@ jobs:
             git add preview.gif public/previews
             # [skip ci] + deploy paths-ignore break the regenerate loop
             git commit -m "[skip ci] Update recorded previews"
+            # rebase on top of any new origin commits (race with concurrent deploy)
+            git pull --rebase origin main
             git push
             # [skip ci] also blocks the push-triggered deploy that would
             # actually ship these new preview assets to Pages, so trigger
