@@ -12,8 +12,6 @@ export function Footer() {
         <div className="flex gap-4">
           {[
             { href: site.links.github, label: 'GitHub' },
-            { href: site.links.linkedin, label: 'LinkedIn' },
-            { href: site.links.x, label: 'X' },
             { href: site.links.email, label: 'Email' },
           ].map(({ href, label }) => (
             <a

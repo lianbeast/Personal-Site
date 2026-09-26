@@ -36,9 +36,7 @@ export const site = {
 
   links: {
     github: 'https://github.com/lianbeast',
-    linkedin: 'https://www.linkedin.com/',
-    x: 'https://x.com/',
-    email: 'mailto:you@example.com',
+    email: 'mailto:lianbeast.905@gmail.com',
   },
 
   about: {
@@ -56,24 +54,6 @@ export const site = {
     { icon: '$ ', title: 'Tool Building', desc: 'CLI tools, dev utilities, and automation that save real time.' },
     { icon: '[::]', title: 'Full-Stack Apps', desc: 'End-to-end products with auth, databases, and deployment.' },
     { icon: '▶', title: 'Ship & Iterate', desc: 'CI/CD, preview deploys, and the confidence to push to main.' },
-  ],
-
-  testimonials: [
-    {
-      quote: "Lian's work on our interactive dashboard was exceptional — fast, polished, and delivered ahead of schedule.",
-      author: 'Project Client',
-      role: 'Startup Founder',
-    },
-    {
-      quote: "The GeoLibre integration was seamless. It just works, and it looks great doing it.",
-      author: 'Open Source Collaborator',
-      role: 'GIS Engineer',
-    },
-    {
-      quote: "Creative, reliable, and genuinely passionate about the craft. That's rare.",
-      author: 'Team Lead',
-      role: 'Engineering Manager',
-    },
   ],
 
   contact: {

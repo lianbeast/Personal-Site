@@ -473,7 +473,7 @@ body,
   width: 100%;
   background: var(--color-accent);
   transform-origin: top;
-  transform: scaleY(0);
+  transform: scaleY(var(--p, 0));
 }
 .depth-meter .depth-val { color: var(--color-accent); }
 

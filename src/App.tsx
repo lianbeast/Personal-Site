@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react'
 import { HeroScene, AboutScene, CapabilitiesScene, ProjectsScene, ContactScene } from './components/NarrativeScenes'
 import { NarrativeHUD } from './components/NarrativeHUD'
-import { TestimonialsSection } from './components/TestimonialsSection'
 import { MapRoomSection } from './components/MapRoomSection'
 import { ProjectsSection } from './components/ProjectsSection'
 import { Footer } from './components/Footer'
 
 // Scroll-narrative landing (opendesign/handoffs/scroll-narrative-landing).
-// Five sticky scenes + HUD; map room, live projects and testimonials stay
-// as normal scrolling sections after the descent.
+// Five sticky scenes + HUD; map room and live projects stay as normal
+// scrolling sections after the descent.
 export default function App() {
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 })
   const [cursorActive, setCursorActive] = useState(false)
@@ -50,7 +49,6 @@ export default function App() {
       <div className="relative z-10">
         <ProjectsSection />
         <MapRoomSection />
-        <TestimonialsSection />
         <Footer />
       </div>
     </div>

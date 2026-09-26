@@ -235,13 +235,6 @@ export function CapabilitiesScene() {
         </KineticReveal>
         <div className="mt-8 grid grid-cols-2 gap-3 text-left sm:mt-16 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
           {site.features.map((f, i) => {
-            const images = [
-              'https://images.unsplash.com/photo-1550745165-9bc1495deeae?q=80&w=800&auto=format&fit=crop',
-              'https://images.unsplash.com/photo-1518770660439-463645ebecf4?q=80&w=800&auto=format&fit=crop',
-              'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop',
-              'https://images.unsplash.com/photo-1504384308090-c894fdbe537e?q=80&w=800&auto=format&fit=crop',
-              'https://images.unsplash.com/photo-1460925895917-afbe65ae8364?q=80&w=800&auto=format&fit=crop',
-            ]
             return (
               <KineticReveal key={f.title} side={i % 2 === 0 ? 'l' : 'r'} delay={0.15 + i * 0.1}>
                 <div className="group relative">
@@ -249,9 +242,6 @@ export function CapabilitiesScene() {
                   <div className="card-shell rounded-[2rem] border border-white/10 bg-white/5 p-2 transition-all duration-500 group-hover:border-white/20 group-hover:bg-white/10">
                     {/* Inner core */}
                     <div className="glass-refract relative overflow-hidden rounded-[calc(2rem-0.5rem)] bg-[var(--color-bg-card)] p-4 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] transition-all duration-500 group-hover:-translate-y-1 sm:p-6">
-                      <div className="absolute inset-0 z-0 opacity-20 transition-all duration-700 group-hover:scale-110 group-hover:opacity-30">
-                        <img src={images[i % images.length]} alt="" className="h-full w-full object-cover grayscale" />
-                      </div>
                       <div className="relative z-10">
                         <span className="font-mono text-xl font-light text-[var(--color-accent)] sm:text-2xl">{f.icon}</span>
                         <h3 className="mt-2 font-display text-sm font-medium tracking-wide text-white sm:mt-4">{f.title}</h3>
