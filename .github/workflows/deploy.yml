@@ -5,6 +5,11 @@ on:
     branches: [main]
     # GIF-only commits don't need a redeploy
     paths-ignore: ['preview.gif']
+  # preview-gif.yml commits its recordings with [skip ci] (required — the encoder
+  # isn't byte-reproducible, so an unguarded loop would re-record and redeploy
+  # forever). That leaves new previews on main but not on Pages, so ship them
+  # by dispatching this workflow.
+  workflow_dispatch:
 
 permissions:
   contents: read
