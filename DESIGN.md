@@ -1,51 +1,42 @@
-# Personal Site — Design Doc
+# Personal-Site: Design Doc
 
-**Status:** Validated concept (pre-implementation)
-**Concept:** "Mission Control" — a 3D holographic landing page
-**Style:** Sci-fi hologram
+**Status:** Implemented. This doc describes the site as it ships, derived from `src/`.
 
----
+## Understanding
 
-## Understanding Summary
+A personal landing page. A rotating 3D wireframe globe sits at the center of a full-screen scene; holographic cards orbit around it showing live weather, world news, and tech news. Below the hero, a scroll-narrative descent walks through About, Capabilities, Projects, and Contact as five sticky scenes. A Map Room and a live GitHub feed sit as normal scrolling sections after the descent.
 
-- **What:** A personal landing page where a rotating 3D globe sits at the center of a full-screen scene, with holographic cards orbiting it showing live weather, world news, and tech news — plus the visitor's identity content (name, tagline, links, projects, about-me).
-- **Why:** A personal page that is both a portfolio and a live "dashboard" of what's happening in the world — memorable and informative.
-- **Who:** Visitors to the user's personal site (recruiters, collaborators, curious friends).
-- **Key constraints:** Pure frontend + free APIs; no backend, database, or auth; must degrade gracefully when APIs fail.
-- **Non-goals:** No CMS, no user accounts, no comments, no heavy backend — all personal content is static config.
+## Scene and layout
 
----
+The page is one full-screen Three.js canvas (`react-three-fiber`) on a dark space background.
 
-## Scene & Layout
-
-Full-screen Three.js canvas (`react-three-fiber`), dark space background:
-
-- **Core (center):** Glowing 3D name text + tagline, enveloped by a slowly rotating wireframe globe with cyan edge glow.
-- **Orbiting holographic cards** (fixed orbital slots, gentle sinusoidal bobbing):
-  - 🌤 **Weather card** — live conditions for the visitor's location, autodetected via the Geolocation API (Imperial °F/mph); falls back to a configured city. Animated 3D condition (sun / rain particles / clouds).
-  - 📰 **World news card** — top headlines, latest first.
-  - ⚡ **Tech news card** — latest tech stories.
-- **Social orbit:** GitHub / LinkedIn / X / email as clickable glowing icons orbiting the globe.
-- **About-me card:** compact floating holo-panel.
-- **Project spotlight:** card listing 3–4 featured projects with links.
+- **Core (center):** the name and tagline, enveloped by a slowly rotating wireframe globe with a gold edge glow.
+- **Orbiting cards:** fixed orbital slots with gentle sinusoidal bobbing. Weather, world news, tech news. Each renders its own loading, error, and offline fallback so one failing API never breaks the page.
+- **Descent:** five sticky 100dvh scenes (hero, about, capabilities, projects, contact). Each scene is background (CSS) plus an art layer (SVG or CSS) plus content. Scenes fade in at 50% visibility.
+- **HUD:** a fixed depth meter on the left (ALT readout, fills as you scroll; reads "ground" at the bottom) and a progress rail on the right (five dots, active one highlighted).
+- **After the descent:** Map Room, then live GitHub projects, then the footer.
 
 ## Interactions
 
-- **Drag** to rotate the globe.
-- **Hover** a card → it expands; **scroll** zooms into "focus mode" on that feed.
-- **Click** social icons → open links.
-- Respect `prefers-reduced-motion`; clamp device pixel ratio for performance.
+- Drag to rotate the globe.
+- Hover a card to lift it.
+- Click any card to zoom into focus mode.
+- Pause orbit: freeze the carousel, drag cards anywhere to rearrange, resume to start orbiting again.
+- Custom cursor follower: a 40px gold ring that follows the mouse and expands to 80px over interactive elements.
+- Magnetic buttons (`btn-magnetic`) and tactile click scaling (`btn-tactile`).
+- Smooth scroll, scroll-triggered fade-ins, and a glass-refractive card treatment.
+- Respects `prefers-reduced-motion`: art fades in without drifting or breathing, transitions collapse to 0.01ms.
 
-## Data Sources (all free)
+## Data sources (all free)
 
 | Source | Purpose | Key needed? |
 |---|---|---|
-| [Open-Meteo](https://open-meteo.com) | Weather (current + conditions, imperial units) | No |
-| [BigDataCloud](https://www.bigdatacloud.com) | Reverse geocode (friendly city name for geolocation) | No |
-| Hacker News / The Verge RSS | Tech news | No |
-| BBC / Reuters RSS | World news | No |
+| Open-Meteo | Weather (current + conditions, imperial units) | No |
+| BigDataCloud | Reverse geocode (friendly city name for geolocation) | No |
+| rss2json | World news (BBC) and tech news (Hacker News) | No |
+| GitHub API | Most recently pushed public repos | No |
 
-**CORS handling:** RSS feeds are fetched through a tiny server-side proxy endpoint (`/api/rss?feed=...`) so the browser never hits CORS. RSS parsed with `fast-xml-parser`.
+**CORS handling:** RSS feeds are fetched through a server-side proxy endpoint (`/api/rss?feed=...`) so the browser never hits CORS. RSS parsed with `fast-xml-parser`.
 
 ## Stack
 
@@ -53,56 +44,45 @@ Full-screen Three.js canvas (`react-three-fiber`), dark space background:
 - `three` + `@react-three/fiber` + `@react-three/drei`
 - Tailwind CSS for the 2D overlay UI (loading, error states)
 - `fast-xml-parser` (server side of the RSS proxy)
-- Deployable to Vercel / Netlify / Cloudflare Pages as a static site
+- `gsap` (ScrollTrigger reveals), `motion` / framer (kinetic reveals)
 
 ## Architecture
 
 ```
 src/
-  App.tsx            # Canvas + scene composition + 2D overlay shell
+  App.tsx                # Canvas + scene composition + 2D overlay shell
+  main.tsx               # Entry
+  config.ts              # Single source of truth: name, tagline, links, projects, feeds
+  index.css               # Design tokens + all CSS (backgrounds, art, HUD, cursor)
   components/
-    Globe.tsx        # wireframe globe + drag rotation
-    IdentityCore.tsx # glowing name/tagline 3D text
-    SocialOrbit.tsx  # orbiting link icons
-    OrbitingCard.tsx # generic floating holo-card shell
-    WeatherCard.tsx  # Open-Meteo data + 3D condition
-    NewsCard.tsx     # RSS headlines (reused for world + tech)
-    AboutCard.tsx    # about-me blurb
-    ProjectsCard.tsx # featured projects
-  lib/
-    weather.ts       # Open-Meteo client
-    news.ts          # RSS fetch + parse client
-  config.ts          # name, tagline, links, projects, city, feeds
-server/
-  rss-proxy.ts       # /api/rss?feed=...  (or Vite plugin in dev)
+    NarrativeScenes.tsx  # 5 sticky 100dvh scenes + SVG art motifs
+    NarrativeHUD.tsx     # Depth meter + scene rail
+    Background.tsx       # Parallax background variants
+    MapRoomSection.tsx   # GeoLibre iframe embed
+    ProjectsSection.tsx  # Live GitHub repos
+    ProjectPreview.tsx   # Recorded mp4 + poster previews
+    ScrollReveal.tsx     # gsap ScrollTrigger reveal
+    Footer.tsx
+  hooks/
+    useAsync.ts          # Generic async hook with refresh
+    useInView.ts         # IntersectionObserver wrapper
+  lib/github.ts          # Typed GitHub API client
 ```
 
-**Data flow:** On load (and every 10 min / on refresh), fetch weather + each RSS feed independently. Each card renders its own loading / error / offline fallback so one failing API never breaks the page.
+**Data flow:** On load (and every 10 min / on refresh), fetch weather and each RSS feed independently. Each card renders its own loading / error / offline fallback so one failing API never breaks the page.
 
 ## Assumptions
 
 - News feeds default to **Hacker News + The Verge** (user did not select; changeable in `config.ts`).
-- Weather city, name/tagline, social URLs, and featured projects will be supplied at build time (placeholders OK initially).
-- Static hosting, no SSR.
+- Everything personal lives in `src/config.ts`. Edit, push, done.
+- Pure frontend + free APIs; no backend, database, or auth; must degrade gracefully when APIs fail.
 
-## Decision Log
-
-| Decision | Chosen | Alternatives | Why |
-|---|---|---|---|
-| Concept | Mission Control globe | My Universe, Holo-Desk | User pick |
-| Visual style | Sci-fi hologram | Minimal glass, Playful neon | User pick |
-| Personal content | All four (name, links, projects, about) | Subsets | User pick |
-| Weather API | Open-Meteo | WeatherAPI, OpenWeather | Free, keyless, CORS-friendly |
-| News delivery | RSS via server proxy | NewsAPI (needs key), client-side fetch (CORS) | Free + reliable |
-
-## Deployment & Preview Workflow (decided)
+## Deployment and preview workflow
 
 - **Host:** GitHub Pages (`https://lianbeast.github.io/Personal-Site/`), auto-deploy on every push to `main` via a GitHub Actions workflow (`actions/deploy-pages`). Vite `base: '/Personal-Site/'`.
 - **Live GIF preview:** A GitHub Action records the deployed page (~8s of the 3D animation) with Playwright, stitches frames into `preview.gif` (gifenc), and commits it back with `[skip ci]` so the README always shows the current look. One-time repo setting needed: Settings → Pages → Source = **GitHub Actions**.
-- **CORS note (static hosting):** GitHub Pages has no server side, so the RSS proxy from the earlier design is replaced with a client-side strategy — Hacker News uses its CORS-enabled Firebase API; BBC world news goes through rss2json (native CORS, JSON) with an allorigins XML passthrough as fallback. Open-Meteo is already CORS-friendly.
-- Every change: commit + push to `main` (per user request), which triggers deploy → GIF refresh.
 
-## Open Questions (for build time)
+## Open questions
 
 1. Name + tagline text? *(placeholder until provided)*
 2. Weather city? *(placeholder until provided)*

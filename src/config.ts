@@ -26,7 +26,7 @@ export const site = {
   tagline: 'Builder · Dreamer · Explorer',
   hero: {
     headline: 'I build things that live on the web.',
-    sub: 'Interactive, playful, and a little bit extra. Currently exploring new tools, reading about space, and chasing the next cool idea.',
+    sub: 'Interactive, playful, a little bit extra. Right now I\'m reading about space and chasing the next idea worth building.',
     // Anchor must match a scene id in NarrativeScenes.tsx (s-*).
     cta: { label: 'Get in touch', href: '#s-contact' },
   },
@@ -42,24 +42,24 @@ export const site = {
   about: {
     intro: "Hi, I'm Lian Beast.",
     body: [
-      'I build things that live on the web — interactive, playful, and a little bit extra.',
-      "When I'm not shipping code you'll find me exploring new tools, reading about space, and chasing the next cool idea.",
+      'I build things that live on the web. Interactive, playful, a little bit extra.',
+      "When I'm not shipping code I'm poking at new tools, reading about space, or chasing the next idea worth building.",
     ],
   },
 
   features: [
-    { icon: '<>', title: 'Frontend Engineering', desc: 'React, TypeScript, Next.js — crafting fast, fluid interfaces.' },
-    { icon: '{ }', title: 'Creative Development', desc: 'Three.js, WebGL, GSAP — turning static pages into experiences.' },
-    { icon: '[ ]', title: 'Geospatial & GIS', desc: 'MapLibre, DuckDB-WASM, GeoLibre — browser-native spatial tools.' },
-    { icon: '$ ', title: 'Tool Building', desc: 'CLI tools, dev utilities, and automation that save real time.' },
-    { icon: '[::]', title: 'Full-Stack Apps', desc: 'End-to-end products with auth, databases, and deployment.' },
-    { icon: '▶', title: 'Ship & Iterate', desc: 'CI/CD, preview deploys, and the confidence to push to main.' },
+    { icon: '<>', title: 'Frontend Engineering', desc: 'React, TypeScript, Next.js. Fast, fluid interfaces.' },
+    { icon: '{ }', title: 'Creative Development', desc: 'Three.js, WebGL, GSAP. Motion you can feel.' },
+    { icon: '[ ]', title: 'Geospatial & GIS', desc: 'MapLibre, DuckDB-WASM, GeoLibre. Spatial tools that run in the browser.' },
+    { icon: '$ ', title: 'Tool Building', desc: 'CLI tools, dev utilities, automation. The kind that actually saves time.' },
+    { icon: '[::]', title: 'Full-Stack Apps', desc: 'End-to-end products. Auth, databases, deployment.' },
+    { icon: '▶', title: 'Ship & Iterate', desc: 'CI/CD, preview deploys. Pushing to main is routine, not a gamble.' },
   ],
 
   contact: {
     eyebrow: 'contact',
     headline: "Let's build something together.",
-    sub: 'Got an idea, a project, or just want to say hi? I\'m always open to new conversations and collaborations.',
+    sub: 'Have an idea, a project, or just want to say hi? Send an email.',
   },
 
   // Repos I created (source repos, not forks). The live GitHub feed in the
@@ -68,37 +68,37 @@ export const site = {
   projects: [
     {
       name: 'EliteHuman',
-      description: 'Scroll-driven 3D brand site — Body → Mind → Spirit → Apex — with a browsable archive of 105 Instagram posts. React Three Fiber, postprocessing, and Lenis smooth scroll.',
+      description: 'Scroll-driven 3D brand site. Four chapters: Body, Mind, Spirit, Apex. Browsable archive of 105 Instagram posts. React Three Fiber, postprocessing, Lenis smooth scroll.',
       url: 'https://github.com/lianbeast/EliteHuman',
       live: 'https://lianbeast.github.io/EliteHuman/',
     },
     {
       name: 'Lian-Arch-Linux-Site',
-      description: 'Arch Linux scroll landing page — particle backdrop, scroll-progress nav, and an in-page terminal that answers real pacman commands. React 19 + Vite.',
+      description: 'Arch Linux landing page. Particle backdrop, scroll-progress navigation, an in-page terminal that answers real pacman commands. React 19, Vite.',
       url: 'https://github.com/lianbeast/Lian-Arch-Linux-Site',
       live: 'https://lianbeast.github.io/Lian-Arch-Linux-Site/',
     },
     {
       name: 'debian-linux-site',
-      description: 'Cosmic single-file landing page for Debian 13 "Trixie" — animated Three.js hero, an actually interactive bash terminal, and first-class accessibility. Zero build step.',
+      description: 'Single-file landing page for Debian 13 "Trixie". Animated Three.js hero, a bash terminal you can actually use, real accessibility. Zero build step.',
       url: 'https://github.com/lianbeast/debian-linux-site',
       live: 'https://lianbeast.github.io/debian-linux-site/',
     },
     {
       name: 'hamna-Henna-Site',
-      description: 'Immersive 3D portfolio for a henna artist — mandala scene with neon wireframes, scroll-driven reveals, and a Web Audio tanpura drone. Astro + React Three Fiber.',
+      description: 'Immersive 3D portfolio for a henna artist. Mandala scene with neon wireframes, scroll-driven reveals, a Web Audio tanpura drone. Astro, React Three Fiber.',
       url: 'https://github.com/lianbeast/hamna-Henna-Site',
       live: 'https://lianbeast.github.io/hamna-Henna-Site/',
     },
     {
       name: 'The-Sleep-Etiquette',
-      description: 'Fashion-first sleepwear label — six pages, a working bag, and a coming-soon list. Warm off-white, five fabric colourways, serif-and-sans, zero build step.',
+      description: 'A sleepwear label. Six pages, a working bag, a coming-soon list. Warm off-white, five fabric colourways, serif and sans. Zero build step.',
       url: 'https://github.com/lianbeast/The-Sleep-Etiquette',
       live: 'https://lianbeast.github.io/The-Sleep-Etiquette/coming-soon.html',
     },
     {
       name: 'Personal-Site',
-      description: 'This site — interactive 3D portfolio with React Three Fiber, GSAP, and a live GitHub feed, deployed to GitHub Pages on every push.',
+      description: 'This site. Interactive 3D portfolio with React Three Fiber, GSAP, and a live GitHub feed. Deploys to GitHub Pages on every push.',
       url: 'https://github.com/lianbeast/Personal-Site',
       live: 'https://lianbeast.github.io/Personal-Site/',
     },
