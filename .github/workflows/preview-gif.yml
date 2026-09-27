@@ -11,7 +11,13 @@ permissions:
 
 jobs:
   record:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    # Only record after a push-triggered deploy. The dispatch deploy below is
+    # this workflow pushing its own previews commit, so recording after it
+    # re-records byte-identical output and commits nothing — a whole extra
+    # Playwright pass plus a build for no change.
+    if: >-
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'push'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -45,15 +51,16 @@ jobs:
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add preview.gif public/previews
-            # [skip ci] + deploy paths-ignore break the regenerate loop
+            # [skip ci] breaks the regenerate loop for the push trigger
             git commit -m "[skip ci] Update recorded previews"
             # rebase on top of any new origin commits (race with concurrent deploy)
             git pull --rebase origin main
             git push
             # [skip ci] also blocks the push-triggered deploy that would
             # actually ship these new preview assets to Pages, so trigger
-            # it explicitly. The loop still breaks: this deploy re-runs
-            # the recorder, which finds previews unchanged and commits
-            # nothing, so it never fires another deploy.
+            # it explicitly. The job guard above keys the recorder on
+            # event == 'push', so this dispatch deploy does NOT chain into
+            # another recording pass — the loop breaks here rather than by
+            # re-recording unchanged output.
             gh workflow run deploy.yml --ref main
           fi
