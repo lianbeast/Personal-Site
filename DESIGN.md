@@ -25,10 +25,10 @@ Sections after the descent are ordinary flow content: `ProjectsSection` (live Gi
 ## Interactions
 
 - Smooth scroll (`scroll-behavior: smooth`); scene content animates in with scrub motion as each scene becomes active.
-- Custom cursor follower: a 40px gold ring that trails the pointer and grows to 80px over interactive elements.
+- Custom cursor: `SplashCursor.tsx` draws a gold ring that grows to 80px over interactive elements, trailing a six-node ribbon that blooms with pointer speed. Plain CSS transforms on six `<span>`s, no WebGL and no new dependency. It writes to DOM nodes from a rAF loop rather than React state, so pointer movement never re-renders the scenes.
 - Magnetic buttons (`btn-magnetic`) and tactile click scaling (`btn-tactile`).
 - Capability cards lift and glow on hover; project cards show a recorded clip of the live site on hover.
-- **Reduced motion** (`prefers-reduced-motion: reduce`) is honoured on every path: art fades in without drifting or breathing, the cursor follower is hidden outright, and `ScrollReveal` skips its tween entirely rather than animating.
+- **Reduced motion** (`prefers-reduced-motion: reduce`) is honoured on every path: art fades in without drifting or breathing, the cursor trail renders nothing at all, and `ScrollReveal` skips its tween entirely rather than animating.
 
 ## Data sources
 
@@ -66,6 +66,7 @@ src/
     MapRoomSection.tsx   # GeoLibre iframe embed
     ScrollReveal.tsx     # gsap ScrollTrigger reveal
     Eyebrow.tsx          # Shared section index label
+    SplashCursor.tsx     # Gold cursor ring + velocity trail
     Footer.tsx
   hooks/
     useAsync.ts          # Generic async hook with refresh

@@ -61,28 +61,16 @@ html {
   scroll-behavior: smooth;
 }
 
-/* ── Global Cursor Follower ── */
-.cursor-follower {
-  position: fixed;
-  top: 0;
-  left: 0;
+/* ── Global Cursor (SplashCursor.tsx) ── */
+/* Sized here, positioned by the component's rAF loop. A transition on
+   transform would fight that loop frame by frame, so the ring is
+   transform-only and the growth is baked into the transform's scale. */
+.splash-ring {
   width: 40px;
   height: 40px;
   border: 1px solid var(--color-accent);
   border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transition: transform var(--transition-fast), width var(--transition-fast), height var(--transition-fast), opacity var(--transition-fast);
-  mix-blend-mode: difference;
-}
-
-.cursor-follower.active {
-  width: 80px;
-  height: 80px;
-  margin-left: -20px;
-  margin-top: -20px;
-  background: var(--color-accent-subtle);
-  opacity: 0.5;
+  transition: opacity 200ms ease-out;
 }
 
 /* ── Physical Texture Overlay ── */
@@ -377,9 +365,10 @@ body,
 @media (prefers-reduced-motion: reduce) {
   .art { transition-duration: 0.01ms; }
   .scene-bg { transition-duration: 0.01ms; }
-  /* The cursor follower is a 40px ring that eases to the pointer on every
-     mousemove — constant motion, and pure decoration. Hide it outright. */
-  .cursor-follower { display: none; }
+  /* The pointer trail is a ring that chases the cursor on every mousemove —
+     constant motion, and pure decoration. The component returns null, so this
+     is belt-and-braces against a class left on some node. */
+  .splash-ring { display: none; }
 }
 
 /* ── HUD: depth meter (left) ── */
