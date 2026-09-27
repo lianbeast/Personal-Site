@@ -80,10 +80,26 @@ export function ProjectsSection() {
   const curated = new Map<string, Project>(site.projects.map((p) => [p.name, p]))
   const repos: CardRepo[] | null =
     state.status === 'ok'
-      ? state.data.map((r) => {
-          const c = curated.get(r.name)
-          return { ...r, description: r.description ?? c?.description ?? null, live: c?.live }
-        })
+      ? [
+          ...state.data.map((r) => {
+            const c = curated.get(r.name)
+            return { ...r, description: r.description ?? c?.description ?? null, live: c?.live }
+          }),
+          // Curated projects with no public repo — a private repo can never come
+          // back from the API, so without this they render only when the feed
+          // errors out. Appended so they follow the live feed, not displace it.
+          ...site.projects
+            .filter((p) => !state.data.some((r) => r.name === p.name))
+            .map((p) => ({
+              name: p.name,
+              description: p.description,
+              url: p.url,
+              language: null,
+              stars: 0,
+              updated: '',
+              live: p.live,
+            })),
+        ]
       : null
   const fallback: CardRepo[] | null =
     state.status === 'error'
