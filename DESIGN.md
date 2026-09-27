@@ -4,64 +4,68 @@
 
 ## Understanding
 
-A personal landing page. A rotating 3D wireframe globe sits at the center of a full-screen scene; holographic cards orbit around it showing live weather, world news, and tech news. Below the hero, a scroll-narrative descent walks through About, Capabilities, Projects, and Contact as five sticky scenes. A Map Room and a live GitHub feed sit as normal scrolling sections after the descent.
+A personal landing page built as a scroll narrative. Five sticky, full-viewport scenes read as a controlled descent from orbit to ground: hero, about, capabilities, projects, contact. A fixed HUD tracks the descent — an altitude readout on the left, a scene rail on the right. After the descent come two normal scrolling sections (live GitHub projects, then a Map Room embedding GeoLibre) and a footer.
+
+Everything renders from CSS and SVG. There is no 3D canvas, no WebGL, and no network data on the critical path — the only fetch is an optional GitHub repos call for the projects section, which degrades to a static list when it fails.
 
 ## Scene and layout
 
-The page is one full-screen Three.js canvas (`react-three-fiber`) on a dark space background.
+Five `<section>` elements, each `100dvh` and `position: sticky`, stacked so exactly one fills the viewport at a time. Each scene is three layers:
 
-- **Core (center):** the name and tagline, enveloped by a slowly rotating wireframe globe with a gold edge glow.
-- **Orbiting cards:** fixed orbital slots with gentle sinusoidal bobbing. Weather, world news, tech news. Each renders its own loading, error, and offline fallback so one failing API never breaks the page.
-- **Descent:** five sticky 100dvh scenes (hero, about, capabilities, projects, contact). Each scene is background (CSS) plus an art layer (SVG or CSS) plus content. Scenes fade in at 50% visibility.
-- **HUD:** a fixed depth meter on the left (ALT readout, fills as you scroll; reads "ground" at the bottom) and a progress rail on the right (five dots, active one highlighted).
-- **After the descent:** Map Room, then live GitHub projects, then the footer.
+1. **Background** — a CSS-only texture from `Background.tsx` (star field, nebula, blueprint, contours, noise, and variants), parallaxed at 15% of scroll.
+2. **Art** — an SVG or CSS motif per scene (hero rings, about beacon, capability grid, project contours, contact orbit), fading in at 50% visibility.
+3. **Content** — centered column, `max-w-4xl`, 24px gutters.
+
+Sections after the descent are ordinary flow content: `ProjectsSection` (live GitHub feed), `MapRoomSection` (GeoLibre iframe), `Footer`.
+
+**HUD** (`NarrativeHUD.tsx`, fixed):
+- *Depth meter* (left): "ALT" label, a bar that fills with scroll progress, and a readout that interpolates 400km → "ground". Progress is measured against the narrative's own extent (`main`'s offsetTop + height), not document height, so the descent reads 0–100% and then stops.
+- *Scene rail* (right): five anchor dots, the active one filled gold. Each anchor is a 24×24 hit target (WCAG 2.5.8) with the visible 8px dot drawn by `::before`. On mobile the whole HUD collapses into a single fixed bottom bar.
 
 ## Interactions
 
-- Drag to rotate the globe.
-- Hover a card to lift it.
-- Click any card to zoom into focus mode.
-- Pause orbit: freeze the carousel, drag cards anywhere to rearrange, resume to start orbiting again.
-- Custom cursor follower: a 40px gold ring that follows the mouse and expands to 80px over interactive elements.
+- Smooth scroll (`scroll-behavior: smooth`); scene content animates in with scrub motion as each scene becomes active.
+- Custom cursor follower: a 40px gold ring that trails the pointer and grows to 80px over interactive elements.
 - Magnetic buttons (`btn-magnetic`) and tactile click scaling (`btn-tactile`).
-- Smooth scroll, scroll-triggered fade-ins, and a glass-refractive card treatment.
-- Respects `prefers-reduced-motion`: art fades in without drifting or breathing, transitions collapse to 0.01ms.
+- Capability cards lift and glow on hover; project cards show a recorded clip of the live site on hover.
+- **Reduced motion** (`prefers-reduced-motion: reduce`) is honoured on every path: art fades in without drifting or breathing, the cursor follower is hidden outright, and `ScrollReveal` skips its tween entirely rather than animating.
 
-## Data sources (all free)
+## Data sources
 
 | Source | Purpose | Key needed? |
 |---|---|---|
-| Open-Meteo | Weather (current + conditions, imperial units) | No |
-| BigDataCloud | Reverse geocode (friendly city name for geolocation) | No |
-| rss2json | World news (BBC) and tech news (Hacker News) | No |
-| GitHub API | Most recently pushed public repos | No |
+| GitHub API | Most recently pushed public repos (projects section only) | No |
+| GeoLibre embed | The Map Room iframe, or a shared GeoLibre project | No |
 
-**CORS handling:** RSS feeds are fetched through a server-side proxy endpoint (`/api/rss?feed=...`) so the browser never hits CORS. RSS parsed with `fast-xml-parser`.
+The only network call on the page is the optional GitHub repos fetch. If it fails, the section falls back to the static `site.projects` list in `config.ts` — the page never depends on it rendering.
 
 ## Stack
 
-- Vite + React + TypeScript
-- `three` + `@react-three/fiber` + `@react-three/drei`
-- Tailwind CSS for the 2D overlay UI (loading, error states)
-- `fast-xml-parser` (server side of the RSS proxy)
-- `gsap` (ScrollTrigger reveals), `motion` / framer (kinetic reveals)
+- Vite + React 19 + TypeScript
+- Tailwind CSS v4 (via `@tailwindcss/vite`), with design tokens declared in an `@theme` block in `index.css`
+- `gsap` + ScrollTrigger — `ScrollReveal` for the scrolled sections
+- `motion` (framer) — `KineticReveal` for the narrative scenes, plus `useReducedMotion`
+
+There is no `three`, no `react-three-fiber`, and no Tailwind-config file; tokens are CSS-native.
 
 ## Architecture
 
 ```
 src/
-  App.tsx                # Canvas + scene composition + 2D overlay shell
+  App.tsx                # Scene composition + HUD + sections
   main.tsx               # Entry
-  config.ts              # Single source of truth: name, tagline, links, projects, feeds
-  index.css               # Design tokens + all CSS (backgrounds, art, HUD, cursor)
+  config.ts              # Single source of truth: name, tagline, links, about,
+                         #   features, contact, projects, geolibre
+  index.css              # @theme tokens + all CSS (backgrounds, art, HUD, cursor)
   components/
     NarrativeScenes.tsx  # 5 sticky 100dvh scenes + SVG art motifs
     NarrativeHUD.tsx     # Depth meter + scene rail
     Background.tsx       # Parallax background variants
-    MapRoomSection.tsx   # GeoLibre iframe embed
-    ProjectsSection.tsx  # Live GitHub repos
+    ProjectsSection.tsx  # Live GitHub repos (+ static fallback)
     ProjectPreview.tsx   # Recorded mp4 + poster previews
+    MapRoomSection.tsx   # GeoLibre iframe embed
     ScrollReveal.tsx     # gsap ScrollTrigger reveal
+    Eyebrow.tsx          # Shared section index label
     Footer.tsx
   hooks/
     useAsync.ts          # Generic async hook with refresh
@@ -69,23 +73,26 @@ src/
   lib/github.ts          # Typed GitHub API client
 ```
 
-**Data flow:** On load (and every 10 min / on refresh), fetch weather and each RSS feed independently. Each card renders its own loading / error / offline fallback so one failing API never breaks the page.
+**Data flow:** the GitHub feed is fetched through `useAsync`, which owns loading / error / success state and a refresh path. On failure the projects section renders the static `site.projects` list instead, so a failed API never breaks the page.
+
+## Design system
+
+- **Tokens** live in the `@theme` block in `index.css` (colors, fonts, transitions) plus semantic aliases. The extracted, human-readable copy of the palette and type scale is `opendesign/design-systems/personal-site/tokens/colors_and_type.css`; it is **derived from** `index.css`, which is the source of truth.
+- **Cards** share one treatment: 16px radius, `--color-border`, `--color-bg-card`, gold border + soft glow on hover.
+- **Contrast** is held to WCAG 2.2 AA for text (≥4.5) and non-text UI (≥3), including the scrollbar thumb and the scene-rail targets. `prefers-contrast: more` raises the border token for users who need it.
 
 ## Assumptions
 
-- News feeds default to **Hacker News + The Verge** (user did not select; changeable in `config.ts`).
 - Everything personal lives in `src/config.ts`. Edit, push, done.
-- Pure frontend + free APIs; no backend, database, or auth; must degrade gracefully when APIs fail.
+- Pure frontend; the only external data is the optional GitHub feed.
+- GitHub Pages is the host, so there is no server side — nothing may assume one.
 
 ## Deployment and preview workflow
 
 - **Host:** GitHub Pages (`https://lianbeast.github.io/Personal-Site/`), auto-deploy on every push to `main` via a GitHub Actions workflow (`actions/deploy-pages`). Vite `base: '/Personal-Site/'`.
-- **Live GIF preview:** A GitHub Action records the deployed page (~8s of the 3D animation) with Playwright, stitches frames into `preview.gif` (gifenc), and commits it back with `[skip ci]` so the README always shows the current look. One-time repo setting needed: Settings → Pages → Source = **GitHub Actions**.
+- **Live GIF preview:** A GitHub Action records the deployed page with Playwright, stitches frames into `preview.gif` (gifenc), and commits it back with `[skip ci]` so the README always shows the current look. It chains off the deploy workflow via `workflow_run`.
+- **Project previews:** a second recorder clips each `site.projects[].live` URL into `public/previews/<slug>.mp4` + `.jpg` on every deploy, where the slug is the project name lowercased and dashed (`previewSlug` in `config.ts`). One-time repo setting: Settings → Pages → Source = **GitHub Actions**.
 
 ## Open questions
 
-1. Name + tagline text? *(placeholder until provided)*
-2. Weather city? *(placeholder until provided)*
-3. Social URLs (GitHub, LinkedIn, X, email)? *(placeholder until provided)*
-4. 3–4 featured projects + links? *(placeholder until provided)*
-5. Confirm news feeds (default: Hacker News + The Verge)? *(confirmed by default)*
+None outstanding. Earlier placeholders (name, tagline, weather city, social URLs, featured projects) are all resolved in `config.ts`; the news and weather features the original concept described were dropped in the scroll-narrative rewrite and are no longer part of the site.
