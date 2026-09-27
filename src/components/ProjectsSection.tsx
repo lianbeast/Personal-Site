@@ -2,6 +2,7 @@ import { site, type Project } from '../config'
 import { getRepos, type Repo } from '../lib/github'
 import { useAsync } from '../hooks/useAsync'
 import { ScrollReveal } from './ScrollReveal'
+import { Eyebrow } from './Eyebrow'
 import { Background } from './Background'
 import { ProjectPreview } from './ProjectPreview'
 
@@ -36,7 +37,7 @@ type CardRepo = Repo & { live?: string }
 function RepoCard({ repo }: { repo: CardRepo }) {
   const color = LANG_COLORS[repo.language ?? ''] ?? '#D4AF37'
   return (
-    <div className="group block rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-card)] p-5 transition-all duration-300 hover:border-[var(--color-accent)] hover:bg-[var(--color-bg-card-hover)] hover:shadow-[0_0_30px_rgba(212,175,55,0.06)]">
+    <div className="group block rounded-[16px] border border-[var(--color-border)] bg-[var(--color-bg-card)] p-5 transition-all duration-300 hover:border-[var(--color-accent)] hover:bg-[var(--color-bg-card-hover)] hover:shadow-[0_0_30px_rgba(212,175,55,0.06)]">
       <ProjectPreview name={repo.name} live={repo.live} className="mb-4 aspect-[16/10] rounded-lg" />
       <h3 className="font-display text-sm font-semibold tracking-wide text-white transition group-hover:text-[var(--color-accent)]">
         <a href={repo.url} target="_blank" rel="noopener noreferrer">
@@ -102,9 +103,7 @@ export function ProjectsSection() {
       <Background variant="contours" />
       <div className="relative z-10 mx-auto max-w-4xl">
         <ScrollReveal>
-          <p className="font-mono text-[10px] tracking-[0.3em] text-[var(--color-text-subtle)] uppercase">
-            projects
-          </p>
+          <Eyebrow>projects</Eyebrow>
           <h2 className="mt-4 font-display text-2xl font-medium tracking-tight text-white sm:text-3xl">
             Open Source
           </h2>

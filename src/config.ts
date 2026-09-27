@@ -104,11 +104,6 @@ export const site = {
     },
   ],
 
-  feeds: {
-    tech: 'hn',
-    world: 'https://feeds.bbci.co.uk/news/world/rss.xml',
-  },
-
   geolibre: {
     embedBase: 'https://web.geolibre.app',
     // Shared project from GeoLibre's Project → Share
@@ -156,5 +151,3 @@ export const site = {
     ],
   },
 }
-
-export type FeedKind = 'tech' | 'world'

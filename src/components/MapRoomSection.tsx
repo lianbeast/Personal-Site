@@ -1,5 +1,6 @@
 import { site } from '../config'
 import { ScrollReveal } from './ScrollReveal'
+import { Eyebrow } from './Eyebrow'
 import { Background } from './Background'
 
 function embedUrl() {
@@ -26,9 +27,7 @@ export function MapRoomSection() {
         <ScrollReveal>
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <p className="font-mono text-[10px] tracking-[0.3em] text-[var(--color-text-subtle)] uppercase">
-                map room
-              </p>
+              <Eyebrow>map room</Eyebrow>
               <h2 className="mt-4 font-display text-2xl font-medium tracking-tight text-white sm:text-3xl">
                 The Map Room
               </h2>

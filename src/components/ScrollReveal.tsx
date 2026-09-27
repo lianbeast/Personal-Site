@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useReducedMotion } from 'motion/react'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -28,8 +29,15 @@ export function ScrollReveal({
   stagger = 0.1
 }: ScrollRevealProps) {
   const containerRef = useRef<HTMLDivElement>(null)
+  const reduced = useReducedMotion()
 
   useEffect(() => {
+    // Reduced motion: skip the tween entirely and leave the children in their
+    // natural (fully visible) state. Bailing before gsap.set matters — that
+    // set is what hides them, so a bail after it would strand content at
+    // opacity 0. Motion here is decoration; the content is the message.
+    if (reduced) return
+
     const ctx = gsap.context(() => {
       const elements = containerRef.current?.querySelectorAll('[data-reveal]')
       if (!elements?.length) return
@@ -53,7 +61,7 @@ export function ScrollReveal({
     }, containerRef)
 
     return () => ctx.revert()
-  }, [triggerHook, delay, duration, y, opacity, stagger])
+  }, [triggerHook, delay, duration, y, opacity, stagger, reduced])
 
   return (
     <div ref={containerRef} className={className}>
@@ -64,36 +72,4 @@ export function ScrollReveal({
       )}
     </div>
   )
-}
-
-interface ParallaxProps {
-  children: React.ReactNode
-  className?: string
-  speed?: number
-  yPercent?: number
-}
-
-export function Parallax({ children, className = '', speed = 0.3, yPercent = 0 }: ParallaxProps) {
-  const ref = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      if (!ref.current) return
-
-      gsap.to(ref.current, {
-        yPercent: speed * 100,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: ref.current,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 1,
-        },
-      })
-    }, ref)
-
-    return () => ctx.revert()
-  }, [speed, yPercent])
-
-  return <div ref={ref} className={className}>{children}</div>
 }

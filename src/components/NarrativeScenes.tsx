@@ -2,9 +2,15 @@ import { site } from '../config'
 import { useInView } from '../hooks/useInView'
 import { motion, useReducedMotion } from 'motion/react'
 import { ProjectPreview } from './ProjectPreview'
+import { Eyebrow } from './Eyebrow'
 
 /* ══ Scroll narrative — spec: opendesign/handoffs/scroll-narrative-landing/README.md
    5 sticky 100dvh scenes, each = background (CSS) + art layer (SVG/CSS) + content. */
+
+/* Scene heading and lead, shared by scenes 2–5. One definition each so the
+   type scale is edited in one place rather than four. */
+const H2 = 'm-0 font-display text-3xl font-medium leading-[1.2] tracking-tight text-white sm:text-4xl lg:text-5xl'
+const LEAD = 'mx-auto mt-6 max-w-xl text-base font-light leading-relaxed text-[var(--color-text-muted)]'
 
 /* ── Scene shell: 100dvh sticky scene, bg + art fade in at 50% visibility ── */
 function Scene({
@@ -56,15 +62,6 @@ function KineticReveal({ children, side = 'l', delay = 0 }: {
   )
 }
 
-function Eyebrow({ children }: { children: string }) {
-  return (
-    <KineticReveal>
-      <p className="m-0 mb-4 font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--color-text-subtle)]">
-        {children}
-      </p>
-    </KineticReveal>
-  )
-}
 
 /* ══ Art layers — signature motif per scene, gold-family strokes ══ */
 
@@ -207,14 +204,16 @@ export function AboutScene() {
   return (
     <Scene id="s-about" bg="bg-nebula" artClass="art-about">
       <div className="relative z-20 flex flex-col items-center">
-        <Eyebrow>01 · about</Eyebrow>
+        <KineticReveal>
+          <Eyebrow>01 · about</Eyebrow>
+        </KineticReveal>
         <KineticReveal delay={0.1}>
-          <h2 className="m-0 font-display text-3xl font-medium leading-[1.2] tracking-tight text-white sm:text-4xl lg:text-5xl">
+          <h2 className={H2}>
             {site.about.intro}
           </h2>
         </KineticReveal>
         <KineticReveal delay={0.2}>
-          <p className="mx-auto mt-6 max-w-xl text-base font-light leading-relaxed text-[var(--color-text-muted)]">
+          <p className={LEAD}>
             {site.about.body.join(' ')}
           </p>
         </KineticReveal>
@@ -227,9 +226,11 @@ export function CapabilitiesScene() {
   return (
     <Scene id="s-capabilities" bg="bg-blueprint" art={<CapsArt />}>
       <div className="relative z-20 flex flex-col items-center">
-        <Eyebrow>02 · what i do</Eyebrow>
+        <KineticReveal>
+          <Eyebrow>02 · what i do</Eyebrow>
+        </KineticReveal>
         <KineticReveal delay={0.1}>
-          <h2 className="m-0 font-display text-3xl font-medium leading-[1.2] tracking-tight text-white sm:text-4xl lg:text-5xl">
+          <h2 className={H2}>
             Capabilities
           </h2>
         </KineticReveal>
@@ -237,18 +238,10 @@ export function CapabilitiesScene() {
           {site.features.map((f, i) => {
             return (
               <KineticReveal key={f.title} side={i % 2 === 0 ? 'l' : 'r'} delay={0.15 + i * 0.1}>
-                <div className="group relative">
-                  {/* Outer shell (double-bezel) */}
-                  <div className="card-shell rounded-[2rem] border border-white/10 bg-white/5 p-2 transition-all duration-500 group-hover:border-white/20 group-hover:bg-white/10">
-                    {/* Inner core */}
-                    <div className="glass-refract relative overflow-hidden rounded-[calc(2rem-0.5rem)] bg-[var(--color-bg-card)] p-4 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] transition-all duration-500 group-hover:-translate-y-1 sm:p-6">
-                      <div className="relative z-10">
-                        <span className="font-mono text-xl font-light text-[var(--color-accent)] sm:text-2xl">{f.icon}</span>
-                        <h3 className="mt-2 font-display text-sm font-medium tracking-wide text-white sm:mt-4">{f.title}</h3>
-                        <p className="m-0 mt-1.5 text-[13px] leading-snug text-[var(--color-text-muted)] sm:mt-2 sm:text-sm sm:leading-relaxed">{f.desc}</p>
-                      </div>
-                    </div>
-                  </div>
+                <div className="group relative rounded-[16px] border border-[var(--color-border)] bg-[var(--color-bg-card)] p-4 transition-colors duration-300 hover:border-[var(--color-accent)] hover:bg-[var(--color-bg-card-hover)] hover:shadow-[0_0_30px_rgba(212,175,55,0.06)] sm:p-6">
+                  <span className="font-mono text-xl font-light text-[var(--color-accent)] sm:text-2xl">{f.icon}</span>
+                  <h3 className="mt-2 font-display text-sm font-medium tracking-wide text-white sm:mt-4">{f.title}</h3>
+                  <p className="m-0 mt-1.5 text-[13px] leading-snug text-[var(--color-text-muted)] sm:mt-2 sm:text-sm sm:leading-relaxed">{f.desc}</p>
                 </div>
               </KineticReveal>
             )
@@ -263,9 +256,11 @@ export function ProjectsScene() {
   return (
     <Scene id="s-projects" bg="bg-contours" art={<ProjArt />}>
       <div className="relative z-20 flex flex-col items-center">
-        <Eyebrow>03 · projects</Eyebrow>
+        <KineticReveal>
+          <Eyebrow>03 · projects</Eyebrow>
+        </KineticReveal>
         <KineticReveal delay={0.1}>
-          <h2 className="m-0 font-display text-3xl font-medium leading-[1.2] tracking-tight text-white sm:text-4xl lg:text-5xl">
+          <h2 className={H2}>
             Featured work
           </h2>
         </KineticReveal>
@@ -303,14 +298,16 @@ export function ContactScene() {
   return (
     <Scene id="s-contact" bg="bg-stars" art={<ContactArt />}>
       <div className="relative z-20 flex flex-col items-center">
-        <Eyebrow>04 · contact</Eyebrow>
+        <KineticReveal>
+          <Eyebrow>04 · contact</Eyebrow>
+        </KineticReveal>
         <KineticReveal delay={0.1}>
-          <h2 className="m-0 font-display text-3xl font-medium leading-[1.2] tracking-tight text-white sm:text-4xl lg:text-5xl">
+          <h2 className={H2}>
             {site.contact.headline}
           </h2>
         </KineticReveal>
         <KineticReveal delay={0.2}>
-          <p className="mx-auto mt-6 max-w-xl text-base font-light leading-relaxed text-[var(--color-text-muted)]">
+          <p className={LEAD}>
             {site.contact.sub}
           </p>
         </KineticReveal>
