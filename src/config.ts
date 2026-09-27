@@ -103,9 +103,10 @@ export const site = {
       live: 'https://lianbeast.github.io/Personal-Site/',
     },
     {
-      // Private repo, so the GitHub feed can never return it — ProjectsSection
-      // appends curated entries the API missed for exactly this case. url is the
-      // live site, not github.com: the repo 404s for every visitor.
+      // Repo: github.com/lianbeast/resume-website — private, so the public-repo
+      // feed can never return it. ProjectsSection appends curated entries the
+      // API missed for exactly this case. The repo 404s for visitors, so both
+      // links point at the live site.
       name: 'resume-website',
       description: 'Personal resume site. Three.js hero, glass-morphism cards, schema.org Person markup for rich search results.',
       url: 'https://rahid.persipico.com/',
