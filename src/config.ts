@@ -98,7 +98,7 @@ export const site = {
     },
     {
       name: 'Personal-Site',
-      description: 'This site. Interactive 3D portfolio with React Three Fiber, GSAP, and a live GitHub feed. Deploys to GitHub Pages on every push.',
+      description: 'This site. Scroll-narrative landing: five sticky 100dvh scenes, a fixed altitude HUD, SVG art motifs, and a live GitHub projects feed. Deploys to GitHub Pages on every push.',
       url: 'https://github.com/lianbeast/Personal-Site',
       live: 'https://lianbeast.github.io/Personal-Site/',
     },
