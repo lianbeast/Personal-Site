@@ -66,7 +66,8 @@ export function ProjectPreview({
       <img
         src={poster}
         alt={`${name} — screenshot of the live site`}
-        loading="lazy"
+        loading={name === 'Personal-Site' ? 'eager' : 'lazy'}
+        fetchPriority={name === 'Personal-Site' ? 'high' : 'auto'}
         decoding="async"
         className="h-full w-full object-cover"
       />

@@ -44,6 +44,7 @@ export function Background({ variant, className = '', children }: BackgroundProp
   return (
     <div
       ref={ref}
+      style={{ willChange: 'transform' }}
       className={`absolute inset-0 pointer-events-none ${cls} ${className}`}
       aria-hidden="true"
     >
