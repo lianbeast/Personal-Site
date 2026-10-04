@@ -116,6 +116,38 @@ body,
   outline-offset: 4px;
 }
 
+/* Skip link: hidden by default (sr-only), visible on keyboard focus so sighted
+   users who Tab first can still jump straight to the page. z-index above the
+   HUD bar (z-20) so it never gets layered under it. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+.sr-only:focus:not-sr-only {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  width: auto;
+  height: auto;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  background: var(--color-bg);
+  color: var(--color-text);
+  border-radius: var(--radius-md);
+  z-index: 101;
+  text-decoration: underline;
+}
+
 .btn-tactile {
   transition: transform var(--transition-fast);
 }
