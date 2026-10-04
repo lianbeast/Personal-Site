@@ -130,7 +130,7 @@ body,
   white-space: nowrap;
   border-width: 0;
 }
-.sr-only:focus:not-sr-only {
+.sr-only:focus {
   position: fixed;
   top: 1rem;
   left: 1rem;
