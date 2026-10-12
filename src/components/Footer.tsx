@@ -1,5 +1,6 @@
 import { site } from '../config'
 import { Background } from './Background'
+import { Link } from 'react-router-dom'
 
 export function Footer() {
   return (
@@ -10,6 +11,12 @@ export function Footer() {
           &copy; {new Date().getFullYear()} {site.name}
         </p>
         <div className="flex gap-4">
+          <Link
+            to="/work"
+            className="text-xs text-[var(--color-text-subtle)] transition-colors duration-300 hover:text-[var(--color-accent)]"
+          >
+            Work Index
+          </Link>
           {[
             { href: site.links.github, label: 'GitHub' },
             { href: site.links.email, label: 'Email' },
