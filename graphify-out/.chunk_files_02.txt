@@ -1,0 +1,11 @@
+/home/arch/Projects/Personal-Site/opendesign/index.html
+/home/arch/Projects/Personal-Site/opendesign/design-systems/personal-site/README.md
+/home/arch/Projects/Personal-Site/opendesign/design-systems/personal-site/SKILL.md
+/home/arch/Projects/Personal-Site/opendesign/design-systems/personal-site/brand/style-notes.md
+/home/arch/Projects/Personal-Site/opendesign/design-systems/personal-site/brand/voice-and-tone.md
+/home/arch/Projects/Personal-Site/opendesign/handoffs/scroll-narrative-landing/README.md
+/home/arch/Projects/Personal-Site/opendesign/handoffs/scroll-narrative-landing/scroll-narrative.html
+/home/arch/Projects/Personal-Site/opendesign/mockups/site-interactions-prototype/focus-mode.html
+/home/arch/Projects/Personal-Site/opendesign/mockups/site-interactions-prototype/globe-walkthrough.html
+/home/arch/Projects/Personal-Site/opendesign/mockups/site-interactions-prototype/orbit-narrative.html
+/home/arch/Projects/Personal-Site/opendesign/mockups/site-interactions-prototype/scroll-narrative.html

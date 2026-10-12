@@ -1,0 +1,2763 @@
+{
+  "nodes": [
+    {
+      "id": "design_doc",
+      "label": "Personal-Site Design Document",
+      "file_type": "document",
+      "source_file": "/home/arch/Projects/Personal-Site/DESIGN.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "design_impact_report",
+      "label": "Design Impact Report",
+      "file_type": "document",
+      "source_file": "/home/arch/Projects/Personal-Site/DESIGN-IMPACT-REPORT.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "readme",
+      "label": "README",
+      "file_type": "document",
+      "source_file": "/home/arch/Projects/Personal-Site/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "html_entry",
+      "label": "index.html",
+      "file_type": "document",
+      "source_file": "/home/arch/Projects/Personal-Site/index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "deploy_workflow",
+      "label": "Deploy to GitHub Pages Workflow",
+      "file_type": "document",
+      "source_file": "/home/arch/Projects/Personal-Site/.github/workflows/deploy.yml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "preview_gif_workflow",
+      "label": "Update Live Preview GIF Workflow",
+      "file_type": "document",
+      "source_file": "/home/arch/Projects/Personal-Site/.github/workflows/preview-gif.yml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null
+    },
+    {
+      "id": "architecture_review",
+      "label": "Architecture Review",
+      "file_type": "document",
+      "source_file": "/home/arch/Projects/Personal-Site/_workspace/01_architecture.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "performance_review",
+      "label": "Performance Review",
+      "file_type": "document",
+      "source_file": "/home/arch/Projects/Personal-Site/_workspace/01_performance.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "security_review",
+      "label": "Security Review",
+      "file_type": "document",
+      "source_file": "/home/arch/Projects/Personal-Site/_workspace/01_security.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "style_review",
+      "label": "Style Review",
+      "file_type": "document",
+      "source_file": "/home/arch/Projects/Personal-Site/_workspace/01_style.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "scope_doc",
+      "label": "Scope Definition",
+      "file_type": "document",
+      "source_file": "/home/arch/Projects/Personal-Site/_workspace/00_scope.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "art_prompt",
+      "label": "Art Tech Engineering Background Prompt",
+      "file_type": "document",
+      "source_file": "/home/arch/Projects/Personal-Site/garden-gpt-image-2/prompt/art-tech-engineering-bg-20260901.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "scroll_narrative",
+      "label": "Scroll Narrative Pattern",
+      "file_type": "rationale",
+      "source_file": "/home/arch/Projects/Personal-Site/DESIGN.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "scroll_narrative_architecture",
+      "label": "Scroll Narrative Architecture",
+      "file_type": "rationale",
+      "source_file": "/home/arch/Projects/Personal-Site/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "hero_section_behavior",
+      "label": "Hero Section Behavior",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "hud_interaction",
+      "label": "HUD Interaction Pattern",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/DESIGN.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "scroll_camera_depth",
+      "label": "Scroll-to-Scene Depth Tracking",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/DESIGN.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "sticky_scene_layout",
+      "label": "Sticky Scene Layout Pattern",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/DESIGN.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "alt_depth_meter",
+      "label": "Altitude Depth Meter",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/DESIGN.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "scene_rail_navigation",
+      "label": "Scene Rail Navigation",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "scroll_progress_viz",
+      "label": "Scroll Progress Visualization",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/DESIGN.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "scene_rail_markers",
+      "label": "Scene Rail Markers",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/DESIGN.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "script_tags_preconnect",
+      "label": "Preconnect Font Resources",
+      "file_type": "code",
+      "source_file": "/home/arch/Projects/Personal-Site/index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "script_tags_font_loading",
+      "label": "Font Loading Strategy",
+      "file_type": "code",
+      "source_file": "/home/arch/Projects/Personal-Site/index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "workflow_deployment_pipeline",
+      "label": "GitHub Pages Deployment Pipeline",
+      "file_type": "code",
+      "source_file": "/home/arch/Projects/Personal-Site/.github/workflows/deploy.yml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "workflow_preview_recording",
+      "label": "Live Preview GIF Recording Pipeline",
+      "file_type": "code",
+      "source_file": "/home/arch/Projects/Personal-Site/.github/workflows/preview-gif.yml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "workflow_deployment_sequence",
+      "label": "Deployment + Preview GIF Sequence",
+      "file_type": "code",
+      "source_file": "/home/arch/Projects/Personal-Site/.github/workflows/preview-gif.yml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "review_document_benchmarking",
+      "label": "Performance Benchmarking Report",
+      "file_type": "document",
+      "source_file": "/home/arch/Projects/Personal-Site/DESIGN-IMPACT-REPORT.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "review_document_optimization",
+      "label": "Performance Optimization Insignts",
+      "file_type": "document",
+      "source_file": "/home/arch/Projects/Personal-Site/DESIGN-IMPACT-REPORT.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "design_alignment_analysis",
+      "label": "Design Alignment Analysis",
+      "file_type": "document",
+      "source_file": "/home/arch/Projects/Personal-Site/DESIGN-IMPACT-REPORT.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "accessibility_scoring",
+      "label": "Accessibility Scoring Methodology",
+      "file_type": "document",
+      "source_file": "/home/arch/Projects/Personal-Site/DESIGN-IMPACT-REPORT.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "lighthouse_metrics",
+      "label": "Lighthouse Metrics Framework",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/DESIGN-IMPACT-REPORT.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "lcp_optimization",
+      "label": "Largest Contentful Pixel Optimization",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/DESIGN-IMPACT-REPORT.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "fcp_optimization",
+      "label": "First Contentful Pixel Optimization",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/DESIGN-IMPACT-REPORT.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "bundle_size_analysis",
+      "label": "Bundle Size Analysis",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/DESIGN-IMPACT-REPORT.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "code_splitting_strategy",
+      "label": "Code Splitting Strategy",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/DESIGN-IMPACT-REPORT.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "opendesign_index",
+      "label": "OpenDesign Viewer",
+      "file_type": "document",
+      "source_file": "/home/arch/Projects/Personal-Site/opendesign/index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "opendesign_design_systems_personal_site_readme",
+      "label": "Personal Site Design System",
+      "file_type": "document",
+      "source_file": "/home/arch/Projects/Personal-Site/opendesign/design-systems/personal-site/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "opendesign_design_systems_personal_site_skill",
+      "label": "Design System Skill",
+      "file_type": "document",
+      "source_file": "/home/arch/Projects/Personal-Site/opendesign/design-systems/personal-site/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "opendesign_design_systems_personal_site_brand_style_notes",
+      "label": "Visual Style Notes",
+      "file_type": "document",
+      "source_file": "/home/arch/Projects/Personal-Site/opendesign/design-systems/personal-site/brand/style-notes.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "opendesign_design_systems_personal_site_brand_voice_tone",
+      "label": "Voice & Tone Guide",
+      "file_type": "document",
+      "source_file": "/home/arch/Projects/Personal-Site/opendesign/design-systems/personal-site/brand/voice-and-tone.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "opendesign_handoffs_scroll_narrative_landing_readme",
+      "label": "Scroll Narrative Landing",
+      "file_type": "document",
+      "source_file": "/home/arch/Projects/Personal-Site/opendesign/handoffs/scroll-narrative-landing/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "opendesign_handoffs_scroll_narrative_landing_scroll_narrative",
+      "label": "Scroll Narrative Prototype",
+      "file_type": "document",
+      "source_file": "/home/arch/Projects/Personal-Site/opendesign/handoffs/scroll-narrative-landing/scroll-narrative.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "opendesign_mockups_site_interactions_prototype_focus_mode",
+      "label": "Focus Mode Prototype",
+      "file_type": "document",
+      "source_file": "/home/arch/Projects/Personal-Site/opendesign/mockups/site-interactions-prototype/focus-mode.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "opendesign_mockups_site_interactions_prototype_globe_walkthrough",
+      "label": "Globe Walkthrough Prototype",
+      "file_type": "document",
+      "source_file": "/home/arch/Projects/Personal-Site/opendesign/mockups/site-interactions-prototype/globe-walkthrough.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "opendesign_mockups_site_interactions_prototype_orbit_narrative",
+      "label": "Orbit Narrative Prototype",
+      "file_type": "document",
+      "source_file": "/home/arch/Projects/Personal-Site/opendesign/mockups/site-interactions-prototype/orbit-narrative.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "opendesign_mockups_site_interactions_prototype_scroll_narrative",
+      "label": "Scroll Narrative Prototype",
+      "file_type": "document",
+      "source_file": "/home/arch/Projects/Personal-Site/opendesign/mockups/site-interactions-prototype/scroll-narrative.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "oil_ui_work_index_assets_previews_debian_linux_site",
+      "label": "Debian Linux Site Preview",
+      "file_type": "image",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/assets/previews/debian-linux-site.jpg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "oil_ui_work_index_assets_previews",
+      "label": "Previews Asset Directory",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/assets/previews/debian-linux-site.jpg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "oil_ui_work_index",
+      "label": "Oil UI Work Index",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/assets/previews/debian-linux-site.jpg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "debian_linux_design_language",
+      "label": "Debian Linux Design Language",
+      "file_type": "rationale",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/assets/previews/debian-linux-site.jpg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_oil_ui_work_index_assets_previews_elitehuman",
+      "label": "EliteHuman preview image",
+      "file_type": "image",
+      "source_file": ".oil-ui/work-index/assets/previews/elitehuman.jpg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "oil_ui_workindex_assets_previews_hamnahenna_site_jpg",
+      "label": "Hamna Henna Site Preview",
+      "file_type": "image",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/assets/previews/hamna-henna-site.jpg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "oil_ui_work_index_assets_previews_lian_arch_linux_site",
+      "label": "Arch Linux Site Preview",
+      "file_type": "image",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/assets/previews/lian-arch-linux-site.jpg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "work_index_arch_linux_site",
+      "label": "Arch Linux Site Project",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/assets/previews/lian-arch-linux-site.jpg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "work_index_catalogue",
+      "label": "Work Index Catalogue",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/assets/previews/lian-arch-linux-site.jpg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "work_index_atlas_direction",
+      "label": "Atlas Direction",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/assets/previews/lian-arch-linux-site.jpg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "work_index_dossier_direction",
+      "label": "Dossier Direction",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/assets/previews/lian-arch-linux-site.jpg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "work_index_broadsheet_direction",
+      "label": "Broadsheet Direction",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/assets/previews/lian-arch-linux-site.jpg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "arch_linux_site_pacman_terminal",
+      "label": "Pacman Terminal Concept",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/assets/previews/lian-arch-linux-site.jpg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "lian_arch_linux_site_mp4",
+      "label": "Arch Linux Site Video Preview",
+      "file_type": "image",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/assets/previews/lian-arch-linux-site.mp4",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "oil_ui_work_index_assets_previews_personal_site_jpg",
+      "label": "Personal Site Preview",
+      "file_type": "image",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/assets/previews/personal-site.jpg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2026-10-12T05:55:00Z",
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "oil_ui_work_index_manifest_json",
+      "label": "Work Index Manifest",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/manifest.json",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "oil_ui_work_index_candidate_atlas_html",
+      "label": "Atlas Candidate",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/candidate-atlas.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "oil_ui_work_index_candidate_dossier_html",
+      "label": "Dossier Candidate",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/candidate-dossier.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "oil_ui_work_index_candidate_broadsheet_html",
+      "label": "Broadsheet Candidate",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/candidate-broadsheet.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "oil_ui_work_index_assets_previews_the_sleep_etiquette",
+      "label": "The Sleep Etiquette Preview",
+      "file_type": "image",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/assets/previews/the-sleep-etiquette.jpg"
+    },
+    {
+      "id": "scroll_narrative_depth_meter",
+      "label": "Depth Meter HUD",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/opendesign/handoffs/scroll-narrative-landing/scroll-narrative.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "scroll_narrative_progress_rail",
+      "label": "Progress Rail",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/opendesign/handoffs/scroll-narrative-landing/scroll-narrative.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "scroll_narrative_gold_accent",
+      "label": "Gold Accent Design Token",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/opendesign/handoffs/scroll-narrative-landing/scroll-narrative.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "oilui_work_index_shots_atlas_preview",
+      "label": "Atlas Shot Preview Image",
+      "file_type": "image",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/shots/atlas/preview.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_oil_ui_work_index_shots_broadsheet_page",
+      "label": "Broadsheet Page",
+      "file_type": "image",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/shots/broadsheet/page.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "work_index_design_document_broadsheet_direction",
+      "label": "Broadsheet direction",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/manifest.json",
+      "source_location": "candidate-broadsheet",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "work_index_design_document_atlas_direction",
+      "label": "Atlas direction",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/manifest.json",
+      "source_location": "candidate-atlas",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "work_index_design_document_dossier_direction",
+      "label": "Dossier direction",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/manifest.json",
+      "source_location": "candidate-dossier",
+      "source_url": null,
+      "captured_at": null,
+      "author": null
+    },
+    {
+      "id": "work_index_design_brief_document",
+      "label": "Work Index design brief",
+      "file_type": "rationale",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/DESIGN.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "personal_site_project",
+      "label": "Personal-Site project",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/DESIGN.md",
+      "source_location": "C0 baseline — 'current site'",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "work_index_typography_archivo",
+      "label": "Archivo typeface",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/manifest.json",
+      "source_location": "broadsheet typography",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "work_index_typography_space_grotesk",
+      "label": "Space Grotesk typeface",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/manifest.json",
+      "source_location": "broadsheet typography",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "work_index_typography_jetbrains_mono",
+      "label": "JetBrains Mono typeface",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/manifest.json",
+      "source_location": "broadsheet typography",
+      "source_url": null,
+      "captured_at": null,
+      "author": null
+    },
+    {
+      "id": "work_index_palette_dark_gold",
+      "label": "Work Index dark + gold palette",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/manifest.json",
+      "source_location": "all candidates palette",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "work_index_design_trait_condensed_masthead",
+      "label": "condensed black masthead",
+      "file_type": "rationale",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/manifest.json",
+      "source_location": "C3 Broadsheet traits",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "work_index_design_trait_newsprint_grid",
+      "label": "3-col newsprint grid",
+      "file_type": "rationale",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/manifest.json",
+      "source_location": "C3 Broadsheet traits",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "work_index_design_trait_running_ticker",
+      "label": "running ticker of live sites",
+      "file_type": "rationale",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/manifest.json",
+      "source_location": "C3 Broadsheet traits",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "work_index_design_trait_hover_video_preview",
+      "label": "hover→video preview on plate",
+      "file_type": "rationale",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/manifest.json",
+      "source_location": "bi-directional traits",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "work_index_design_reflow_requirements",
+      "label": "reflow acceptance criteria",
+      "file_type": "rationale",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/DESIGN.md",
+      "source_location": "Selection & acceptance",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "oil_ui_work_index_shots_dossier_page",
+      "label": "Dossier Direction Screenshot",
+      "file_type": "image",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/shots/dossier/page.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "dossier_archival_design_pattern",
+      "label": "Archival File Design Pattern",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/shots/dossier/page.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "dossier_stamp_memory_moment",
+      "label": "Dossier Stamp Memory Moment",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/shots/dossier/page.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "dossier_hover_video_preview",
+      "label": "Hover Video Preview Interaction",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/shots/dossier/page.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "dossier_masthead_band",
+      "label": "Masthead Band with Index Data",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/shots/dossier/page.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "dossier_gold_stamp_ink",
+      "label": "Gold as Stamp Ink Design Token",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/shots/dossier/page.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "oil_ui_work_index_shots_home_page",
+      "label": "Work Index Page Screenshot",
+      "file_type": "image",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/shots/home/page.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "oil_ui_work_index_shots_home_card_grid",
+      "label": "Project Card Grid Layout",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/shots/home/page.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "oil_ui_work_index_shots_home_sticky_bar",
+      "label": "Sticky Glassmorphism Top Bar",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/shots/home/page.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "oil_ui_work_index_shots_home_hero",
+      "label": "Work Index Hero Section",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/shots/home/page.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "oil_ui_work_index_shots_home_video_preview",
+      "label": "Hover Video Preview Pattern",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/shots/home/page.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "oil_ui_work_index_shots_home_live_badge",
+      "label": "LIVE Badge with Pulse Animation",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/shots/home/page.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "oil_ui_work_index_shots_home_this_badge",
+      "label": "THIS Badge for Self-Reference",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/shots/home/page.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "oil_ui_work_index_shots_home_project_card",
+      "label": "Project Card Component",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/shots/home/page.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "oil_ui_work_index_shots_home_dark_gold_theme",
+      "label": "Dark #0A0A0A + Gold #D4AF37 Color Scheme",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/shots/home/page.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "oil_ui_work_index_shots_home_responsive_grid",
+      "label": "Responsive Grid (1col mobile, 2col desktop)",
+      "file_type": "concept",
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/shots/home/page.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "preview_gif",
+      "label": "preview.gif — Scroll Narrative Demo",
+      "file_type": "image",
+      "source_file": "/home/arch/Projects/Personal-Site/preview.gif",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2026-10-12T19:12:00Z",
+      "author": "LianBeast",
+      "contributor": null
+    },
+    {
+      "id": "scroll_narrative_design",
+      "label": "Scroll Narrative Design Pattern",
+      "file_type": "rationale",
+      "source_file": "/home/arch/Projects/Personal-Site/preview.gif",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2026-10-12T19:12:00Z",
+      "author": "LianBeast",
+      "contributor": null
+    },
+    {
+      "id": "personal_site_architecture",
+      "label": "Personal Site Architecture",
+      "file_type": "rationale",
+      "source_file": "/home/arch/Projects/Personal-Site/preview.gif",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2026-10-12T19:12:00Z",
+      "author": "LianBeast",
+      "contributor": null
+    },
+    {
+      "id": "gif_recording_pipeline",
+      "label": "GIF Recording Pipeline",
+      "file_type": "rationale",
+      "source_file": "/home/arch/Projects/Personal-Site/preview.gif",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2026-10-12T19:12:00Z",
+      "author": "LianBeast",
+      "contributor": null
+    },
+    {
+      "id": "public_previews_debian_linux_site",
+      "label": "debian-linux-site",
+      "file_type": "image",
+      "source_file": "/home/arch/Projects/Personal-Site/public/previews/debian-linux-site.jpg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "public_previews_elitehuman",
+      "label": "EliteHuman preview image",
+      "file_type": "image",
+      "source_file": "/home/arch/Projects/Personal-Site/public/previews/elitehuman.jpg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "public_previews_hamna_henna_site",
+      "label": "Hamna Henna Site preview",
+      "file_type": "image",
+      "source_file": "/home/arch/Projects/Personal-Site/public/previews/hamna-henna-site.jpg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "public_previews_lian_arch_linux_site",
+      "label": "Lian Arch Linux Site preview",
+      "file_type": "image",
+      "source_file": "/home/arch/Projects/Personal-Site/public/previews/lian-arch-linux-site.jpg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "public_previews_personal_site",
+      "label": "Personal Site preview",
+      "file_type": "image",
+      "source_file": "/home/arch/Projects/Personal-Site/public/previews/personal-site.jpg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "public_previews_the_sleep_etiquette",
+      "label": "The Sleep Etiquette preview",
+      "file_type": "image",
+      "source_file": "/home/arch/Projects/Personal-Site/public/previews/the-sleep-etiquette.jpg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "design_doc",
+      "target": "scroll_narrative_architecture",
+      "relation": "cites",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/DESIGN.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "readme",
+      "target": "scroll_narrative_architecture",
+      "relation": "cites",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "design_doc",
+      "target": "hero_section_behavior",
+      "relation": "cites",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/DESIGN.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "readme",
+      "target": "hero_section_behavior",
+      "relation": "cites",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "design_doc",
+      "target": "hud_interaction",
+      "relation": "cites",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/DESIGN.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "readme",
+      "target": "hud_interaction",
+      "relation": "cites",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "design_doc",
+      "target": "scroll_camera_depth",
+      "relation": "cites",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/DESIGN.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "readme",
+      "target": "scene_rail_navigation",
+      "relation": "cites",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "design_doc",
+      "target": "sticky_scene_layout",
+      "relation": "cites",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/DESIGN.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "design_doc",
+      "target": "alt_depth_meter",
+      "relation": "cites",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/DESIGN.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "readme",
+      "target": "scene_rail_markers",
+      "relation": "cites",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "design_doc",
+      "target": "scene_rail_navigation",
+      "relation": "cites",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/DESIGN.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "design_doc",
+      "target": "scroll_progress_viz",
+      "relation": "cites",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/DESIGN.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "design_doc",
+      "target": "script_tags_preconnect",
+      "relation": "mentions",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "readme",
+      "target": "script_tags_font_loading",
+      "relation": "mentions",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "html_entry",
+      "target": "script_tags_preconnect",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "html_entry",
+      "target": "script_tags_font_loading",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "design_doc",
+      "target": "workflow_deployment_pipeline",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/DESIGN.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "design_doc",
+      "target": "workflow_preview_recording",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/DESIGN.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "readme",
+      "target": "workflow_deployment_pipeline",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "readme",
+      "target": "workflow_preview_recording",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "workflow_deployment_pipeline",
+      "relation": "form",
+      "target": "workflow_deployment_sequence",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.github/workflows/preview-gif.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "workflow_preview_recording",
+      "relation": "form",
+      "target": "workflow_deployment_sequence",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.github/workflows/preview-gif.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "readme",
+      "target": "github_pages_hosting",
+      "relation": "cites",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/home/arch/Projects/Personal-Site/README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "readme",
+      "target": "vite_react_typescript_stack",
+      "relation": "cites",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/home/arch/Projects/Personal-Site/README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "readme",
+      "target": "tailwind_css_framework",
+      "relation": "cites",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/home/arch/Projects/Personal-Site/README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "readme",
+      "target": "gsap_animation_library",
+      "relation": "cites",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/home/arch/Projects/Personal-Site/README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "readme",
+      "target": "framer_animation_library",
+      "relation": "cites",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/home/arch/Projects/Personal-Site/README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "architecture_review",
+      "relation": "evaluates",
+      "target": "design_doc",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/home/arch/Projects/Personal-Site/_workspace/01_architecture.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "architecture_review",
+      "relation": "evaluates",
+      "target": "scroll_narrative_architecture",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/home/arch/Projects/Personal-Site/_workspace/01_architecture.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "performance_review",
+      "relation": "evaluates",
+      "target": "design_doc",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/home/arch/Projects/Personal-Site/_workspace/01_performance.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "performance_review",
+      "relation": "evaluates",
+      "target": "design_impact_report",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "/home/arch/Projects/Personal-Site/_workspace/01_performance.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "security_review",
+      "relation": "evaluates",
+      "target": "design_doc",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/home/arch/Projects/Personal-Site/_workspace/01_security.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "security_review",
+      "relation": "evaluates",
+      "target": "scroll_narrative_architecture",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/home/arch/Projects/Personal-Site/_workspace/01_security.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "style_review",
+      "relation": "evaluates",
+      "target": "design_doc",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/home/arch/Projects/Personal-Site/_workspace/01_style.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "style_review",
+      "relation": "evaluates",
+      "target": "vite_react_typescript_stack",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/home/arch/Projects/Personal-Site/_workspace/01_style.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "build_review_synthesis",
+      "relation": "aggregates",
+      "target": "architecture_review",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/home/arch/Projects/Personal-Site/_workspace/DESIGN-IMPACT-REPORT.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "build_review_synthesis",
+      "relation": "aggregates",
+      "target": "performance_review",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/home/arch/Projects/Personal-Site/_workspace/DESIGN-IMPACT-REPORT.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "build_review_synthesis",
+      "relation": "aggregates",
+      "target": "security_review",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/home/arch/Projects/Personal-Site/_workspace/DESIGN-IMPACT-REPORT.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "build_review_synthesis",
+      "relation": "aggregates",
+      "target": "style_review",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/home/arch/Projects/Personal-Site/_workspace/DESIGN-IMPACT-REPORT.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "review_document_benchmarking",
+      "relation": "documents",
+      "target": "lighthouse_metrics",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "/home/arch/Projects/Personal-Site/DESIGN-IMPACT-REPORT.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "review_document_optimization",
+      "relation": "documents",
+      "target": "lcp_optimization",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "/home/arch/Projects/Personal-Site/DESIGN-IMPACT-REPORT.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "review_document_optimization",
+      "relation": "documents",
+      "target": "fcp_optimization",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "/home/arch/Projects/Personal-Site/DESIGN-IMPACT-REPORT.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "review_document_optimization",
+      "relation": "documents",
+      "target": "bundle_size_analysis",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "/home/arch/Projects/Personal-Site/DESIGN-IMPACT-REPORT.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "review_document_optimization",
+      "relation": "documents",
+      "target": "code_splitting_strategy",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "/home/arch/Projects/Personal-Site/DESIGN-IMPACT-REPORT.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "accessibility_scoring",
+      "relation": "implements",
+      "target": "design_doc",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/home/arch/Projects/Personal-Site/DESIGN-IMPACT-REPORT.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "design_impact_report",
+      "relation": "documents",
+      "target": "alt_depth_meter",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "/home/arch/Projects/Personal-Site/DESIGN-IMPACT-REPORT.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "design_impact_report",
+      "relation": "documents",
+      "target": "scroll_camera_depth",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "/home/arch/Projects/Personal-Site/DESIGN-IMPACT-REPORT.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "art_prompt",
+      "relation": "inspires",
+      "target": "design_doc",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "/home/arch/Projects/Personal-Site/garden-gpt-image-2/prompt/art-tech-engineering-bg-20260901.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "art_prompt",
+      "relation": "cites",
+      "target": "scroll_narrative_architecture",
+      "confidence": "AMBIGUOUS",
+      "confidence_score": 0.2,
+      "source_file": "/home/arch/Projects/Personal-Site/garden-gpt-image-2/prompt/art-tech-engineering-bg-20260901.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "scope_doc",
+      "relation": "defines",
+      "target": "scroll_narrative_architecture",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/home/arch/Projects/Personal-Site/_workspace/00_scope.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "workspace_document_network",
+      "relation": "shares_data_with",
+      "target": "review_document_benchmarking",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/home/arch/Projects/Personal-Site/_workspace/01_architecture.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "workspace_document_network",
+      "relation": "shares_data_with",
+      "target": "review_document_optimization",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/home/arch/Projects/Personal-Site/_workspace/01_performance.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "workspace_document_network",
+      "relation": "shares_data_with",
+      "target": "workspace_document_benchmarking",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/home/arch/Projects/Personal-Site/_workspace/01_security.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "workspace_document_network",
+      "relation": "shares_data_with",
+      "target": "workspace_document_benchmarking",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/home/arch/Projects/Personal-Site/_workspace/01_style.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "vite_react_typescript_stack",
+      "relation": "semantically_similar_to",
+      "target": "vite_react_typescript_stack",
+      "confidence": "INFERRED",
+      "confidence_score": 0.6,
+      "source_file": "/home/arch/Projects/Personal-Site/README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "opendesign_index",
+      "target": "opendesign_design_systems_personal_site_readme",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/opendesign/index.html",
+      "weight": 1.0
+    },
+    {
+      "source": "opendesign_design_systems_personal_site_readme",
+      "target": "opendesign_design_systems_personal_site_skill",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/opendesign/design-systems/personal-site/README.md",
+      "weight": 1.0
+    },
+    {
+      "source": "opendesign_design_systems_personal_site_readme",
+      "target": "opendesign_design_systems_personal_site_brand_style_notes",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/opendesign/design-systems/personal-site/README.md",
+      "weight": 1.0
+    },
+    {
+      "source": "opendesign_design_systems_personal_site_readme",
+      "target": "opendesign_design_systems_personal_site_brand_voice_tone",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/opendesign/design-systems/personal-site/README.md",
+      "weight": 1.0
+    },
+    {
+      "source": "opendesign_handoffs_scroll_narrative_landing_readme",
+      "target": "opendesign_handoffs_scroll_narrative_landing_scroll_narrative",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/opendesign/handoffs/scroll-narrative-landing/README.md",
+      "weight": 1.0
+    },
+    {
+      "source": "opendesign_handoffs_scroll_narrative_landing_readme",
+      "target": "opendesign_mockups_site_interactions_prototype_focus_mode",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "/home/arch/Projects/Personal-Site/opendesign/handoffs/scroll-narrative-landing/README.md",
+      "weight": 1.0
+    },
+    {
+      "source": "opendesign_handoffs_scroll_narrative_landing_readme",
+      "target": "opendesign_mockups_site_interactions_prototype_globe_walkthrough",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "/home/arch/Projects/Personal-Site/opendesign/handoffs/scroll-narrative-landing/README.md",
+      "weight": 1.0
+    },
+    {
+      "source": "opendesign_handoffs_scroll_narrative_landing_readme",
+      "target": "opendesign_mockups_site_interactions_prototype_orbit_narrative",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "/home/arch/Projects/Personal-Site/opendesign/handoffs/scroll-narrative-landing/README.md",
+      "weight": 1.0
+    },
+    {
+      "source": "opendesign_mockups_site_interactions_prototype_focus_mode",
+      "target": "opendesign_mockups_site_interactions_prototype_scroll_narrative",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/home/arch/Projects/Personal-Site/opendesign/mockups/site-interactions-prototype/focus-mode.html",
+      "weight": 1.0
+    },
+    {
+      "source": "opendesign_mockups_site_interactions_prototype_globe_walkthrough",
+      "target": "opendesign_mockups_site_interactions_prototype_scroll_narrative",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/home/arch/Projects/Personal-Site/opendesign/mockups/site-interactions-prototype/globe-walkthrough.html",
+      "weight": 1.0
+    },
+    {
+      "source": "opendesign_mockups_site_interactions_prototype_orbit_narrative",
+      "target": "opendesign_mockups_site_interactions_prototype_scroll_narrative",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/home/arch/Projects/Personal-Site/opendesign/mockups/site-interactions-prototype/orbit-narrative.html",
+      "weight": 1.0
+    },
+    {
+      "source": "oil_ui_work_index_assets_previews_debian_linux_site",
+      "target": "oil_ui_work_index_assets_previews",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/assets/previews/debian-linux-site.jpg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "oil_ui_work_index_assets_previews",
+      "target": "oil_ui_work_index",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/assets/previews/debian-linux-site.jpg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "oil_ui_work_index_assets_previews_debian_linux_site",
+      "target": "debian_linux_design_language",
+      "relation": "rationale_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/assets/previews/debian-linux-site.jpg",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "oil_ui_workindex_assets_previews_hamnahenna_site_jpg",
+      "target": "oil_ui_workindex",
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/assets/previews/hamna-henna-site.jpg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "oil_ui_work_index_assets_previews_lian_arch_linux_site",
+      "target": "work_index_arch_linux_site",
+      "relation": "represents",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/assets/previews/lian-arch-linux-site.jpg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "work_index_arch_linux_site",
+      "target": "work_index_catalogue",
+      "relation": "participate_in",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/assets/previews/lian-arch-linux-site.jpg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "work_index_arch_linux_site",
+      "target": "work_index_atlas_direction",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/assets/previews/lian-arch-linux-site.jpg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "work_index_arch_linux_site",
+      "target": "work_index_dossier_direction",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/assets/previews/lian-arch-linux-site.jpg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "work_index_arch_linux_site",
+      "target": "work_index_broadsheet_direction",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/assets/previews/lian-arch-linux-site.jpg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "work_index_arch_linux_site",
+      "target": "arch_linux_site_pacman_terminal",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/assets/previews/lian-arch-linux-site.jpg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "oil_ui_work_index_assets_previews_lian_arch_linux_site",
+      "target": "lian_arch_linux_site_mp4",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/assets/previews/lian-arch-linux-site.jpg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "work_index_catalogue",
+      "target": "work_index_atlas_direction",
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/assets/previews/lian-arch-linux-site.jpg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "work_index_catalogue",
+      "target": "work_index_dossier_direction",
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/assets/previews/lian-arch-linux-site.jpg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "work_index_catalogue",
+      "target": "work_index_broadsheet_direction",
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/assets/previews/lian-arch-linux-site.jpg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "oil_ui_work_index_manifest_json",
+      "target": "oil_ui_work_index_candidate_atlas_html",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/manifest.json",
+      "weight": 1.0
+    },
+    {
+      "source": "oil_ui_work_index_manifest_json",
+      "target": "oil_ui_work_index_candidate_dossier_html",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/manifest.json",
+      "weight": 1.0
+    },
+    {
+      "source": "oil_ui_work_index_manifest_json",
+      "target": "oil_ui_work_index_candidate_broadsheet_html",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/manifest.json",
+      "weight": 1.0
+    },
+    {
+      "source": "oil_ui_work_index_candidate_atlas_html",
+      "target": "oil_ui_work_index_assets_previews_personal_site_jpg",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/candidate-atlas.html",
+      "weight": 1.0
+    },
+    {
+      "source": "opendesign_handoffs_scroll_narrative_landing_scroll_narrative",
+      "target": "scroll_narrative_depth_meter",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/opendesign/handoffs/scroll-narrative-landing/scroll-narrative.html",
+      "weight": 1.0
+    },
+    {
+      "source": "opendesign_handoffs_scroll_narrative_landing_scroll_narrative",
+      "target": "scroll_narrative_progress_rail",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/opendesign/handoffs/scroll-narrative-landing/scroll-narrative.html",
+      "weight": 1.0
+    },
+    {
+      "source": "opendesign_handoffs_scroll_narrative_landing_scroll_narrative",
+      "target": "scroll_narrative_gold_accent",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/opendesign/handoffs/scroll-narrative-landing/scroll-narrative.html",
+      "weight": 1.0
+    },
+    {
+      "source": "opendesign_index",
+      "target": "opendesign_mockups_site_interactions_prototype_focus_mode",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "/home/arch/Projects/Personal-Site/opendesign/index.html",
+      "weight": 1.0
+    },
+    {
+      "source": "opendesign_mockups_site_interactions_prototype_focus_mode",
+      "target": "scroll_narrative_gold_accent",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "/home/arch/Projects/Personal-Site/opendesign/mockups/site-interactions-prototype/focus-mode.html",
+      "weight": 1.0
+    },
+    {
+      "source": "oil_ui_work_index_manifest_json",
+      "target": "work_index_design_document_broadsheet_direction",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/manifest.json",
+      "source_location": "candidate-broadsheet",
+      "weight": 1.0
+    },
+    {
+      "source": "oil_ui_work_index_manifest_json",
+      "target": "work_index_design_document_atlas_direction",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/manifest.json",
+      "source_location": "candidate-atlas",
+      "weight": 1.0
+    },
+    {
+      "source": "oil_ui_work_index_manifest_json",
+      "target": "work_index_design_document_dossier_direction",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/manifest.json",
+      "source_location": "candidate-dossier",
+      "weight": 1.0
+    },
+    {
+      "source": "oil_ui_work_index_design_brief_document",
+      "target": "work_index_design_document_broadsheet_direction",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/DESIGN.md",
+      "source_location": "C3 Broadsheet conceptual description",
+      "weight": 1.0
+    },
+    {
+      "source": "oil_ui_work_index_design_brief_document",
+      "target": "work_index_design_document_atlas_direction",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/DESIGN.md",
+      "source_location": "C1 Atlas conceptual description",
+      "weight": 1.0
+    },
+    {
+      "source": "oil_ui_work_index_design_brief_document",
+      "target": "work_index_design_document_dossier_direction",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/DESIGN.md",
+      "source_location": "C2 Dossier conceptual description",
+      "weight": 1.0
+    },
+    {
+      "source": "work_index_design_document_broadsheet_direction",
+      "target": "oil_ui_work_index_typography_archivo",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/manifest.json",
+      "source_location": "broadsheet typography",
+      "weight": 1.0
+    },
+    {
+      "source": "work_index_design_document_broadsheet_direction",
+      "target": "oil_ui_work_index_typography_space_grotesk",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/manifest.json",
+      "source_location": "broadsheet typography",
+      "weight": 1.0
+    },
+    {
+      "source": "work_index_design_document_broadsheet_direction",
+      "target": "oil_ui_work_index_typography_jetbrains_mono",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/manifest.json",
+      "source_location": "broadsheet typography",
+      "weight": 1.0
+    },
+    {
+      "source": "work_index_design_document_broadsheet_direction",
+      "target": "work_index_design_trait_condensed_masthead",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/manifest.json",
+      "source_location": "C3 Broadsheet traits",
+      "weight": 1.0
+    },
+    {
+      "source": "work_index_design_document_broadsheet_direction",
+      "target": "work_index_design_trait_newsprint_grid",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/manifest.json",
+      "source_location": "C3 Broadsheet traits",
+      "weight": 1.0
+    },
+    {
+      "source": "work_index_design_document_broadsheet_direction",
+      "target": "work_index_design_trait_running_ticker",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/manifest.json",
+      "source_location": "C3 Broadsheet traits",
+      "weight": 1.0
+    },
+    {
+      "source": "work_index_design_document_broadsheet_direction",
+      "target": "work_index_design_trait_hover_video_preview",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/DESIGN.md",
+      "source_location": "bi-directional traits (media form = newspaper)",
+      "weight": 1.0
+    },
+    {
+      "source": "oil_ui_work_index_candidate_broadsheet_html",
+      "target": "work_index_design_document_broadsheet_direction",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/candidate-broadsheet.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "oil_ui_work_index_candidate_atlas_html",
+      "target": "work_index_design_document_atlas_direction",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/candidate-atlas.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "oil_ui_work_index_candidate_dossier_html",
+      "target": "work_index_design_document_dossier_direction",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/candidate-dossier.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "oil_ui_work_index_design_brief_document",
+      "target": "personal_site_project",
+      "relation": "defined_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/DESIGN.md",
+      "source_location": "C0 baseline — 'current site'",
+      "weight": 1.0
+    },
+    {
+      "source": "oil_ui_work_index_design_brief_document",
+      "target": "work_index_design_trait_hover_video_preview",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/DESIGN.md",
+      "source_location": "bi-directional traits",
+      "weight": 1.0
+    },
+    {
+      "source": "oil_ui_work_index_design_trait_hover_video_preview",
+      "target": "work_index_design_trait_running_ticker",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/manifest.json",
+      "source_location": "C3 Broadsheet traits & bi-directional traits",
+      "weight": 1.0
+    },
+    {
+      "source": "work_index_design_trait_condensed_masthead",
+      "target": "work_index_typography_archivo",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/manifest.json",
+      "source_location": "C3 Broadsheet typography combo",
+      "weight": 1.0
+    },
+    {
+      "source": "work_index_design_trait_newsprint_grid",
+      "target": "work_index_typography_space_grotesk",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/manifest.json",
+      "source_location": "C3 Broadsheet typography combo",
+      "weight": 1.0
+    },
+    {
+      "source": "work_index_design_trait_running_ticker",
+      "target": "work_index_design_trait_newsprint_grid",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/manifest.json",
+      "source_location": "C3 Broadsheet newspaper layout",
+      "weight": 1.0
+    },
+    {
+      "source": "work_index_design_trait_condensed_masthead",
+      "target": "work_index_design_trait_newsprint_grid",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/manifest.json",
+      "source_location": "C3 Broadsheet newspaper structure",
+      "weight": 1.0
+    },
+    {
+      "source": "oil_ui_work_index_design_brief_document",
+      "target": "work_index_palette_dark_gold",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/manifest.json",
+      "source_location": "all candidates palette",
+      "weight": 1.0
+    },
+    {
+      "source": "work_index_design_trait_condensed_masthead",
+      "target": "work_index_palette_dark_gold",
+      "relation": "rationale_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/manifest.json",
+      "source_location": "C3 Broadsheet night palette context",
+      "weight": 1.0
+    },
+    {
+      "source": "oil_ui_work_index_shots_dossier_page",
+      "target": "work_index_dossier_direction",
+      "relation": "represents",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/shots/dossier/page.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "work_index_dossier_direction",
+      "target": "work_index_catalogue",
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/shots/dossier/page.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "work_index_dossier_direction",
+      "target": "dossier_archival_design_pattern",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/shots/dossier/page.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "dossier_archival_design_pattern",
+      "target": "dossier_stamp_memory_moment",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/shots/dossier/page.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "dossier_archival_design_pattern",
+      "target": "dossier_hover_video_preview",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/shots/dossier/page.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "dossier_archival_design_pattern",
+      "target": "dossier_masthead_band",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/shots/dossier/page.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "dossier_gold_stamp_ink",
+      "target": "work_index_dossier_direction",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/shots/dossier/page.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "oil_ui_work_index_shots_dossier_page",
+      "target": "oil_ui_work_index_shots_dossier_preview",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/shots/dossier/page.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "oil_ui_work_index_shots_home_page",
+      "target": "oil_ui_work_index_shots_home_card_grid",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/shots/home/page.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "oil_ui_work_index_shots_home_page",
+      "target": "oil_ui_work_index_shots_home_sticky_bar",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/shots/home/page.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "oil_ui_work_index_shots_home_page",
+      "target": "oil_ui_work_index_shots_home_hero",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/shots/home/page.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "oil_ui_work_index_shots_home_card_grid",
+      "target": "oil_ui_work_index_shots_home_project_card",
+      "relation": "composed_of",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/shots/home/page.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "oil_ui_work_index_shots_home_project_card",
+      "target": "oil_ui_work_index_shots_home_video_preview",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/shots/home/page.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "oil_ui_work_index_shots_home_project_card",
+      "target": "oil_ui_work_index_shots_home_live_badge",
+      "relation": "displays",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/shots/home/page.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "oil_ui_work_index_shots_home_project_card",
+      "target": "oil_ui_work_index_shots_home_this_badge",
+      "relation": "displays",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/shots/home/page.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "oil_ui_work_index_shots_home_page",
+      "target": "oil_ui_work_index_shots_home_dark_gold_theme",
+      "relation": "uses",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/shots/home/page.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "oil_ui_work_index_shots_home_card_grid",
+      "target": "oil_ui_work_index_shots_home_responsive_grid",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/shots/home/page.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "oil_ui_work_index_shots_home_video_preview",
+      "target": "oil_ui_work_index_shots_home_live_badge",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/shots/home/page.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "oil_ui_work_index_shots_home_sticky_bar",
+      "target": "oil_ui_work_index_shots_home_hero",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/shots/home/page.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "preview_gif",
+      "target": "scroll_narrative_design",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/preview.gif",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "preview_gif",
+      "target": "personal_site_architecture",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/preview.gif",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "preview_gif",
+      "target": "gif_recording_pipeline",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "/home/arch/Projects/Personal-Site/preview.gif",
+      "source_location": null,
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "website_deployment_workflow_list",
+      "label": "Website Deployment Workflows",
+      "nodes": [
+        "workflow_deployment_pipeline",
+        "workflow_preview_recording",
+        "workflow_deployment_sequence"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.github/workflows/deploy.yml"
+    },
+    {
+      "id": "design_system_tokenization",
+      "label": "Design System Tokenization",
+      "nodes": [
+        "vite_react_typescript_stack",
+        "tailwind_css_framework",
+        "script_tags_font_loading"
+      ],
+      "relation": "implement",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/home/arch/Projects/Personal-Site/README.md"
+    },
+    {
+      "id": "lighthouse_benchmarking_framework",
+      "label": "Lighthouse Benchmarking Framework",
+      "nodes": [
+        "review_document_benchmarking",
+        "lighthouse_metrics",
+        "lcp_optimization",
+        "fcp_optimization"
+      ],
+      "relation": "participate_in",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/home/arch/Projects/Personal-Site/DESIGN-IMPACT-REPORT.md"
+    },
+    {
+      "id": "performance_analysis_pipeline",
+      "label": "Performance Analysis Pipeline",
+      "nodes": [
+        "performance_review",
+        "review_document_optimization",
+        "bundle_size_analysis",
+        "code_splitting_strategy"
+      ],
+      "relation": "participate_in",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/home/arch/Projects/Personal-Site/_workspace/01_performance.md"
+    },
+    {
+      "id": "site_interaction_prototypes",
+      "label": "Site Interaction Variants",
+      "nodes": [
+        "opendesign_mockups_site_interactions_prototype_focus_mode",
+        "opendesign_mockups_site_interactions_prototype_globe_walkthrough",
+        "opendesign_mockups_site_interactions_prototype_orbit_narrative",
+        "opendesign_mockups_site_interactions_prototype_scroll_narrative"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/opendesign/mockups/site-interactions-prototype/focus-mode.html"
+    },
+    {
+      "id": "work_index_three_directions",
+      "label": "Work Index Three Directions",
+      "nodes": [
+        "work_index_atlas_direction",
+        "work_index_dossier_direction",
+        "work_index_broadsheet_direction"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.95,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/assets/previews/lian-arch-linux-site.jpg"
+    },
+    {
+      "id": "arch_linux_site_preview_pair",
+      "label": "Arch Linux Site Preview Pair (JPG + MP4)",
+      "nodes": [
+        "oil_ui_work_index_assets_previews_lian_arch_linux_site",
+        "lian_arch_linux_site_mp4"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/assets/previews/lian-arch-linux-site.jpg"
+    },
+    {
+      "id": "work_index_designs",
+      "label": "Catalogue design patterns",
+      "nodes": [
+        "oil_ui_work_index_candidate_atlas_html",
+        "oil_ui_work_index_candidate_dossier_html",
+        "oil_ui_work_index_candidate_broadsheet_html"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/manifest.json"
+    },
+    {
+      "id": "work_index_directions_design_alternatives",
+      "label": "Work Index directional candidates",
+      "nodes": [
+        "work_index_design_document_broadsheet_direction",
+        "work_index_design_document_atlas_direction",
+        "work_index_design_document_dossier_direction"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/manifest.json",
+      "source_location": "candidates array",
+      "weight": 1.0
+    },
+    {
+      "id": "work_index_broadsheet_visual_components",
+      "label": "Broadsheet newsprint composition",
+      "nodes": [
+        "work_index_design_trait_condensed_masthead",
+        "work_index_design_trait_newsprint_grid",
+        "work_index_design_trait_running_ticker",
+        "work_index_design_trait_hover_video_preview"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.85,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/manifest.json",
+      "source_location": "C3 Broadsheet traits",
+      "weight": 1.0
+    },
+    {
+      "id": "dossier_direction_design_system",
+      "label": "Dossier Direction Design System",
+      "nodes": [
+        "dossier_archival_design_pattern",
+        "dossier_stamp_memory_moment",
+        "dossier_hover_video_preview",
+        "dossier_masthead_band",
+        "dossier_gold_stamp_ink"
+      ],
+      "relation": "form",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/shots/dossier/page.png"
+    },
+    {
+      "id": "work_index_page_structure",
+      "label": "Work Index Page Structure",
+      "nodes": [
+        "oil_ui_work_index_shots_home_sticky_bar",
+        "oil_ui_work_index_shots_home_hero",
+        "oil_ui_work_index_shots_home_card_grid"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/shots/home/page.png"
+    },
+    {
+      "id": "project_card_interaction_pattern",
+      "label": "Project Card Interaction Pattern",
+      "nodes": [
+        "oil_ui_work_index_shots_home_project_card",
+        "oil_ui_work_index_shots_home_video_preview",
+        "oil_ui_work_index_shots_home_live_badge",
+        "oil_ui_work_index_shots_home_this_badge"
+      ],
+      "relation": "implement",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.95,
+      "source_file": "/home/arch/Projects/Personal-Site/.oil-ui/work-index/shots/home/page.png"
+    }
+  ],
+  "input_tokens": 77906,
+  "output_tokens": 9286
+}
