@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "project": "Work Index — lianbeast.github.io/Personal-Site",
+  "brief": "A full catalogue of every project verified on 2026-10-12: 12 entries (8 live, 5 client, 1 this-site + 2 repository- /tool-only). The three directions — Atlas, Dossier, Broadsheet — each share the same dark #0A0A0A + gold #D4AF37 world and the same curated data, organized differently.",
+  "round": "01",
+  "candidates": [
+    {
+      "id": "atlas",
+      "name": "Atlas",
+      "concept": "Map-room console: layers rail + plot grid + dossier pane. The catalogue itself IS the first screen; selecting a plot loads its dossier inline.",
+      "typography": "JetBrains Mono 400–500 (UI/data) · Inter 400–600 (prose) · Playfair Display 600 (dossier titles)",
+      "palette": ["#0A0A0A", "#D4AF37", "#9D9DA6", "#E4E4E7"],
+      "traits": ["3-column full-height console", "layers rail with item counts", "16:9 plot grid with clip previews", "dossier slide-over on narrow", "hover→video preview on plot cards"]
+    },
+    {
+      "id": "dossier",
+      "name": "Dossier",
+      "concept": "Archival file of the catalogue rendered as ruled index cards in a darkened reading room. Gold is stamp ink only. Each file row carries a memory stamp (upper-left corner) and two-column plate/record layout.",
+      "typography": "Playfair Display 600 (headings) · JetBrains Mono 400 (serials, labels) · Space Grotesk 400–500 (body)",
+      "palette": ["#0A0A0A", "#D4AF37", "#E8E4DA", "#A8A296"],
+      "traits": ["masthead band of index data", "alternating file rows with plate + record", "dossier stamp on each plate", "3px double rules", "paper texture", "hover→video preview on plate"]
+    },
+    {
+      "id": "broadsheet",
+      "name": "Broadsheet",
+      "concept": "The catalogue typeset as one sheet of newsprint in the night palette: lead story + 3-column body + running ticker of live sites at the bottom. The lead story's plate plays on hover→video.",
+      "typography": "Archivo 800–900 (headlines) · Space Grotesk 400–500 (body) · JetBrains Mono 400 (meta)",
+      "palette": ["#0A0A0A", "#D4AF37", "#A0A0A8", "#ECECEE"],
+      "traits": ["condensed-black masthead", "lead feature + 3-col newsprint grid", "inverted section break", "running ticker of live sites", "hover→video preview on lead plate"]
+    }
+  ]
+}
