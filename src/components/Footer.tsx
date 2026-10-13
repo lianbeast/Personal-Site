@@ -17,6 +17,12 @@ export function Footer() {
           >
             Work Index
           </Link>
+          <Link
+            to="/featured"
+            className="text-xs text-[var(--color-text-subtle)] transition-colors duration-300 hover:text-[var(--color-accent)]"
+          >
+            Featured
+          </Link>
           {[
             { href: site.links.github, label: 'GitHub' },
             { href: site.links.email, label: 'Email' },
