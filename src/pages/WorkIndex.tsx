@@ -99,7 +99,7 @@ export function WorkIndexPage() {
       {/* Sticky top bar */}
       <div className="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-bg)]/80 backdrop-blur-md">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-3">
-          <a href="/" className="font-display text-sm font-medium text-white transition-colors hover:text-[var(--color-accent)]">
+          <a href={import.meta.env.BASE_URL} className="font-display text-sm font-medium text-white transition-colors hover:text-[var(--color-accent)]">
             ← Back
           </a>
           <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-[var(--color-text-subtle)]">
