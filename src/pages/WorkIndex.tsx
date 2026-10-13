@@ -102,6 +102,9 @@ export function WorkIndexPage() {
           <a href={import.meta.env.BASE_URL} className="font-display text-sm font-medium text-white transition-colors hover:text-[var(--color-accent)]">
             ← Back
           </a>
+          <a href={`${import.meta.env.BASE_URL}featured`} className="font-display text-sm font-medium text-white transition-colors hover:text-[var(--color-accent)]">
+            Featured
+          </a>
           <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-[var(--color-text-subtle)]">
             {projects.length} projects
           </span>

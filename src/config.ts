@@ -112,6 +112,24 @@ export const site = {
       url: 'https://rahid.persipico.com/',
       live: 'https://rahid.persipico.com/',
     },
+    {
+      name: 'graphify',
+      description: 'Turn any codebase into a queryable knowledge graph. Local AST parsing, semantic extraction, community detection — no vector store needed.',
+      url: 'https://github.com/lianbeast/graphify',
+      live: 'https://www.graphify.com',
+    },
+    {
+      name: 'GitHub-Repos',
+      description: 'Self-contained, responsive browser for all public GitHub repositories. Search, filter by language/type, sort, and save favorites — no API limits.',
+      url: 'https://github.com/lianbeast/GitHub-Repos',
+      live: '',
+    },
+    {
+      name: 'Spider-Man',
+      description: 'A scroll film. One page, one canvas, no sections — a 2200vh track with a single sticky stage, scrolling a camera through six acts.',
+      url: 'https://github.com/lianbeast/Spider-Man',
+      live: '',
+    },
   ],
 
   geolibre: {

@@ -10,6 +10,7 @@ import { ProjectsSection } from './components/ProjectsSection'
 import { SplashCursor } from './components/SplashCursor'
 import { Footer } from './components/Footer'
 import { WorkIndexPage } from './pages/WorkIndex'
+import { ShowcasePage } from './pages/ShowcasePage'
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<MainLayout />} />
         <Route path="/work" element={<WorkIndexPage />} />
+        <Route path="/featured" element={<ShowcasePage />} />
       </Routes>
     </BrowserRouter>
   )
