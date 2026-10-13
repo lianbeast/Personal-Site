@@ -1,0 +1,107 @@
+{
+  "category": "logo-reveal",
+  "duration_s": 4,
+  "fps": 30,
+  "canvas": {
+    "w": 1080,
+    "h": 1920,
+    "aspect": "9:16"
+  },
+  "style": "elegant minimal brand sting; gold ring logo draws itself in 2.5s via SVG stroke-dashoffset, center dot reveals, then tagline sweeps in beneath on a slow ease; slow, deliberate motion, no flashy effects; dark field with warm beige text.",
+  "palette": ["#0A0A0A", "#D4AF37", "#F5F0E6"],
+  "font": "Playfair Display",
+  "beats": [0.0, 2.5, 3.0, 4.0],
+  "export": "alpha-overlay",
+
+  "asset_needs": [
+    {
+      "role": "logo",
+      "kind": "svg",
+      "source": "brand gold ring logo — outer ring (r=12, no fill, stroke #D4AF37) + center dot (r=4, fill #D4AF37), viewBox 0 0 32 32",
+      "treatment": "none"
+    }
+  ],
+
+  "content": {
+    "block": "logo-outro",
+    "customize": {
+      "logo": {
+        "type": "svg",
+        "viewBox": "0 0 32 32",
+        "elements": [
+          {
+            "id": "ring",
+            "element": "circle",
+            "attrs": { "cx": 16, "cy": 16, "r": 12, "fill": "none", "stroke": "#D4AF37", "stroke-width": 2 },
+            "draw_on": {
+              "method": "stroke-dashoffset",
+              "stroke_dasharray": 75.398,
+              "stroke_dashoffset": { "from": 75.398, "to": 0 },
+              "duration_s": 2.5,
+              "easing": "power2.inOut",
+              "start": 0.0,
+              "end": 2.5
+            }
+          },
+          {
+            "id": "dot",
+            "element": "circle",
+            "attrs": { "cx": 16, "cy": 16, "r": 4, "fill": "#D4AF37" },
+            "reveal": {
+              "method": "scale_grow",
+              "scale": { "from": 0, "to": 1 },
+              "duration_s": 0.5,
+              "easing": "back.out(2.2)",
+              "start": 2.5,
+              "end": 3.0
+            }
+          }
+        ]
+      },
+      "glow_bloom": {
+        "target": "logo",
+        "color": "#D4AF37",
+        "intensity": "soft",
+        "start": 3.0,
+        "duration_s": 0.5,
+        "easing": "sine.inOut"
+      },
+      "tagline_motion": {
+        "method": "slide_from_right",
+        "x": { "from": 400, "to": 0 },
+        "duration_s": 0.5,
+        "easing": "power4.out",
+        "start": 3.0,
+        "end": 3.5
+      },
+      "tagline_underline": {
+        "method": "underline_sweep",
+        "scale_x": { "from": 0, "to": 1 },
+        "transform_origin": "left center",
+        "duration_s": 0.4,
+        "easing": "power2.out",
+        "start": 3.3,
+        "end": 3.7
+      },
+      "hold": {
+        "start": 3.7,
+        "end": 4.0
+      }
+    },
+    "logo": "assets/logo-ring.svg",
+    "tagline": "I build things that live on the web",
+    "url": "lian-yu.io"
+  },
+
+  "motion": {
+    "summary": "stroke-dashoffset draws the outer ring from 0.0-2.5s; center dot scale_grow reveals at 2.5-3.0s; soft gold glow bloom pulses at 3.0-3.5s; tagline slides from right 3.0-3.5s with underline_sweep following at 3.3-3.7s; clean lockup holds to 4.0s.",
+    "ring_draw_in":   { "start": 0.0,  "end": 2.5, "effect": "svg-stroke-dashoffset-draw", "easing": "power2.inOut" },
+    "dot_reveal":     { "start": 2.5,  "end": 3.0, "effect": "scale_grow",              "easing": "back.out(2.2)" },
+    "glow_bloom":     { "start": 3.0,  "end": 3.5, "effect": "glow",                     "easing": "sine.inOut" },
+    "tagline_sweep":  { "start": 3.0,  "end": 3.5, "effect": "slide_from_right",        "easing": "power4.out" },
+    "underline_sweep": { "start": 3.3, "end": 3.7, "effect": "underline_sweep",         "transform_origin": "left center", "easing": "power2.out" },
+    "hold":           { "start": 3.7,  "end": 4.0, "effect": "hold" }
+  },
+
+  "brief": "A 4-second brand-lockup sting in the site's dark-field, gold-accent palette. The gold ring logo draws itself in over 2.5 seconds via SVG stroke-dashoffset animation (circumference ~75.4), establishing the center dot as the final focal point revealed at 2.5s via scale_grow. It holds in negative space with a soft gold glow bloom while the hero tagline 'I build things that live on the web' sweeps in from the right beneath the mark on a power4 ease, accompanied by an underline_sweep. A clean lockup holds to 4s. Motion is deliberately slow and elegant — nothing flashy, just the mark and the message. Exports transparent (alpha-overlay) for use as a brand sting overlaid on other footage."
+}

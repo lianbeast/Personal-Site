@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #0A0A0A;
+      }
+      #stage {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+        background: #0A0A0A;
+      }
+      /* ── Logo: centered hero mark ── */
+      #logo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 320px;
+        height: 320px;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+      }
+      #logo.active { opacity: 1; }
+      #logo svg { width: 100%; height: 100%; display: block; }
+      /* Ring path: draw-on via stroke-dashoffset */
+      .ring-path {
+        fill: none;
+        stroke: #D4AF37;
+        stroke-width: 3;
+        stroke-dasharray: 75.398;
+        stroke-dashoffset: 75.398;
+      }
+      /* Center dot — initial state set via GSAP, not CSS transform */
+      .dot {
+        fill: #D4AF37;
+        transform-box: fill-box;
+        transform-origin: center;
+      }
+      /* ── Glow bloom on the logo ── */
+      #logo-glow {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 320px;
+        height: 320px;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(212,175,55,0.35) 0%, rgba(212,175,55,0.1) 30%, transparent 60%);
+        opacity: 0;
+        pointer-events: none;
+      }
+      /* ── Tagline: sweeps in from the right beneath the mark ── */
+      #tagline {
+        position: absolute;
+        top: calc(50% + 220px);
+        left: 0;
+        width: 100%;
+        text-align: center;
+        font-family: "Playfair Display", Georgia, serif;
+        font-size: 48px;
+        font-weight: 500;
+        color: #F5F0E6;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+        opacity: 0;
+      }
+      #tagline.active {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      /* ── Underline sweep ── */
+      #underline {
+        display: block;
+        margin: 8px auto 0;
+        width: 0;
+        height: 2px;
+        background: #D4AF37;
+        transform-origin: left center;
+        transform-box: fill-box;
+      }
+      /* ── Reduced motion ── */
+      @media (prefers-reduced-motion: reduce) {
+        .ring-path { stroke-dashoffset: 0; }
+        .dot { transform: scale(1); }
+        #tagline.active { transform: translateX(0); }
+        #logo-glow { opacity: 0; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="stage" class="clip" data-composition-id="main" data-start="0" data-duration="4" data-fps="30" data-width="1080" data-height="1920">
+      <!-- Logo: ring + dot -->
+      <div id="logo">
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          <circle class="ring-path" cx="16" cy="16" r="12" />
+          <circle class="dot" cx="16" cy="16" r="4" />
+        </svg>
+      </div>
+      <!-- Glow bloom -->
+      <div id="logo-glow"></div>
+      <!-- Tagline -->
+      <div id="tagline">
+        I build things that live on the web
+        <span id="underline"></span>
+      </div>
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+
+      // ── Ring draw-on: stroke-dashoffset 75.398 → 0, 0.0–2.5s ──
+      tl.to('.ring-path', {
+        strokeDashoffset: 0,
+        duration: 2.5,
+        ease: 'power2.inOut',
+        immediateRender: true,
+      }, 0);
+
+      // ── Logo fades in with the ring ──
+      tl.to('#logo', { opacity: 1, duration: 0.3, ease: 'power2.out' }, 0);
+
+      // ── Center dot: scale_grow 0 → 1, 2.5–3.0s ──
+      tl.fromTo('.dot', { scale: 0 }, {
+        scale: 1,
+        duration: 0.5,
+        ease: 'back.out(2.2)',
+      }, 2.5);
+
+      // ── Glow bloom: 3.0–3.5s ──
+      tl.to('#logo-glow', {
+        opacity: 1,
+        duration: 0.5,
+        ease: 'sine.inOut',
+      }, 3.0);
+
+      // ── Tagline: slide from right, 3.0–3.5s ──
+      tl.fromTo('#tagline', { x: 400, opacity: 0 }, {
+        x: 0,
+        opacity: 1,
+        duration: 0.5,
+        ease: 'power4.out',
+      }, 3.0);
+
+      // ── Underline sweep: 3.3–3.7s ──
+      tl.to('#underline', {
+        width: 180,
+        duration: 0.4,
+        ease: 'power2.out',
+      }, 3.3);
+
+      // ── Hold: 3.7–4.0s (clean lockup) ──
+      // Nothing to animate — the end-state holds to the final frame.
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines['main'] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
