@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { site, type Project } from '../config'
 import { Footer } from '../components/Footer'
 
@@ -17,24 +18,30 @@ function ProjectCard({ project, index }: CardProps) {
   const slug = (project.name ?? '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
   const isSelf = project.name === 'Personal-Site'
   const hasPreview = !!project.live
+  // resume-website has a live URL but no recorded clip — the poster 404s and
+  // the browser paints the alt text inside a broken frame. Falling back to the
+  // same "no clip" tile the source-only projects use keeps the grid uniform.
+  const [previewFailed, setPreviewFailed] = useState(false)
+  const showMedia = hasPreview && !previewFailed
 
   return (
     <a
       href={project.live ?? project.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group relative flex flex-col overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-card)] transition-all duration-300 hover:border-[var(--color-accent)] hover:bg-[var(--color-bg-card-hover)] hover:shadow-[0_0_30px_rgba(212,175,55,0.06)]"
+      className="group relative flex flex-col overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-card)] transition-all duration-300 hover:border-[var(--color-accent)] hover:bg-[var(--color-bg-card-hover)] hover:shadow-[0_0_30px_rgba(255,255,255,0.06)]"
       style={{ animationDelay: `${index * 60}ms` }}
     >
       {/* Video / image preview */}
       <div className="relative aspect-[16/10] overflow-hidden rounded-t-2xl bg-[var(--color-bg-elevated)]">
-        {hasPreview && (
+        {showMedia && (
           <>
             <img
               src={`${import.meta.env.BASE_URL}previews/${slug}.jpg`}
               alt={`${project.name} — live site screenshot`}
               loading="lazy"
               decoding="async"
+              onError={() => setPreviewFailed(true)}
               className="h-full w-full object-cover transition-opacity duration-500 group-hover:opacity-0"
             />
             <video
@@ -49,7 +56,7 @@ function ProjectCard({ project, index }: CardProps) {
             />
           </>
         )}
-        {!hasPreview && (
+        {!showMedia && (
           <div className="flex h-full w-full items-center justify-center text-[var(--color-text-subtle)]">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <rect x="2" y="3" width="20" height="14" rx="2" />

@@ -6,23 +6,10 @@ import { Eyebrow } from './Eyebrow'
 import { Background } from './Background'
 import { ProjectPreview } from './ProjectPreview'
 
-const LANG_COLORS: Record<string, string> = {
-  TypeScript: '#3178c6',
-  JavaScript: '#f1e05a',
-  Python: '#3572a5',
-  HTML: '#e34c26',
-  CSS: '#563d7c',
-  Go: '#00add8',
-  Rust: '#dea584',
-  Swift: '#f05138',
-  Kotlin: '#a97bff',
-  C: '#555555',
-  'C++': '#f34b7d',
-  Java: '#b07219',
-  Ruby: '#701516',
-  Shell: '#89e051',
-  Dockerfile: '#384d54',
-}
+/* Language dots used to be GitHub's per-language hues (blue for TypeScript,
+   yellow for JS, and so on). The palette is strictly neutral now, so every dot
+   is the same muted grey — the language name sits beside it, so the legend
+   still reads, the card just stops being a colour swatch chart. */
 
 function timeAgo(iso: string) {
   const s = (Date.now() - new Date(iso).getTime()) / 1000
@@ -35,9 +22,8 @@ function timeAgo(iso: string) {
 type CardRepo = Repo & { live?: string }
 
 function RepoCard({ repo }: { repo: CardRepo }) {
-  const color = LANG_COLORS[repo.language ?? ''] ?? '#D4AF37'
   return (
-    <div className="group block rounded-[16px] border border-[var(--color-border)] bg-[var(--color-bg-card)] p-5 transition-all duration-300 hover:border-[var(--color-accent)] hover:bg-[var(--color-bg-card-hover)] hover:shadow-[0_0_30px_rgba(212,175,55,0.06)]">
+    <div className="group block rounded-[16px] border border-[var(--color-border)] bg-[var(--color-bg-card)] p-5 transition-all duration-300 hover:border-[var(--color-accent)] hover:bg-[var(--color-bg-card-hover)] hover:shadow-[0_0_30px_rgba(255,255,255,0.06)]">
       <ProjectPreview name={repo.name} live={repo.live} className="mb-4 aspect-[16/10] rounded-lg" />
       <h3 className="font-display text-sm font-semibold tracking-wide text-white transition group-hover:text-[var(--color-accent)]">
         <a href={repo.url} target="_blank" rel="noopener noreferrer">
@@ -50,7 +36,7 @@ function RepoCard({ repo }: { repo: CardRepo }) {
       <div className="mt-4 flex flex-wrap items-center gap-3 text-[11px] text-[var(--color-text-subtle)]">
         {repo.language && (
           <span className="flex items-center gap-1.5">
-            <span className="h-2 w-2 rounded-full" style={{ background: color }} />
+            <span className="h-2 w-2 rounded-full bg-[var(--color-text-subtle)]" />
             {repo.language}
           </span>
         )}

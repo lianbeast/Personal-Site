@@ -7,33 +7,36 @@
 
   --color-bg: #0A0A0A;
   --color-bg-elevated: #121212;
-  --color-bg-card: rgba(255, 255, 255, 0.01);
-  --color-bg-card-hover: rgba(255, 255, 255, 0.03);
+  --color-bg-card: rgba(255, 255, 255, 0.03);
+  --color-bg-card-hover: rgba(255, 255, 255, 0.06);
 
-  --color-border: rgba(255, 255, 255, 0.04);
-  --color-border-hover: rgba(255, 255, 255, 0.1);
+  /* Monochrome system: no hue anywhere. 0.04 was invisible against the page,
+     0.10 is the minimum that reads as an edge without becoming a box. */
+  --color-border: rgba(255, 255, 255, 0.10);
+  --color-border-hover: rgba(255, 255, 255, 0.24);
 
   --color-text: #E5E5E5;
-  --color-text-muted: #A1A1AA;
-  --color-text-subtle: #7E7E86;
+  --color-text-muted: #A1A1A1;
+  --color-text-subtle: #7E7E7E;
   --color-text-inverse: #0A0A0A;
 
-  --color-accent: #D4AF37;
-  --color-accent-hover: #C5A02C;
-  --color-accent-glow: rgba(212, 175, 55, 0.15);
-  --color-accent-subtle: rgba(212, 175, 55, 0.08);
+  /* White does the accent's job as a contrast event, never as a colour. */
+  --color-accent: #F5F5F5;
+  --color-accent-hover: #FFFFFF;
+  --color-accent-glow: rgba(255, 255, 255, 0.15);
+  --color-accent-subtle: rgba(255, 255, 255, 0.08);
 
-  --color-accent-secondary: #A1A1AA;
-  --color-accent-secondary-glow: rgba(161, 161, 170, 0.15);
+  --color-accent-secondary: #A1A1A1;
+  --color-accent-secondary-glow: rgba(161, 161, 161, 0.15);
 
-  --color-success: #34d399;
-  --color-success-subtle: rgba(52, 211, 153, 0.15);
+  --color-success: #C9C9C9;
+  --color-success-subtle: rgba(201, 201, 201, 0.15);
 
-  --color-warning: #fbbf24;
-  --color-warning-subtle: rgba(251, 191, 36, 0.15);
+  --color-warning: #9A9A9A;
+  --color-warning-subtle: rgba(154, 154, 154, 0.15);
 
-  --color-error: #f87171;
-  --color-error-subtle: rgba(248, 113, 113, 0.15);
+  --color-error: #7E7E7E;
+  --color-error-subtle: rgba(126, 126, 126, 0.15);
 
   --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.5);
   --shadow-card-hover: 0 8px 30px rgba(0, 0, 0, 0.7);
@@ -204,10 +207,10 @@ body,
     radial-gradient(1px 1px at 90px 40px, white, transparent),
     radial-gradient(1px 1px at 130px 80px, white, transparent),
     radial-gradient(1px 1px at 160px 120px, white, transparent),
-    radial-gradient(1.5px 1.5px at 200px 150px, rgba(212, 175, 55, 0.8), transparent),
+    radial-gradient(1.5px 1.5px at 200px 150px, rgba(255, 255, 255, 0.8), transparent),
     radial-gradient(1px 1px at 250px 50px, white, transparent),
     radial-gradient(1px 1px at 280px 180px, white, transparent),
-    radial-gradient(1.5px 1.5px at 320px 100px, rgba(212, 175, 55, 0.6), transparent),
+    radial-gradient(1.5px 1.5px at 320px 100px, rgba(255, 255, 255, 0.6), transparent),
     radial-gradient(1px 1px at 350px 200px, white, transparent),
     radial-gradient(1px 1px at 400px 60px, white, transparent),
     radial-gradient(1px 1px at 450px 140px, white, transparent),
@@ -215,7 +218,7 @@ body,
     radial-gradient(1px 1px at 550px 170px, white, transparent),
     radial-gradient(1px 1px at 600px 30px, white, transparent),
     radial-gradient(1px 1px at 650px 110px, white, transparent),
-    radial-gradient(1.5px 1.5px at 700px 190px, rgba(212, 175, 55, 0.5), transparent),
+    radial-gradient(1.5px 1.5px at 700px 190px, rgba(255, 255, 255, 0.5), transparent),
     radial-gradient(1px 1px at 750px 70px, white, transparent),
     radial-gradient(1px 1px at 800px 150px, white, transparent);
   background-size: 850px 250px;
@@ -226,18 +229,18 @@ body,
 /* ── 2. Nebula Wisps ── */
 .bg-nebula {
   background:
-    radial-gradient(ellipse 800px 400px at 20% 30%, rgba(212, 175, 55, 0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 800px 400px at 20% 30%, rgba(255, 255, 255, 0.06) 0%, transparent 70%),
     radial-gradient(ellipse 600px 500px at 80% 60%, rgba(161, 161, 170, 0.04) 0%, transparent 70%),
-    radial-gradient(ellipse 400px 300px at 50% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 70%);
+    radial-gradient(ellipse 400px 300px at 50% 80%, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
 }
 
 /* ── 3. Blueprint Grid ── */
 .bg-blueprint {
   background-image:
-    linear-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px),
-    radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.04) 0%, transparent 45%),
-    radial-gradient(circle at 0% 100%, rgba(212, 175, 55, 0.04) 0%, transparent 45%);
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.04) 0%, transparent 45%),
+    radial-gradient(circle at 0% 100%, rgba(255, 255, 255, 0.04) 0%, transparent 45%);
   background-size: 40px 40px, 40px 40px, 600px 600px, 700px 700px;
 }
 
@@ -253,7 +256,7 @@ body,
 
 /* ── 5. Topographic Contours ── */
 .bg-contours {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cpath d='M0 200 Q100 150 200 200 T400 200' fill='none' stroke='%23D4AF37' stroke-width='0.5' opacity='0.08'/%3E%3Cpath d='M0 180 Q100 130 200 180 T400 180' fill='none' stroke='%23D4AF37' stroke-width='0.5' opacity='0.06'/%3E%3Cpath d='M0 220 Q100 170 200 220 T400 220' fill='none' stroke='%23D4AF37' stroke-width='0.5' opacity='0.06'/%3E%3Cpath d='M0 160 Q100 110 200 160 T400 160' fill='none' stroke='%23D4AF37' stroke-width='0.5' opacity='0.04'/%3E%3Cpath d='M0 240 Q100 190 200 240 T400 240' fill='none' stroke='%23D4AF37' stroke-width='0.5' opacity='0.04'/%3E%3Cpath d='M0 260 Q100 210 200 260 T400 260' fill='none' stroke='%23D4AF37' stroke-width='0.5' opacity='0.03'/%3E%3Cpath d='M0 140 Q100 90 200 140 T400 140' fill='none' stroke='%23D4AF37' stroke-width='0.5' opacity='0.03'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cpath d='M0 200 Q100 150 200 200 T400 200' fill='none' stroke='%23F5F5F5' stroke-width='0.5' opacity='0.08'/%3E%3Cpath d='M0 180 Q100 130 200 180 T400 180' fill='none' stroke='%23F5F5F5' stroke-width='0.5' opacity='0.06'/%3E%3Cpath d='M0 220 Q100 170 200 220 T400 220' fill='none' stroke='%23F5F5F5' stroke-width='0.5' opacity='0.06'/%3E%3Cpath d='M0 160 Q100 110 200 160 T400 160' fill='none' stroke='%23F5F5F5' stroke-width='0.5' opacity='0.04'/%3E%3Cpath d='M0 240 Q100 190 200 240 T400 240' fill='none' stroke='%23F5F5F5' stroke-width='0.5' opacity='0.04'/%3E%3Cpath d='M0 260 Q100 210 200 260 T400 260' fill='none' stroke='%23F5F5F5' stroke-width='0.5' opacity='0.03'/%3E%3Cpath d='M0 140 Q100 90 200 140 T400 140' fill='none' stroke='%23F5F5F5' stroke-width='0.5' opacity='0.03'/%3E%3C/svg%3E");
   background-size: 400px 400px;
   background-repeat: repeat;
 }
@@ -261,10 +264,10 @@ body,
 /* ── 6. CSS-Generated Tech Grid ── */
 .bg-tech-image {
   background-image:
-    linear-gradient(rgba(212, 175, 55, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(212, 175, 55, 0.04) 1px, transparent 1px),
-    radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.06) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.05) 0%, transparent 40%);
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.05) 0%, transparent 40%);
   background-size: 60px 60px, 60px 60px, 400px 400px, 500px 500px;
   background-repeat: repeat;
 }
@@ -278,8 +281,8 @@ body,
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 800px 400px at 20% 30%, rgba(212, 175, 55, 0.05) 0%, transparent 70%),
-    radial-gradient(ellipse 600px 500px at 80% 60%, rgba(212, 175, 55, 0.04) 0%, transparent 70%);
+    radial-gradient(ellipse 800px 400px at 20% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 70%),
+    radial-gradient(ellipse 600px 500px at 80% 60%, rgba(255, 255, 255, 0.04) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -293,10 +296,10 @@ body,
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px),
-    radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.04) 0%, transparent 40%);
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.04) 0%, transparent 40%);
   background-size: 80px 80px, 80px 80px, 500px 500px, 600px 600px;
   background-repeat: repeat;
   pointer-events: none;
@@ -306,8 +309,8 @@ body,
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 800px 400px at 20% 30%, rgba(212, 175, 55, 0.05) 0%, transparent 70%),
-    radial-gradient(ellipse 600px 500px at 80% 60%, rgba(212, 175, 55, 0.04) 0%, transparent 70%);
+    radial-gradient(ellipse 800px 400px at 20% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 70%),
+    radial-gradient(ellipse 600px 500px at 80% 60%, rgba(255, 255, 255, 0.04) 0%, transparent 70%);
   pointer-events: none;
 }
 /* ════════════════════════════════════════════════════════════
@@ -334,6 +337,10 @@ body,
   z-index: 1;
   pointer-events: none;
   opacity: 0;
+  /* The hero motif is pushed below the section edge on purpose. Without this
+     clip it extends the section's scrollHeight, which made a 100dvh scene
+     scrollable by 378px of empty space. */
+  overflow: hidden;
   transition: opacity 900ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 .art.active { opacity: 1; }
@@ -356,29 +363,29 @@ body,
 /* About: transmission rings pulsing from a beacon (pure CSS) */
 .art-about {
   background:
-    radial-gradient(circle 1px at 50% 46%, rgba(212, 175, 55, 0.9) 0%, transparent 100%),
+    radial-gradient(circle 1px at 50% 46%, rgba(255, 255, 255, 0.9) 0%, transparent 100%),
     repeating-radial-gradient(
       circle at 50% 46%,
-      transparent 0 118px, rgba(212, 175, 55, 0.05) 118px 119px,
-      transparent 119px 178px, rgba(212, 175, 55, 0.04) 178px 179px,
-      transparent 179px 268px, rgba(212, 175, 55, 0.03) 268px 269px
+      transparent 0 118px, rgba(255, 255, 255, 0.05) 118px 119px,
+      transparent 119px 178px, rgba(255, 255, 255, 0.04) 178px 179px,
+      transparent 179px 268px, rgba(255, 255, 255, 0.03) 268px 269px
     );
 }
 
 /* Capabilities: circuit traces with via dots */
-.art .trace { fill: none; stroke: rgba(212, 175, 55, 0.1); stroke-width: 1; }
+.art .trace { fill: none; stroke: rgba(255, 255, 255, 0.1); stroke-width: 1; }
 .art .trace.dash { stroke-dasharray: 1 6; }
-.art .via { fill: rgba(212, 175, 55, 0.14); }
+.art .via { fill: rgba(255, 255, 255, 0.14); }
 
 /* Projects: constellation joined by sight-lines */
-.art .line { fill: none; stroke: rgba(212, 175, 55, 0.07); stroke-width: 1; }
-.art .star { fill: rgba(212, 175, 55, 0.35); }
-.art .star.bright { fill: rgba(212, 175, 55, 0.7); }
+.art .line { fill: none; stroke: rgba(255, 255, 255, 0.07); stroke-width: 1; }
+.art .star { fill: rgba(255, 255, 255, 0.35); }
+.art .star.bright { fill: rgba(255, 255, 255, 0.7); }
 
 /* Contact: landing pad with descent guide and range marks */
-.art .guide { fill: none; stroke: rgba(212, 175, 55, 0.12); stroke-width: 1; stroke-dasharray: 3 9; }
-.art .cross { fill: none; stroke: rgba(212, 175, 55, 0.18); stroke-width: 1; }
-.art .pad { fill: none; stroke: rgba(212, 175, 55, 0.25); stroke-width: 1.2; }
+.art .guide { fill: none; stroke: rgba(255, 255, 255, 0.12); stroke-width: 1; stroke-dasharray: 3 9; }
+.art .cross { fill: none; stroke: rgba(255, 255, 255, 0.18); stroke-width: 1; }
+.art .pad { fill: none; stroke: rgba(255, 255, 255, 0.25); stroke-width: 1.2; }
 
 /* Drift + breathe, only when motion is welcome */
 @media (prefers-reduced-motion: no-preference) {

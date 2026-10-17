@@ -31,7 +31,14 @@ function Scene({
   const { ref, visible } = useInView(0.5)
   const on = active || visible
   return (
-    <section id={id} ref={ref} className="relative flex h-[100dvh] items-center justify-center overflow-y-auto overflow-x-hidden px-6 py-24 pb-[calc(6rem+2.75rem)] sm:pb-24">
+    // Below lg: min-h + auto height, so a scene taller than the viewport (the
+    // projects grid overflows 100dvh at every width under 1024 — 1570px at
+    // 390px wide, 1099px at 768) grows the page instead of scrolling inside a
+    // 100dvh box. Flex centering a too-tall column inside a fixed box also
+    // overflowed it ABOVE the scene — the "Featured work" heading landed
+    // inside the capabilities scene. lg+ keeps the fixed 100dvh stage the
+    // scroll narrative is built on, where all five scenes fit.
+    <section id={id} ref={ref} className="relative flex min-h-[100dvh] flex-col items-center justify-center overflow-y-auto overflow-x-hidden px-6 py-24 pb-[calc(6rem+2.75rem)] lg:h-[100dvh] lg:pb-24">
       <div className={`scene-bg ${bg} ${on ? 'active' : ''}`} aria-hidden="true" />
       {(art || artClass) && (
         <div className={`art ${artClass ?? ''} ${on ? 'active' : ''}`} aria-hidden="true">{art}</div>
@@ -44,14 +51,16 @@ function Scene({
 }
 
 /* ── Kinetic reveal: spring + blur, alternating side, staggered delay ── */
-function KineticReveal({ children, side = 'l', delay = 0 }: {
+function KineticReveal({ children, side = 'l', delay = 0, className = '' }: {
   children: React.ReactNode
   side?: 'l' | 'r'
   delay?: number
+  className?: string
 }) {
   const reduced = useReducedMotion()
   return (
     <motion.div
+      className={className}
       initial={reduced ? { opacity: 0 } : { opacity: 0, x: side === 'l' ? -40 : 40, filter: 'blur(10px)' }}
       whileInView={reduced ? { opacity: 1 } : { opacity: 1, x: 0, filter: 'blur(0px)' }}
       viewport={{ once: true, amount: 0.35 }}
@@ -176,10 +185,9 @@ export function HeroScene() {
           </span>
         </KineticReveal>
         <KineticReveal delay={0.1}>
-          <h1 className="m-0 font-display text-4xl font-medium leading-[1.2] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+          <h1 className="m-0 text-balance font-display text-4xl font-medium leading-[1.2] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
             {site.hero.headline}
-          </h1>
-        </KineticReveal>
+          </h1>        </KineticReveal>
         <KineticReveal delay={0.2}>
           <p className="mx-auto mt-6 max-w-xl text-base font-light leading-relaxed text-[var(--color-text-muted)] sm:text-lg">
             {site.hero.sub}
@@ -237,8 +245,8 @@ export function CapabilitiesScene() {
         <div className="mt-8 grid grid-cols-2 gap-3 text-left sm:mt-16 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
           {site.features.map((f, i) => {
             return (
-              <KineticReveal key={f.title} side={i % 2 === 0 ? 'l' : 'r'} delay={0.15 + i * 0.1}>
-                <div className="group relative rounded-[16px] border border-[var(--color-border)] bg-[var(--color-bg-card)] p-4 transition-colors duration-300 hover:border-[var(--color-accent)] hover:bg-[var(--color-bg-card-hover)] hover:shadow-[0_0_30px_rgba(212,175,55,0.06)] sm:p-6">
+              <KineticReveal key={f.title} side={i % 2 === 0 ? 'l' : 'r'} delay={0.15 + i * 0.1} className="h-full">
+                <div className="group relative h-full rounded-[16px] border border-[var(--color-border)] bg-[var(--color-bg-card)] p-4 transition-colors duration-300 hover:border-[var(--color-accent)] hover:bg-[var(--color-bg-card-hover)] hover:shadow-[0_0_30px_rgba(255,255,255,0.06)] sm:p-6">
                   <span className="font-mono text-xl font-light text-[var(--color-accent)] sm:text-2xl">{f.icon}</span>
                   <h3 className="mt-2 font-display text-sm font-medium tracking-wide text-white sm:mt-4">{f.title}</h3>
                   <p className="m-0 mt-1.5 text-[13px] leading-snug text-[var(--color-text-muted)] sm:mt-2 sm:text-sm sm:leading-relaxed">{f.desc}</p>
@@ -253,6 +261,10 @@ export function CapabilitiesScene() {
 }
 
 export function ProjectsScene() {
+  // Six in the scene, the rest behind /work. Ten rows in a 100dvh sticky box
+  // overflowed by 431px, so the heading sat off-screen and the list began
+  // mid-row.
+  const featured = site.projects.slice(0, 6)
   return (
     <Scene id="s-projects" bg="bg-contours" art={<ProjArt />}>
       <div className="relative z-20 flex flex-col items-center">
@@ -264,31 +276,46 @@ export function ProjectsScene() {
             Featured work
           </h2>
         </KineticReveal>
-        <div className="mt-12 w-full">
-          {site.projects.map((p, i) => (
-            <KineticReveal key={p.name} side={i % 2 === 1 ? 'l' : 'r'} delay={0.15 + i * 0.1}>
+        <div className="mt-10 grid w-full grid-cols-1 gap-3 text-left sm:mt-12 sm:grid-cols-2 sm:gap-3 lg:grid-cols-3">
+          {featured.map((p, i) => (
+            <KineticReveal key={p.name} side={i % 2 === 0 ? 'l' : 'r'} delay={0.12 + i * 0.06}>
               <a
                 href={p.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative grid grid-cols-[auto_1fr_auto] items-center gap-6 border-b border-[var(--color-border)] py-8 text-left no-underline transition-all duration-500 hover:bg-white/[0.02]"
+                className="group flex h-full flex-col gap-3 rounded-[14px] border border-[var(--color-border)] bg-[var(--color-bg-card)] p-3 text-left no-underline transition-colors duration-300 hover:border-[var(--color-border-hover)] hover:bg-[var(--color-bg-card-hover)]"
               >
-                <div className="relative h-20 w-20 shrink-0 rounded-xl shadow-sm transition-transform duration-500 group-hover:scale-110 group-hover:rotate-2">
-                  <ProjectPreview name={p.name} live={p.live} className="h-full w-full rounded-xl" />
+                <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden rounded-[10px] bg-[var(--color-bg-elevated)]">
+                  <ProjectPreview name={p.name} live={p.live} className="h-full w-full" />
                 </div>
-                <span className="relative z-10">
-                  <span className="m-0 font-display text-xl font-medium text-white transition-colors duration-300 group-hover:text-[var(--color-accent)]">{p.name}</span>
-                  <span className="m-0 mt-1 block text-[14px] leading-relaxed text-[var(--color-text-muted)] transition-colors duration-300 group-hover:text-white/80">
+                <span className="flex min-w-0 flex-1 flex-col">
+                  <span className="flex items-start justify-between gap-2">
+                    <span className="m-0 font-display text-[15px] font-medium leading-snug text-white">
+                      {p.name}
+                    </span>
+                    <span className="shrink-0 pt-0.5 text-sm text-[var(--color-text-subtle)] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:text-white" aria-hidden="true">
+                      →
+                    </span>
+                  </span>
+                  <span className="mt-1 line-clamp-2 text-[12.5px] leading-relaxed text-[var(--color-text-muted)]">
                     {p.description}
                   </span>
-                </span>
-                <span className="text-xl text-[var(--color-accent)] opacity-40 transition-all duration-300 group-hover:translate-x-2 group-hover:opacity-100 group-focus-within:translate-x-2 group-focus-within:opacity-100">
-                  →
                 </span>
               </a>
             </KineticReveal>
           ))}
         </div>
+        {/* All-projects link sits tight: at 1440 the grid + mt-8 pushed the
+            scene 8px past its 100dvh box, making the sticky scene scrollable. */}
+        <KineticReveal delay={0.5}>
+          <a
+            href={`${import.meta.env.BASE_URL}work`}
+            className="mt-5 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--color-text-muted)] no-underline transition-colors duration-300 hover:text-white"
+          >
+            All {site.projects.length} projects
+            <span aria-hidden="true">→</span>
+          </a>
+        </KineticReveal>
       </div>
     </Scene>
   )

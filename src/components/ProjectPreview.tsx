@@ -24,9 +24,38 @@ export function ProjectPreview({
   const video = useRef<HTMLVideoElement>(null)
   const stopTimer = useRef<ReturnType<typeof setTimeout>>(undefined)
   const [ready, setReady] = useState(false)
+  const [failed, setFailed] = useState(false)
 
-  // No live URL means the recorder never produced a clip for this project.
-  if (!live) return null
+  // Unmounting with a pending stop would pause a video mid-unmount.
+  // Every hook runs before the early return below: `failed` flips at runtime
+  // (async img decode error), and a conditional return between hooks — the
+  // shape this file used to have for `!live` — throws "rendered fewer hooks
+  // than expected" the moment a poster fails.
+  useEffect(() => () => clearTimeout(stopTimer.current), [])
+
+  // Two ways a card ends up with no clip: the project has no live URL (the
+  // recorder never ran for it), or the poster 404s (recorder skipped it, or a
+  // deploy lost the file — that's how resume-website broke: it has a live URL
+  // but no recorded asset). Either way, render a monogram tile instead of
+  // returning null — a null preview collapsed the card's media area and left
+  // no-preview repos a third shorter than their neighbours in the grid.
+  if (!live || failed) {
+    const words = name.split(/[^a-zA-Z0-9]+/).filter(Boolean)
+    const initials = (
+      words.length > 1 ? words.slice(0, 2).map((w) => w[0]) : [name.slice(0, 2)]
+    )
+      .join('')
+      .toUpperCase()
+    return (
+      <div
+        className={`relative flex h-full w-full items-center justify-center overflow-hidden bg-[var(--color-bg-elevated)] ${className}`}
+      >
+        <span className="font-mono text-lg font-light tracking-[0.25em] text-[var(--color-text-subtle)]">
+          {initials}
+        </span>
+      </div>
+    )
+  }
   const slug = previewSlug(name)
   const mp4 = `${import.meta.env.BASE_URL}previews/${slug}.mp4`
   const poster = `${import.meta.env.BASE_URL}previews/${slug}.jpg`
@@ -49,8 +78,6 @@ export function ProjectPreview({
       v.currentTime = 0
     }, 200)
   }
-  // Unmounting with a pending stop would pause a video mid-unmount.
-  useEffect(() => () => clearTimeout(stopTimer.current), [])
 
   return (
     <div
@@ -69,6 +96,7 @@ export function ProjectPreview({
         loading={name === 'Personal-Site' ? 'eager' : 'lazy'}
         fetchPriority={name === 'Personal-Site' ? 'high' : 'auto'}
         decoding="async"
+        onError={() => setFailed(true)}
         className="h-full w-full object-cover"
       />
       <video

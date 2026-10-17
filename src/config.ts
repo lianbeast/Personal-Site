@@ -25,7 +25,9 @@ export const site = {
   name: 'Lian Beast',
   tagline: 'Builder · Dreamer · Explorer',
   hero: {
-    headline: 'I build things that live on the web.',
+    // The \u00A0 keeps "the web." together — at the hero's 72px the plain
+    // space let "web." widow onto a line of its own under the headline.
+    headline: 'I build things that live on the\u00A0web.',
     sub: 'Interactive, playful, a little bit extra. Right now I\'m reading about space and chasing the next idea worth building.',
     // Anchor must match a scene id in NarrativeScenes.tsx (s-*).
     cta: { label: 'Get in touch', href: '#s-contact' },
