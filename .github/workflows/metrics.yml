@@ -19,8 +19,14 @@ jobs:
         with:
           token: ${{ secrets.METRICS_TOKEN }}
           user: lianbeast
-          repo: lowlighter/metrics
           template: markdown
+          # NOTE: do NOT set `repo` here. The markdown template's embed()
+          # function inherits the outer query (including `repo`) and forces
+          # the classic template for each embed; the classic template only
+          # supports user/organization scope, so a `repo` value makes every
+          # embed fail with "template not supported for: repository".
+          # Metrics are therefore rendered for your user account, which is
+          # the standard profile README behaviour.
           # The markdown template is fetched by URL (the action runs in a
           # Docker container and reads the template from this address, not
           # from the checked-out repo).
