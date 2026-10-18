@@ -109,5 +109,5 @@ social links, about text, features, contact, and projects. Edit, push, done.
 
 <%- await embed(`metrics-isocalendar`, { isocalendar: true, isocalendar_duration: "year" }) %>
 <%- await embed(`metrics-languages`, { languages: true, languages_details: "percentage, bytes-size" }) %>
-<%- await embed(`metrics-lines`, { lines: true, lines_history_limit: "year" }) %>
+<%- await embed(`metrics-lines`, { lines: true, lines_sections: "history, repositories", lines_history_limit: "year" }) %>
 <%- await embed(`metrics-skyline`, { skyline: true, skyline_year: "2025" }) %>
