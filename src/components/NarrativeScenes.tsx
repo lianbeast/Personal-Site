@@ -50,7 +50,16 @@ function Scene({
   )
 }
 
-/* ── Kinetic reveal: spring + blur, alternating side, staggered delay ── */
+/* ── Kinetic reveal: spring + slide, alternating side, staggered delay ──
+   Transform and opacity only. An earlier version also animated
+   `filter: blur(10px) → blur(0px)`, and filter is the most expensive property
+   to animate: every frame of the spring re-rasterised the whole card layer —
+   screenshots included — and on many GPUs the layer stays at reduced
+   resolution for as long as any filter is live on it. Scrolled at a normal
+   pace, the projects grid (whose six cards reveal around the HUD's ~130km
+   mark) sat in that state for the full ~1s of springs plus their 0.12–0.42s
+   delays: cards visibly blurred and their preview images warped. Opacity +
+   slide + a 2% scale gives the same materialise beat for free. */
 function KineticReveal({ children, side = 'l', delay = 0, className = '' }: {
   children: React.ReactNode
   side?: 'l' | 'r'
@@ -61,8 +70,8 @@ function KineticReveal({ children, side = 'l', delay = 0, className = '' }: {
   return (
     <motion.div
       className={className}
-      initial={reduced ? { opacity: 0 } : { opacity: 0, x: side === 'l' ? -40 : 40, filter: 'blur(10px)' }}
-      whileInView={reduced ? { opacity: 1 } : { opacity: 1, x: 0, filter: 'blur(0px)' }}
+      initial={reduced ? { opacity: 0 } : { opacity: 0, x: side === 'l' ? -40 : 40, scale: 0.98 }}
+      whileInView={reduced ? { opacity: 1 } : { opacity: 1, x: 0, scale: 1 }}
       viewport={{ once: true, amount: 0.35 }}
       transition={{ type: 'spring', stiffness: 100, damping: 20, delay }}
     >
@@ -305,12 +314,15 @@ export function ProjectsScene() {
             </KineticReveal>
           ))}
         </div>
-        {/* All-projects link sits tight: at 1440 the grid + mt-8 pushed the
-            scene 8px past its 100dvh box, making the sticky scene scrollable. */}
+        {/* All-projects link sits tight: at 1440 the grid + margin pushed the
+            scene 5px past its 100dvh box, making the sticky scene scrollable.
+            A scene with even 1px of internal overflow turns into a scroll
+            container, and wheel events over it chain instead of scrolling the
+            page — a visible hitch right at the projects/capabilities boundary. */}
         <KineticReveal delay={0.5}>
           <a
             href={`${import.meta.env.BASE_URL}work`}
-            className="mt-5 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--color-text-muted)] no-underline transition-colors duration-300 hover:text-white"
+            className="mt-4 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--color-text-muted)] no-underline transition-colors duration-300 hover:text-white"
           >
             All {site.projects.length} projects
             <span aria-hidden="true">→</span>
