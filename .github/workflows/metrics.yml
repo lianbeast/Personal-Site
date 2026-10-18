@@ -21,9 +21,12 @@ jobs:
           user: lianbeast
           repo: lowlighter/metrics
           template: markdown
-          markdown: .github/metrics.markdown.md
+          # The markdown template is fetched by URL (the action runs in a
+          # Docker container and reads the template from this address, not
+          # from the checked-out repo).
+          markdown: https://raw.githubusercontent.com/lianbeast/Personal-Site/main/.github/metrics.markdown.md
           filename: README.md
-          markdown_cache: .github/.metrics-cache
+          markdown_cache: .cache
           config_timezone: "UTC"
           plugin_isocalendar: "1"
           plugin_languages: "1"
