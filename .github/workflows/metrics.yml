@@ -1,0 +1,38 @@
+name: GitHub Metrics
+
+on:
+  # Regenerate the profile README's metrics section daily.
+  schedule:
+    - cron: "0 0 * * *"
+  # Manual re-render from the Actions tab.
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  github-metrics:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: lowlighter/metrics@latest
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+          # Profile README is rendered from .github/metrics.markdown.md (EJS),
+          # which embeds the metrics SVGs below into the existing prose.
+          user: lianbeast
+          repo: lowlighter/metrics
+          template: markdown
+          markdown: .github/metrics.markdown.md
+          filename: README.md
+          markdown_cache: .github/.metrics-cache
+          config_timezone: "UTC"
+          # Scope every embed at the top level so each plugin reads the
+          # lowlighter/metrics repository.
+          plugin_isocalendar: "1"
+          plugin_languages: "1"
+          plugin_lines: "1"
+          plugin_skyline: "1"
+          # The committed README only changes the metrics section — the prose
+          # is static — so this push does not need to trigger a Pages deploy
+          # or a GIF re-record.
+          committer_message: "[skip ci] Update GitHub metrics"
