@@ -50,7 +50,7 @@ src/
     ProjectsSection.tsx    # Live GitHub repos (+ static fallback)
     ProjectPreview.tsx     # Recorded mp4 + poster previews
     MapRoomSection.tsx     # GeoLibre iframe embed
-    ScrollReveal.tsx       # gsap ScrollTrigger reveal
+    ScrollReveal.tsx       # motion whileInView reveal
     Eyebrow.tsx            # Shared section index label
     SplashCursor.tsx       # Gold cursor ring + velocity trail
     Footer.tsx
@@ -64,7 +64,7 @@ section renders the static `site.projects` list instead — a failed API call
 never breaks the page.
 
 **Stack:** Vite + React 19 + TypeScript, Tailwind CSS v4 (tokens declared in
-an `@theme` block in `index.css`), GSAP + ScrollTrigger for section reveals,
+an `@theme` block in `index.css`), Framer `motion` for section reveals,
 Framer `motion` for scene reveals and `useReducedMotion`.
 
 ## Design system

@@ -28,7 +28,7 @@ export function MapRoomSection() {
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
               <Eyebrow>map room</Eyebrow>
-              <h2 className="mt-4 font-display text-2xl font-medium tracking-tight text-white sm:text-3xl">
+              <h2 className="mt-4 font-display text-2xl font-medium tracking-tight text-[var(--color-accent)] sm:text-3xl">
                 The Map Room
               </h2>
             </div>

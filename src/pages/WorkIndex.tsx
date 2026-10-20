@@ -11,10 +11,9 @@ import { Footer } from '../components/Footer'
 
 interface CardProps {
   project: Project
-  index: number
 }
 
-function ProjectCard({ project, index }: CardProps) {
+function ProjectCard({ project }: CardProps) {
   const slug = (project.name ?? '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
   const isSelf = project.name === 'Personal-Site'
   const hasPreview = !!project.live
@@ -30,7 +29,6 @@ function ProjectCard({ project, index }: CardProps) {
       target="_blank"
       rel="noopener noreferrer"
       className="group relative flex flex-col overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-card)] transition-all duration-300 hover:border-[var(--color-accent)] hover:bg-[var(--color-bg-card-hover)] hover:shadow-[0_0_30px_rgba(255,255,255,0.06)]"
-      style={{ animationDelay: `${index * 60}ms` }}
     >
       {/* Video / image preview */}
       <div className="relative aspect-[16/10] overflow-hidden rounded-t-2xl bg-[var(--color-bg-elevated)]">
@@ -124,7 +122,7 @@ export function WorkIndexPage() {
           <p className="m-0 font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--color-text-subtle)]">
             work index
           </p>
-          <h1 className="mt-4 m-0 font-display text-4xl font-medium leading-[1.2] tracking-tight text-white sm:text-5xl lg:text-5xl">
+          <h1 className="mt-4 m-0 font-display text-4xl font-medium leading-[1.2] tracking-tight text-[var(--color-accent)] sm:text-5xl lg:text-5xl">
             Everything I&apos;ve built.
           </h1>
           <p className="mt-6 max-w-xl text-base font-light leading-relaxed text-[var(--color-text-muted)]">
@@ -137,8 +135,8 @@ export function WorkIndexPage() {
       <section className="px-6 pb-24">
         <div className="mx-auto max-w-4xl">
           <div className="grid gap-4 sm:grid-cols-2">
-            {projects.map((p, i) => (
-              <ProjectCard key={p.name} project={p} index={i} />
+            {projects.map((p) => (
+              <ProjectCard key={p.name} project={p} />
             ))}
           </div>
         </div>

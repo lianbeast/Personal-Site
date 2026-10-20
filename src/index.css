@@ -29,14 +29,8 @@
   --color-accent-secondary: #A1A1A1;
   --color-accent-secondary-glow: rgba(161, 161, 161, 0.15);
 
-  --color-success: #C9C9C9;
-  --color-success-subtle: rgba(201, 201, 201, 0.15);
-
   --color-warning: #9A9A9A;
   --color-warning-subtle: rgba(154, 154, 154, 0.15);
-
-  --color-error: #7E7E7E;
-  --color-error-subtle: rgba(126, 126, 126, 0.15);
 
   --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.5);
   --shadow-card-hover: 0 8px 30px rgba(0, 0, 0, 0.7);

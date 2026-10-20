@@ -99,7 +99,7 @@ function ProjectHero({ chapter, index }: { chapter: ProjectChapter; index: numbe
         </p>
 
         {/* Title */}
-        <h2 className="font-display text-5xl sm:text-7xl lg:text-8xl font-medium leading-[0.95] tracking-tight text-white mb-8">
+        <h2 className="font-display text-5xl sm:text-7xl lg:text-8xl font-medium leading-[0.95] tracking-tight text-[var(--color-accent)] mb-8">
           {chapter.name}
         </h2>
 

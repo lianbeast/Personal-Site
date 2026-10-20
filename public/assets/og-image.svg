@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0A0A0A"/>
+  <g fill="none" stroke="#D4AF37" stroke-width="1.5" opacity="0.18">
+    <circle cx="600" cy="315" r="320"/>
+    <circle cx="600" cy="315" r="240"/>
+    <circle cx="600" cy="315" r="160"/>
+    <ellipse cx="600" cy="315" rx="320" ry="110"/>
+    <ellipse cx="600" cy="315" rx="320" ry="200"/>
+  </g>
+  <circle cx="600" cy="315" r="320" fill="none" stroke="#D4AF37" stroke-width="3"/>
+  <path d="M 120 490 A 320 320 0 0 1 1080 490" fill="none" stroke="#D4AF37" stroke-width="2.5" opacity="0.9"/>
+  <path d="M 180 430 A 240 240 0 0 1 1020 430" fill="none" stroke="#D4AF37" stroke-width="1.5" opacity="0.6"/>
+  <circle cx="240" cy="420" r="4" fill="#D4AF37" opacity="0.8"/>
+  <circle cx="960" cy="390" r="3" fill="#D4AF37" opacity="0.7"/>
+  <circle cx="600" cy="390" r="2.5" fill="#D4AF37" opacity="0.6"/>
+  <text x="600" y="540" font-family="'Inter', ui-sans-serif, system-ui, sans-serif" font-size="22" font-weight="500" letter-spacing="6" fill="#A1A1A1" text-anchor="middle">LIAN BEAST · BUILDER · DREAMER · EXPLORER</text>
+</svg>

@@ -211,7 +211,7 @@ export function ProjectsSection() {
       <div className="relative z-10 mx-auto max-w-4xl">
         <ScrollReveal>
           <Eyebrow>projects</Eyebrow>
-          <h2 className="mt-4 font-display text-2xl font-medium tracking-tight text-white sm:text-3xl">
+          <h2 className="mt-4 font-display text-2xl font-medium tracking-tight text-[var(--color-accent)] sm:text-3xl">
             Open Source
           </h2>
           {repos && (

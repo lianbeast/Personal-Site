@@ -9,7 +9,7 @@ import { Eyebrow } from './Eyebrow'
 
 /* Scene heading and lead, shared by scenes 2–5. One definition each so the
    type scale is edited in one place rather than four. */
-const H2 = 'm-0 font-display text-3xl font-medium leading-[1.2] tracking-tight text-white sm:text-4xl lg:text-5xl'
+const H2 = 'm-0 font-display text-3xl font-medium leading-[1.2] tracking-tight text-[var(--color-accent)] sm:text-4xl lg:text-5xl'
 const LEAD = 'mx-auto mt-6 max-w-xl text-base font-light leading-relaxed text-[var(--color-text-muted)]'
 
 /* ── Scene shell: 100dvh sticky scene, bg + art fade in at 50% visibility ── */
@@ -194,7 +194,7 @@ export function HeroScene() {
           </span>
         </KineticReveal>
         <KineticReveal delay={0.1}>
-          <h1 className="m-0 text-balance font-display text-4xl font-medium leading-[1.2] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+          <h1 className="m-0 text-balance font-display text-4xl font-medium leading-[1.2] tracking-tight text-[var(--color-accent)] sm:text-5xl md:text-6xl lg:text-7xl">
             {site.hero.headline}
           </h1>        </KineticReveal>
         <KineticReveal delay={0.2}>
@@ -257,7 +257,7 @@ export function CapabilitiesScene() {
               <KineticReveal key={f.title} side={i % 2 === 0 ? 'l' : 'r'} delay={0.15 + i * 0.1} className="h-full">
                 <div className="group relative h-full rounded-[16px] border border-[var(--color-border)] bg-[var(--color-bg-card)] p-4 transition-colors duration-300 hover:border-[var(--color-accent)] hover:bg-[var(--color-bg-card-hover)] hover:shadow-[0_0_30px_rgba(255,255,255,0.06)] sm:p-6">
                   <span className="font-mono text-xl font-light text-[var(--color-accent)] sm:text-2xl">{f.icon}</span>
-                  <h3 className="mt-2 font-display text-sm font-medium tracking-wide text-white sm:mt-4">{f.title}</h3>
+                  <h3 className="mt-2 font-display text-sm font-medium tracking-wide text-[var(--color-accent)] sm:mt-4">{f.title}</h3>
                   <p className="m-0 mt-1.5 text-[13px] leading-snug text-[var(--color-text-muted)] sm:mt-2 sm:text-sm sm:leading-relaxed">{f.desc}</p>
                 </div>
               </KineticReveal>
@@ -299,7 +299,7 @@ export function ProjectsScene() {
                 </div>
                 <span className="flex min-w-0 flex-1 flex-col">
                   <span className="flex items-start justify-between gap-2">
-                    <span className="m-0 font-display text-[15px] font-medium leading-snug text-white">
+                    <span className="m-0 font-display text-[15px] font-medium leading-snug text-[var(--color-accent)]">
                       {p.name}
                     </span>
                     <span className="shrink-0 pt-0.5 text-sm text-[var(--color-text-subtle)] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:text-white" aria-hidden="true">
