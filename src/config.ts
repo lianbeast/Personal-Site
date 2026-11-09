@@ -28,13 +28,16 @@ export const site = {
     // The \u00A0 keeps "the web." together — at the hero's 72px the plain
     // space let "web." widow onto a line of its own under the headline.
     headline: 'I build things that live on the\u00A0web.',
+    // One hard fact above the fold: the headline says what I do, this says
+    // how much of it is real and shipped. Kept as a literal so the object
+    // literal can read it before `projects` is defined below.
+    fact: '10 open-source projects, most with a live preview',
     sub: 'Interactive, playful, a little bit extra. Right now I\'m reading about space and chasing the next idea worth building.',
     // Anchor must match a scene id in NarrativeScenes.tsx (s-*).
     cta: { label: 'Get in touch', href: '#s-contact' },
   },
 
   githubUser: 'lianbeast',
-  city: 'San Francisco',
 
   links: {
     github: 'https://github.com/lianbeast',
@@ -44,8 +47,8 @@ export const site = {
   about: {
     intro: "Hi, I'm Lian Beast.",
     body: [
-      'I build things that live on the web. Interactive, playful, a little bit extra.',
-      "When I'm not shipping code I'm poking at new tools, reading about space, or chasing the next idea worth building.",
+      'I build things that live on the web. Mostly on the frontend, sometimes on the map — interfaces that ship and keep shipping.',
+      "When I'm not at a keyboard I'm reading about space or poking at new tools.",
     ],
   },
 
@@ -172,12 +175,5 @@ export const site = {
       },
     ],
     embedParams: '&layout=compact&panels=collapsed',
-    // Short feature list shown under the map embed.
-    features: [
-      { icon: '🗂', label: 'Vector & raster layers', desc: 'GeoJSON, PMTiles, COG, GeoParquet' },
-      { icon: '🧮', label: 'Geoprocessing', desc: '1,000+ local analysis tools' },
-      { icon: '🎨', label: 'Live styling', desc: 'Per-layer colors, sizes, opacity' },
-      { icon: '🔒', label: 'Private by default', desc: 'Everything runs in your browser' },
-    ],
   },
 }

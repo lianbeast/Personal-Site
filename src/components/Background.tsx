@@ -11,7 +11,6 @@ const variantClasses: Record<BackgroundVariant, string> = {
   stars: 'bg-stars',
   nebula: 'bg-nebula',
   blueprint: 'bg-blueprint',
-  noise: 'bg-noise relative',
   contours: 'bg-contours',
   space: 'bg-space',
   techImage: 'bg-tech-image',

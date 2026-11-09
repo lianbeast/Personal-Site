@@ -202,6 +202,11 @@ export function HeroScene() {
             {site.hero.sub}
           </p>
         </KineticReveal>
+        <KineticReveal delay={0.26}>
+          <p className="mx-auto mt-4 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--color-text-subtle)]">
+            {site.hero.fact}
+          </p>
+        </KineticReveal>
         <KineticReveal delay={0.3}>
           <div className="mt-10">
             <a

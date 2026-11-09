@@ -71,7 +71,6 @@ html {
 }
 
 /* ── Physical Texture Overlay ── */
-/* A tiled noise PNG, not an inline feTurbulence SVG: the old overlay was a
    position:fixed layer whose background had to run an SVG filter to rasterise,
    so the whole viewport re-composited a filtered layer on every scroll frame —
    on integrated GPUs that reads as the page going soft while scrolling. A
@@ -82,7 +81,6 @@ body::after {
   inset: 0;
   z-index: 100;
   pointer-events: none;
-  background-image: url("./assets/noise.png");
   background-repeat: repeat;
   opacity: 0.03;
 }

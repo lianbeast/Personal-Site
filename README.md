@@ -12,23 +12,23 @@ and no network data on the critical path.
 
 ## Features
 
-- **Scroll narrative.** Five `100dvh` `position: sticky` scenes, each three
-  layers: a CSS parallax background, an SVG art motif (planet horizon,
-  transmission rings, circuit traces, constellation, landing pad), and a
-  centered content column. Kinetic reveal on every element.
+- **Scroll narrative.** Five `100dvh` stacked scenes, each three layers: a CSS
+  parallax background, an SVG art motif (planet horizon, transmission rings,
+  circuit traces, constellation, landing pad), and a centered content column.
+  Kinetic reveal on every element.
 - **HUD.** Left depth meter ("ALT" → "ground") fills with scroll progress,
   measured against the narrative's own extent, not the document bottom.
-  Right scene rail with five anchor dots; the active one turns gold.
+  Right scene rail with five anchor dots; the active one turns white.
 - **Live GitHub projects.** Most recently pushed public repos, pulled from the
   GitHub API. Falls back to a curated static list on failure — the page never
   depends on it rendering.
 - **Map Room.** GeoLibre embedded with map-only chrome, pan and zoom, 1,000+
   geoprocessing tools, everything running locally in the browser.
-- **Custom cursor.** Gold ring that grows to 80px over interactive elements,
-  trailing a six-node ribbon that blooms with pointer speed. Plain CSS
-  transforms, no WebGL, no new dependency.
-- **Magnetic buttons** with tactile click scaling; capability cards lift a
-  gold glow on hover; project cards show a recorded clip of the live site on
+- **Custom cursor.** A white ring that grows to 80px over interactive
+  elements, trailing a six-node ribbon that blooms with pointer speed. Plain
+  CSS transforms, no WebGL, no new dependency.
+- **Tactile click scaling** on every button and link; capability cards lift a
+  white glow on hover; project cards show a recorded clip of the live site on
   hover.
 - **Reduced motion** honoured on every path: art fades in without drifting or
   breathing, the cursor trail renders nothing at all, `ScrollReveal` skips its
@@ -64,8 +64,8 @@ section renders the static `site.projects` list instead — a failed API call
 never breaks the page.
 
 **Stack:** Vite + React 19 + TypeScript, Tailwind CSS v4 (tokens declared in
-an `@theme` block in `index.css`), Framer `motion` for section reveals,
-Framer `motion` for scene reveals and `useReducedMotion`.
+an `@theme` block in `index.css`), Framer `motion` for section reveals and
+`useReducedMotion`.
 
 ## Design system
 
@@ -73,7 +73,7 @@ Framer `motion` for scene reveals and `useReducedMotion`.
   transitions) plus semantic aliases. A human-readable copy is extracted to
   `opendesign/design-systems/personal-site/tokens/colors_and_type.css`.
 - **Cards** share one treatment: 16px radius, `--color-border`,
-  `--color-bg-card`, gold border + soft glow on hover.
+  `--color-bg-card`, white border + soft glow on hover.
 - **Contrast** holds WCAG 2.2 AA for text (≥4.5) and non-text UI (≥3), including
   scrollbar thumb and scene-rail targets. `prefers-contrast: more` raises the
   border token for users who need it.

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { useReducedMotion } from 'motion/react'
 import { previewSlug } from '../config'
 
 /**
@@ -32,6 +33,7 @@ export function ProjectPreview({
   // shape this file used to have for `!live` — throws "rendered fewer hooks
   // than expected" the moment a poster fails.
   useEffect(() => () => clearTimeout(stopTimer.current), [])
+  const reduced = useReducedMotion()
 
   // Two ways a card ends up with no clip: the project has no live URL (the
   // recorder never ran for it), or the poster 404s (recorder skipped it, or a
@@ -39,7 +41,7 @@ export function ProjectPreview({
   // but no recorded asset). Either way, render a monogram tile instead of
   // returning null — a null preview collapsed the card's media area and left
   // no-preview repos a third shorter than their neighbours in the grid.
-  if (!live || failed) {
+  if (!live || failed || reduced) {
     const words = name.split(/[^a-zA-Z0-9]+/).filter(Boolean)
     const initials = (
       words.length > 1 ? words.slice(0, 2).map((w) => w[0]) : [name.slice(0, 2)]

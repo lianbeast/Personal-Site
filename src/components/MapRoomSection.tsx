@@ -66,7 +66,7 @@ export function MapRoomSection() {
             >
               GeoLibre
             </a>
-            . A complete GIS in your browser &mdash; pan, zoom, style layers, and run geoprocessing &mdash; all local, nothing leaves your machine.
+            . Pan, zoom, style layers, and run 1,000+ geoprocessing tools &mdash; all local, nothing leaves your machine.
           </p>
         </ScrollReveal>
       </div>
