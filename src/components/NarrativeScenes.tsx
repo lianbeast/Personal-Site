@@ -275,10 +275,11 @@ export function CapabilitiesScene() {
 }
 
 export function ProjectsScene() {
-  // Six in the scene, the rest behind /work. Ten rows in a 100dvh sticky box
-  // overflowed by 431px, so the heading sat off-screen and the list began
-  // mid-row.
-  const featured = site.projects.slice(0, 6)
+  // Three spotlight cards from config.narrativeSpotlight — they also appear on
+  // /work (full live feed) and /featured (editorial chapters), but only here
+  // in the narrative scene.
+  const spotlightNames = site.narrativeSpotlight
+  const featured = site.projects.filter((p) => spotlightNames.includes(p.name))
   return (
     <Scene id="s-projects" bg="bg-contours" art={<ProjArt />}>
       <div className="relative z-20 flex flex-col items-center">
@@ -287,7 +288,7 @@ export function ProjectsScene() {
         </KineticReveal>
         <KineticReveal delay={0.1}>
           <h2 className={H2}>
-            Featured work
+            Spotlight
           </h2>
         </KineticReveal>
         <div className="mt-10 grid w-full grid-cols-1 gap-3 text-left sm:mt-12 sm:grid-cols-2 sm:gap-3 lg:grid-cols-3">

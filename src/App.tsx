@@ -5,8 +5,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 const BASENAME = import.meta.env.BASE_URL
 import { HeroScene, AboutScene, CapabilitiesScene, ProjectsScene, ContactScene } from './components/NarrativeScenes'
 import { NarrativeHUD } from './components/NarrativeHUD'
-import { MapRoomSection } from './components/MapRoomSection'
-import { ProjectsSection } from './components/ProjectsSection'
 import { SplashCursor } from './components/SplashCursor'
 import { Footer } from './components/Footer'
 import { WorkIndexPage } from './pages/WorkIndex'
@@ -37,8 +35,6 @@ function MainLayout() {
         <ContactScene />
       </main>
       <div className="relative z-10">
-        <ProjectsSection />
-        <MapRoomSection />
         <Footer />
       </div>
     </div>

@@ -137,6 +137,10 @@ export const site = {
     },
   ],
 
+  // Repos picked for the 3-card spotlight in the main narrative scene.
+  // Must match names in `projects` above.
+  narrativeSpotlight: ['graphify', 'EliteHuman', 'Lian-Arch-Linux-Site'],
+
   geolibre: {
     embedBase: 'https://web.geolibre.app',
     // Shared project from GeoLibre's Project → Share
